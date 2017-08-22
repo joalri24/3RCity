@@ -5,12 +5,10 @@ using UnityEngine.UI;
 
 public class BlockPanel : MonoBehaviour {
 
-
     public Camera move;
     public Button btnCerrar;
     private MoveCamera moveC;
 
-    // Use this for initialization
     void Awake () {
         Button btn0 = btnCerrar.GetComponent<Button>();
         moveC = move.GetComponent<MoveCamera>();

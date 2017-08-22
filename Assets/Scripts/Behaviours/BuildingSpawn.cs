@@ -9,8 +9,8 @@ public class BuildingSpawn : MonoBehaviour {
 
     public Button botonPremios;
     public Button botonPublicidad;
-    public Transform edif0;
-    public Transform edif1;
+    public Transform edificioPublicidad;
+    public Transform fabricaOrdinaria;
     public Transform edif2;
     public Transform edifPapel;
     public Transform edifPlastico;
@@ -21,11 +21,10 @@ public class BuildingSpawn : MonoBehaviour {
     public Transform camionVidrio;
     public AudioClip contructionAudio;
 
-
     private bool initCamiones;
     RaycastHit vHit;
     Ray vRay;
-    Vector3 position_Click;
+    Vector3 clickedObjectPosition;
     private UIInit uiMessage;
     private EstadoJuego estado;
     private Ciudad unicaCiudad;
@@ -34,6 +33,7 @@ public class BuildingSpawn : MonoBehaviour {
     private int PlasticoInit;
     private int VidrioInit;
     public static int publicidad;
+
     //Inicialización de ciudad
     void Start()
     {
@@ -58,26 +58,23 @@ public class BuildingSpawn : MonoBehaviour {
         vHit = new RaycastHit();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (estado.NivelEducacion>=5 && !initCamiones)
         {
             inicializarCamiones();
         }
-
         if (unicaCiudad.NumPapelReciclado >=50 && unicaCiudad.NumPlasticoReciclado >= 50 && unicaCiudad.NumVidrioReciclado >= 50 && OrdInit ==1 && PlasticoInit == 1 && VidrioInit == 1 && PapelInit == 1)
         {
             botonPremios.interactable = true;
         }
-
         if (estado.ElementoSeleccionadoUI == 2)
         {
-            edifSeleccionado(edif1,1,4,"Fabrica1");
+            edifSeleccionado(fabricaOrdinaria,1,4,"Fabrica1");
         }
         else if (estado.ElementoSeleccionadoUI == 3)
         {
-            edifSeleccionado(edif0, 0, 0, "Publicidad1");
+            edifSeleccionado(edificioPublicidad, 0, 0, "Publicidad1");
         }
         else if (estado.ElementoSeleccionadoUI == 4)
         {
@@ -93,15 +90,15 @@ public class BuildingSpawn : MonoBehaviour {
         }
     }
 
-    void edifSeleccionado(Transform trans, int offsetx, int offsetz, String edificioAColocar)
+    void edifSeleccionado(Transform trans, int offsetx, int offsetz, string edificioAColocar)
     {
         vRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(vRay, out vHit, 200))
         {
             Debug.DrawRay(vRay.origin, vRay.direction * 20, Color.red);            
-            position_Click.x = vHit.collider.gameObject.transform.position.x;
-            position_Click.z = vHit.collider.gameObject.transform.position.z;
-            String lugar = vHit.collider.tag;
+            clickedObjectPosition.x = vHit.collider.gameObject.transform.position.x;
+            clickedObjectPosition.z = vHit.collider.gameObject.transform.position.z;
+            string lugar = vHit.collider.tag;
             Debug.Log(lugar);
             if (Input.GetMouseButtonDown(0))
             {
@@ -113,8 +110,8 @@ public class BuildingSpawn : MonoBehaviour {
                 {
                     if (edificioAColocar.Equals("Fabrica1") && lugar.Equals("PisoTipo3"))
                     {
-                        Instantiate(trans, new Vector3(position_Click.x + offsetx, 0, position_Click.z + offsetz), trans.rotation);
-                        Fabrica nuevaFabrica = new Fabrica(position_Click.x + offsetx, position_Click.z + offsetz, "Organica");
+                        Instantiate(trans, new Vector3(clickedObjectPosition.x + offsetx, 0, clickedObjectPosition.z + offsetz), trans.rotation);
+                        Fabrica nuevaFabrica = new Fabrica(clickedObjectPosition.x + offsetx, clickedObjectPosition.z + offsetz, "Organica");
                         for (int i = 0; i < nuevaFabrica.darCamionesFabrica().Length; i++)
                         {
                             Instantiate(camionBase, new Vector3(nuevaFabrica.PosicionX-1, 0, nuevaFabrica.PosicionZ-4), camionBase.transform.rotation);
@@ -126,8 +123,8 @@ public class BuildingSpawn : MonoBehaviour {
                     }
                     else if (edificioAColocar.Equals("Fabrica2") && lugar.Equals("PisoTipo3"))
                     {
-                        Instantiate(trans, new Vector3(position_Click.x + offsetx, 0, position_Click.z + offsetz), trans.rotation);
-                        Fabrica nuevaFabrica = new Fabrica(position_Click.x + offsetx, position_Click.z + offsetz, "PapelYCarton");
+                        Instantiate(trans, new Vector3(clickedObjectPosition.x + offsetx, 0, clickedObjectPosition.z + offsetz), trans.rotation);
+                        Fabrica nuevaFabrica = new Fabrica(clickedObjectPosition.x + offsetx, clickedObjectPosition.z + offsetz, "PapelYCarton");
                         if (estado.NivelEducacion>=5)
                         {
                             for (int i = 0; i < nuevaFabrica.darCamionesFabrica().Length; i++)
@@ -142,8 +139,8 @@ public class BuildingSpawn : MonoBehaviour {
                     }
                     else if (edificioAColocar.Equals("Fabrica3") && lugar.Equals("PisoTipo3"))
                     {
-                        Instantiate(trans, new Vector3(position_Click.x + offsetx, 0, position_Click.z + offsetz), trans.rotation);
-                        Fabrica nuevaFabrica = new Fabrica(position_Click.x + offsetx, position_Click.z + offsetz, "PlasticoYAluminio");
+                        Instantiate(trans, new Vector3(clickedObjectPosition.x + offsetx, 0, clickedObjectPosition.z + offsetz), trans.rotation);
+                        Fabrica nuevaFabrica = new Fabrica(clickedObjectPosition.x + offsetx, clickedObjectPosition.z + offsetz, "PlasticoYAluminio");
                         if (estado.NivelEducacion >= 5)
                         {
                             for (int i = 0; i < nuevaFabrica.darCamionesFabrica().Length; i++)
@@ -158,8 +155,8 @@ public class BuildingSpawn : MonoBehaviour {
                     }
                     else if (edificioAColocar.Equals("Fabrica4") && lugar.Equals("PisoTipo3"))
                     {
-                        Instantiate(trans, new Vector3(position_Click.x + offsetx, 0, position_Click.z + offsetz), trans.rotation);
-                        Fabrica nuevaFabrica = new Fabrica(position_Click.x + offsetx, position_Click.z + offsetz, "Vidrio");
+                        Instantiate(trans, new Vector3(clickedObjectPosition.x + offsetx, 0, clickedObjectPosition.z + offsetz), trans.rotation);
+                        Fabrica nuevaFabrica = new Fabrica(clickedObjectPosition.x + offsetx, clickedObjectPosition.z + offsetz, "Vidrio");
                         if (estado.NivelEducacion >= 5)
                         {
                             for (int i = 0; i < nuevaFabrica.darCamionesFabrica().Length; i++)
@@ -174,7 +171,7 @@ public class BuildingSpawn : MonoBehaviour {
                     }
                     else if (edificioAColocar.Equals("Publicidad1") && lugar.Equals("PisoTipo1"))
                     {
-                        Instantiate(trans, new Vector3(position_Click.x + offsetx, 0, position_Click.z + offsetz), trans.rotation);
+                        Instantiate(trans, new Vector3(clickedObjectPosition.x + offsetx, 0, clickedObjectPosition.z + offsetz), trans.rotation);
                         botonPublicidad.interactable = true;
                         estado.CantidadDinero -= 125;
                         estado.Expense -= 125;
@@ -190,8 +187,6 @@ public class BuildingSpawn : MonoBehaviour {
                     }
                     estado.ElementoSeleccionadoUI = 0;
                 }
-                    
-
             }
         }
     }

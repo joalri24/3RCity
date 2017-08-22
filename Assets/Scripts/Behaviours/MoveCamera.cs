@@ -5,12 +5,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
+/// <summary>
+/// Handles logic related to camera movement. 
+/// </summary>
 public class MoveCamera : MonoBehaviour
 {
     //
     // VARIABLES
     //
-    
     public float turnSpeed = 3.0f;      // Speed of camera turning when mouse moves in along an axis
     public float panSpeed = 0f;       // Speed of the camera when being panned
     public float zoomSpeed = 4.0f;      // Speed of the camera going back and forth
@@ -22,6 +24,7 @@ public class MoveCamera : MonoBehaviour
     private bool isZooming;     // Is the camera zooming?
     private Vector3 posIni;
     private Quaternion rotIni;
+
     void Start()
     {
         rotIni = this.transform.rotation;

@@ -15,8 +15,6 @@ public class PanelAyuda : MonoBehaviour {
     //needed as the layout refreshes only on the first Update() call
     bool firstUpdate;
 
-
-    // Use this for initialization
     void Start()
     {
         //in this line you need to change the string in order to get your Camera //TODO MAYBE DO IT FROM THE INSPECTOR
@@ -27,22 +25,17 @@ public class PanelAyuda : MonoBehaviour {
         this.transform.gameObject.SetActive(false);
     }
 
-
     //single string input tooltip
     public void SetTooltip(string text)
     {
-
         //init tooltip string
         thisText.text = text;
         ActivateTooltipVisibility();
-
     }
-
 
     //multi string/line input tooltip (each string of the input array is a new line)
     public void SetTooltip(string[] texts)
     {
-
         //build up the tooltip line after line with the input
         string tooltipText = "";
         int index = 0;
@@ -61,21 +54,16 @@ public class PanelAyuda : MonoBehaviour {
         ActivateTooltipVisibility();
     }
 
-
-
-
     //call to hide tooltip when hovering out from the object
     public void HideTooltip()
     {
-            if (this != null)
-            {
-                this.transform.gameObject.SetActive(false);
-                HideTooltipVisibility();
-            }
-        
+        if (this != null)
+        {
+            this.transform.gameObject.SetActive(false);
+            HideTooltipVisibility();
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
             this.transform.gameObject.transform.position = Input.mousePosition; 
@@ -99,6 +87,5 @@ public class PanelAyuda : MonoBehaviour {
         thisText.color = new Color(textColor.r, textColor.g, textColor.b, 0f);
         bgImageSource.color = new Color(bgImageSource.color.r, bgImageSource.color.g, bgImageSource.color.b, 0f);
     }
-
 }
 

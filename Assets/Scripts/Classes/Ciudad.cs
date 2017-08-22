@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Singleton representando la ciudad actual
+/// </summary>
 public class Ciudad
 {
-
     private static Ciudad instance = null;
     private static readonly object padlock = new object();
     private ArrayList casasEnCiudad;
@@ -14,7 +16,6 @@ public class Ciudad
     private int numPapelRecogido;
     private int numPlasticoRecogido;
     private int numVidrioRecogido;
-
 
     public static Ciudad InstanciaCiudad
     {

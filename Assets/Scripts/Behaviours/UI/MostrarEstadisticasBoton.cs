@@ -15,7 +15,7 @@ public class MostrarEstadisticasBoton : MonoBehaviour {
 	// Use this for initialization
     void mostrarEsconderEstadisticas()
     {
-        if (panelEstadisticas.activeInHierarchy==false&&panelBalance.activeInHierarchy==false)
+        if (panelEstadisticas.activeInHierarchy == false && panelBalance.activeInHierarchy == false)
         {
             panelEstadisticas.SetActive(true);
             panelBalance.SetActive(true);

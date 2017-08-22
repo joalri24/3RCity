@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class BotonesInteraccion : MonoBehaviour {
 
-
     public int dineroNecesitado;
     private EstadoJuego estado;
     public bool noAplica;
@@ -17,6 +16,7 @@ public class BotonesInteraccion : MonoBehaviour {
     private static bool notInteractable;
     public static bool activarPublicidad2;
     public static bool activarPublicidad3;
+
     void Start()
     {
         activarPublicidad2 = false;
@@ -28,7 +28,7 @@ public class BotonesInteraccion : MonoBehaviour {
     {
         notInteractable = set;
     }
-	// Update is called once per frame
+
 	void Update () {
         if (notInteractable)
         {
@@ -105,6 +105,5 @@ public class BotonesInteraccion : MonoBehaviour {
         {
             this.GetComponent<Button>().interactable = false;
         }
-        
 	}
 }
