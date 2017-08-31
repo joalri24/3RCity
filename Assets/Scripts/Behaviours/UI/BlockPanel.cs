@@ -15,19 +15,6 @@ public class BlockPanel : MonoBehaviour {
         btn0.onClick.AddListener(cerrarPestaña);
     }
 
-    void OnEnable()
-    {
-        moveC.turnSpeed = 0;
-        moveC.zoomSpeed = 0;
-        moveC.panSpeed = 0;
-    }
-    void OnDisable()
-    {
-        moveC.turnSpeed = 4;
-        moveC.zoomSpeed = 4;
-        moveC.panSpeed = 4;
-    }
-
     void cerrarPestaña()
     {
         this.gameObject.SetActive(false);

@@ -32,9 +32,6 @@ public class GameOverCondition : MonoBehaviour {
 
         if (Time.time >= lastUpdate + 10f && lastUpdate !=0)
         {
-            move.turnSpeed = 0;
-            move.panSpeed = 0;
-            move.zoomSpeed = 0;
             panelDarkScreen.SetActive(true);
             panelGameOver.SetActive(true);
             Time.timeScale = 0;

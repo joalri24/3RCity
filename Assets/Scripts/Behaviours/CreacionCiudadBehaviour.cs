@@ -21,7 +21,6 @@ public class CreacionCiudadBehaviour : MonoBehaviour {
     private String[][] matrizCiudad;
     public TextAsset TextFile;
 
-
     void Start () {
         readTextFileLines();
         for (int i = 0; i < matrizCiudad.Length; i++)
@@ -118,19 +117,16 @@ public class CreacionCiudadBehaviour : MonoBehaviour {
             }
         }
     }
-	
-	void Update () {
-		
-	}
+
     void readTextFileLines()
     {
         string[] linesInFile = TextFile.text.Split('\n');
-        matrizCiudad = new String[linesInFile.Length][];
+        matrizCiudad = new string[linesInFile.Length][];
         int i = 0;
         foreach (string line in linesInFile)
         {
-            String[] partesCiudad = line.Split(',');   
-            matrizCiudad[i] = new String[partesCiudad.Length];
+            string[] partesCiudad = line.Split(',');   
+            matrizCiudad[i] = new string[partesCiudad.Length];
             for (int j = 0; j < partesCiudad.Length; j++)
             {
                  matrizCiudad[i][j] = partesCiudad[j].Trim();

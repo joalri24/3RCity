@@ -1,105 +1,137 @@
-﻿// Credit to damien_oconnell from http://forum.unity3d.com/threads/39513-Click-drag-camera-movement
-// for using the mouse displacement for calculating the amount of camera movement and panning code.
-
-using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
+﻿using UnityEngine;
 
 /// <summary>
-/// Handles logic related to camera movement. 
+/// Handles logic related to camera panning. Moves camera along its local X and Z axes.
 /// </summary>
 public class MoveCamera : MonoBehaviour
 {
-    //
-    // VARIABLES
-    //
-    public float turnSpeed = 3.0f;      // Speed of camera turning when mouse moves in along an axis
-    public float panSpeed = 0f;       // Speed of the camera when being panned
-    public float zoomSpeed = 4.0f;      // Speed of the camera going back and forth
-    public Button botonReset;
+    [Header("Movement Settings")]
 
-    private Vector3 mouseOrigin;    // Position of cursor when mouse dragging starts
-    private bool isPanning;     // Is the camera being panned?
-    private bool isRotating;    // Is the camera being rotated?
-    private bool isZooming;     // Is the camera zooming?
-    private Vector3 posIni;
-    private Quaternion rotIni;
+    [Tooltip("Camera will move if mouse is closer than this percent of the screen width to the left/right")]
+    [Range(0.0f, 1.0f)]
+    public float WidthPercentageSideThreshold = 0.1f;
+
+    [Tooltip("Camera will move if mouse is closer than this percent of screen height to the top/bottom")]
+    [Range(0.0f, 1.0f)]
+    public float HeightPercentageTopThreshold = 0.1f;
+
+    [Tooltip("When screen is too small, camera will move if mouse is closer than this to the left/right")]
+    public float MinSideThreshold = 15f;
+
+    [Tooltip("When screen is too small, camera will move if mouse is closer than this to the top/bottom")]
+    public float MinTopThreshold = 15f;
+
+    public float MovementSpeed = 20f;
+
+
+    [Header("Limit Settings")]
+
+    [Range(0.0f, 1000000f)]
+    [Tooltip("Camera won't move in its local +X more than this")]
+    public float MaxRightTranslation;
+
+    [Range(-1000000f, 0.0f)]
+    [Tooltip("Camera won't move in its local -X more than this")]
+    public float MaxLeftTranslation;
+
+    [Range(0.0f, 1000000f)]
+    [Tooltip("Camera won't move in its local +Z more than this")]
+    public float MaxForwardTranslation;
+
+    [Range(-1000000f, 0.0f)]
+    [Tooltip("Camera won't move in its local -Z more than this")]
+    public float MaxBackwardTranslation;
+
+    float XTranslationFromStartingPosition = 0f;
+    float ZTranslationFromStartingPosition = 0f;
+
+    Vector3 translateAmount;
+    float currentSideThreshold;
+    float currentTopThreshold;
+    int directionX = 0;
+    int directionZ = 0;
 
     void Start()
     {
-        rotIni = this.transform.rotation;
-        posIni = this.transform.position;
-        botonReset.GetComponent<Button>().onClick.AddListener(resetCamera);
+        translateAmount = Vector3.zero;
+        float sideThresholdPercent = WidthPercentageSideThreshold * Screen.width;
+        currentSideThreshold = Mathf.Max(MinSideThreshold, sideThresholdPercent);
+
+        float topThresholdPercent = HeightPercentageTopThreshold * Screen.height;
+        currentTopThreshold = Mathf.Max(MinTopThreshold, topThresholdPercent);
     }
-    //
-    // UPDATE
-    //
-    void resetCamera()
-    {
-        this.transform.position = posIni;
-        this.transform.rotation = rotIni;
-    }
+
     void Update()
     {
-        // Get the left mouse button
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    // Get mouse origin
-        //    mouseOrigin = Input.mousePosition;
-        //    isRotating = true;
-        //}
-
-        // Get the right mouse button
-        if (Input.GetMouseButtonDown(1))
+        directionX = 0;
+        directionZ = 0;
+        if (IsMouseInsideViewport())
         {
-            // Get mouse origin
-            mouseOrigin = Input.mousePosition;
-            isPanning = true;
+            ManageCameraPanning();
         }
+    }
 
-        // Get the middle mouse button
-        if (Input.GetMouseButtonDown(2))
+    void ManageCameraPanning()
+    {
+        CheckPanningDirection();
+        translateAmount.x = MovementSpeed * Time.deltaTime * directionX;
+        translateAmount.z = MovementSpeed * Time.deltaTime * directionZ;
+        KeepTranslationInLimits();
+        transform.Translate(translateAmount);
+        XTranslationFromStartingPosition += translateAmount.x;
+        ZTranslationFromStartingPosition += translateAmount.z;
+    }
+
+    bool IsMouseInsideViewport()
+    {
+        //Input.mousePosition is (0,0) in viewport's bottom left corner and 
+        //(Screen.width, Screen.height) in its top right corner
+        return
+            Input.mousePosition.x >= 0f && Input.mousePosition.y >= 0f
+            && Input.mousePosition.x <= Screen.width && Input.mousePosition.y <= Screen.height;
+    }
+
+    void CheckPanningDirection()
+    {
+        if (Input.mousePosition.x < currentSideThreshold)
         {
-            // Get mouse origin
-            mouseOrigin = Input.mousePosition;
-            isZooming = true;
+            directionX = -1;
         }
-
-        // Disable movements on button release
-        if (!Input.GetMouseButton(0)) isRotating = false;
-        if (!Input.GetMouseButton(1)) isPanning = false;
-        if (!Input.GetMouseButton(2)) isZooming = false;
-
-        // Rotate camera along X and Y axis
-        if (isRotating)
+        else if (Input.mousePosition.x > Screen.width - currentSideThreshold)
         {
-            Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - mouseOrigin);
-
-            transform.RotateAround(transform.position, transform.right, -pos.y * turnSpeed);
-            transform.RotateAround(transform.position, Vector3.up, pos.x * turnSpeed);
+            directionX = 1;
         }
-
-        // Move the camera on it's XY plane
-        if (isPanning)
+        if (Input.mousePosition.y < currentTopThreshold)
         {
-            Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - mouseOrigin);
-
-            Vector3 move = new Vector3(pos.x * panSpeed, pos.y * panSpeed, 0);
-            transform.Translate(move, Space.Self);
+            directionZ = -1;
         }
-
-        // Move the camera linearly along Z axis
-        if (isZooming)
+        else if (Input.mousePosition.y > Screen.height - currentTopThreshold)
         {
-            Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - mouseOrigin);
-
-            Vector3 move = pos.y * zoomSpeed * transform.forward;
-            transform.Translate(move, Space.World);
+            directionZ = 1;
         }
+    }
 
-        //if (this.transform.position.x >=85f &&)
-        //{
-
-        //}
+    void KeepTranslationInLimits()
+    {
+        //if moving more to the left than MaxLeftTranslation
+        if (XTranslationFromStartingPosition + translateAmount.x < MaxLeftTranslation)
+        {
+            //move up to MaxLeftTranslation
+            translateAmount.x = MaxLeftTranslation - XTranslationFromStartingPosition;
+        }
+        //if moving more to the right than MaxRightTranslation
+        else if (XTranslationFromStartingPosition + translateAmount.x > MaxRightTranslation)
+        {
+            //move up to MaxRightTranslation
+            translateAmount.x = MaxRightTranslation - XTranslationFromStartingPosition;
+        }
+        if (ZTranslationFromStartingPosition + translateAmount.z < MaxBackwardTranslation)
+        {
+            translateAmount.z = MaxBackwardTranslation - ZTranslationFromStartingPosition;
+        }
+        else if (ZTranslationFromStartingPosition + translateAmount.z > MaxForwardTranslation)
+        {
+            translateAmount.z = MaxForwardTranslation - ZTranslationFromStartingPosition;
+        }
     }
 }

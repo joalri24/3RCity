@@ -6,14 +6,13 @@ public class MuerteArboles : MonoBehaviour {
 
     private EstadoJuego estado;
     private float lastUpdate;
-    // Use this for initialization
+
     void Start ()
     {
         estado = EstadoJuego.InstanciaEstadoJuego;
         lastUpdate = 0f;
 	}
 	
-	// Update is called once per frame
 	void Update ()
     {
         if (estado.CantidadDinero <= -50 && lastUpdate == 0)
