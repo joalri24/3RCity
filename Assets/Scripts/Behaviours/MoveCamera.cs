@@ -5,53 +5,115 @@
 /// </summary>
 public class MoveCamera : MonoBehaviour
 {
-    [Header("Movement Settings")]
+    // ---------------------------------------------------------------------------
+    // Attributes
+    // ---------------------------------------------------------------------------
 
+    /// <summary>
+    /// Camera will move if mouse is closer than this percent of the screen width to the left/right
+    /// </summary>
+    [Header("Movement Settings")]
     [Tooltip("Camera will move if mouse is closer than this percent of the screen width to the left/right")]
     [Range(0.0f, 1.0f)]
     public float WidthPercentageSideThreshold = 0.1f;
 
+    /// <summary>
+    /// Camera will move if mouse is closer than this percent of screen height to the top/bottom
+    /// </summary>
     [Tooltip("Camera will move if mouse is closer than this percent of screen height to the top/bottom")]
     [Range(0.0f, 1.0f)]
     public float HeightPercentageTopThreshold = 0.1f;
 
+    /// <summary>
+    /// When screen is too small, camera will move if mouse is closer than this to the left/right
+    /// </summary>
     [Tooltip("When screen is too small, camera will move if mouse is closer than this to the left/right")]
     public float MinSideThreshold = 15f;
 
+    /// <summary>
+    /// When screen is too small, camera will move if mouse is closer than this to the top/bottom
+    /// </summary>
     [Tooltip("When screen is too small, camera will move if mouse is closer than this to the top/bottom")]
     public float MinTopThreshold = 15f;
 
+    /// <summary>
+    /// Camera speed movement.
+    /// </summary>
     public float MovementSpeed = 20f;
 
 
+    /// <summary>
+    /// Camera won't move in its local +X more than this
+    /// </summary>
     [Header("Limit Settings")]
-
     [Range(0.0f, 1000000f)]
     [Tooltip("Camera won't move in its local +X more than this")]
     public float MaxRightTranslation;
 
+    /// <summary>
+    /// Camera won't move in its local -X more than this
+    /// </summary>
     [Range(-1000000f, 0.0f)]
     [Tooltip("Camera won't move in its local -X more than this")]
     public float MaxLeftTranslation;
 
+    /// <summary>
+    /// Camera won't move in its local +Z more than this
+    /// </summary>
     [Range(0.0f, 1000000f)]
     [Tooltip("Camera won't move in its local +Z more than this")]
     public float MaxForwardTranslation;
 
+    /// <summary>
+    /// Camera won't move in its local -Z more than this
+    /// </summary>
     [Range(-1000000f, 0.0f)]
     [Tooltip("Camera won't move in its local -Z more than this")]
     public float MaxBackwardTranslation;
 
-    float XTranslationFromStartingPosition = 0f;
-    float ZTranslationFromStartingPosition = 0f;
+    /// <summary>
+    /// ¿?
+    /// </summary>
+    private float XTranslationFromStartingPosition = 0f;
 
-    Vector3 translateAmount;
-    float currentSideThreshold;
-    float currentTopThreshold;
-    int directionX = 0;
-    int directionZ = 0;
+    /// <summary>
+    /// ¿?
+    /// </summary>
+    private float ZTranslationFromStartingPosition = 0f;
 
-    void Start()
+    /// <summary>
+    /// The distance and direction the camera is going to be translated. 
+    /// </summary>
+    private Vector3 translateAmount;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private float currentSideThreshold;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private float currentTopThreshold;
+
+    /// <summary>
+    /// Can have as values 0, 1 and -1. 1 means positive on the x axis, -1 means negative.
+    /// </summary>
+    private int directionX = 0;
+
+    /// <summary>
+    /// Can have as values 0, 1 and -1. 1 means positive on the z axis, -1 means negative.
+    /// </summary>
+    private int directionZ = 0;
+
+        // ---------------------------------------------------------------------------
+    // Attributes
+    // ---------------------------------------------------------------------------
+
+    /// <summary>
+    /// Executed on the first frame this object is alive.
+    /// </summary>
+    private void Start()
     {
         translateAmount = Vector3.zero;
         float sideThresholdPercent = WidthPercentageSideThreshold * Screen.width;
@@ -61,16 +123,24 @@ public class MoveCamera : MonoBehaviour
         currentTopThreshold = Mathf.Max(MinTopThreshold, topThresholdPercent);
     }
 
-    void Update()
+    /// <summary>
+    /// Executed once each frame.
+    /// </summary>
+    private void Update()
     {
         directionX = 0;
         directionZ = 0;
-        if (IsMouseInsideViewport())
+
+        /*if (IsMouseInsideViewport())
         {
             ManageCameraPanning();
-        }
+        }*/
+        ManageCameraPanning();
     }
 
+    /// <summary>
+    /// TODO: description
+    /// </summary>
     void ManageCameraPanning()
     {
         CheckPanningDirection();
@@ -82,7 +152,10 @@ public class MoveCamera : MonoBehaviour
         ZTranslationFromStartingPosition += translateAmount.z;
     }
 
-    bool IsMouseInsideViewport()
+    /// <summary>
+    /// True if the mouse is inside the current viewport, false otherwise.
+    /// </summary>
+    private bool IsMouseInsideViewport()
     {
         //Input.mousePosition is (0,0) in viewport's bottom left corner and 
         //(Screen.width, Screen.height) in its top right corner
@@ -91,7 +164,10 @@ public class MoveCamera : MonoBehaviour
             && Input.mousePosition.x <= Screen.width && Input.mousePosition.y <= Screen.height;
     }
 
-    void CheckPanningDirection()
+    /// <summary>
+    /// TODO: description
+    /// </summary>
+    private void CheckPanningDirection()
     {
         if (Input.mousePosition.x < currentSideThreshold)
         {
@@ -111,7 +187,10 @@ public class MoveCamera : MonoBehaviour
         }
     }
 
-    void KeepTranslationInLimits()
+    /// <summary>
+    /// TODO: description
+    /// </summary>
+    private void KeepTranslationInLimits()
     {
         //if moving more to the left than MaxLeftTranslation
         if (XTranslationFromStartingPosition + translateAmount.x < MaxLeftTranslation)
