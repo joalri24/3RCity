@@ -5,7 +5,8 @@ using System.Text;
 using System.IO;
 using System;
 
-public class CreacionCiudadBehaviour : MonoBehaviour {
+public class CreacionCiudadBehaviour : MonoBehaviour
+{
 
     public GameObject pisoNormal;
     public GameObject pisoFabrica;

@@ -21,6 +21,7 @@ TagManager:
   - Ordinaria
   - Parque
   - Museo
+  - Controller
   layers:
   - Default
   - TransparentFX
