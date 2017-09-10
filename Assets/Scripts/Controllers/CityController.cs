@@ -104,11 +104,11 @@ public class CityController : MonoBehaviour
     {
         currentDay++;
 
-        // TODO: uncomment when the House script is finished.
-        /*foreach (var house in houses)
+        // Generate garbage in all houses
+        foreach (var house in houses)
         {
-            // house.GenerateGarbage();
-        }*/
+            house.GenerateGarbage();
+        }
 
         Debug.Log("Current date: " + startDate.AddDays(currentDay).ToString("dd/MM/yyyy"));
 
@@ -124,7 +124,7 @@ public class CityController : MonoBehaviour
 	void Update ()
     {
         // Pause the game when the key is pressed.
-        if (Input.GetKeyDown("pause"))
+        if (Input.GetKeyDown("pause") || Input.GetKeyDown("p"))
             Paused = (Paused) ? false : true;
         
         // Add the passed time to the timer if the game is unpaused.
