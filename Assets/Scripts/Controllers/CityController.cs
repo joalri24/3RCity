@@ -108,12 +108,6 @@ public class CityController : MonoBehaviour
         foreach (var house in houses)
         {
             house.GenerateGarbage();
-            Debug.Log("-----");
-            Debug.Log("reg:" + house.garbage.regular);
-            Debug.Log("pap:" + house.garbage.paper);
-            Debug.Log("met:" + house.garbage.metal);
-            Debug.Log("glass:" + house.garbage.glass);
-            Debug.Log("tot:" + house.TrashCanCurrentAmount);
         }
 
         Debug.Log("Current date: " + startDate.AddDays(currentDay).ToString("dd/MM/yyyy"));

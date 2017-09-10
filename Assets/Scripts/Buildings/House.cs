@@ -115,28 +115,27 @@ public class House : MonoBehaviour
     /// </summary>
     public void GenerateGarbage()
     {
-        System.Random rnd = new System.Random();
         int amount = 0;
 
         // Ordinary garbage
-        amount = rnd.Next(ordinaryMinimunGeneration, ordinaryMaximunGeneration);
+        amount = UnityEngine.Random.Range(ordinaryMinimunGeneration, ordinaryMaximunGeneration);
         garbage.regular += amount;
         TrashCanCurrentAmount += amount;
 
         // Paper  
-        amount = rnd.Next(paperMinimunGeneration, paperMaximunGeneration);
+        amount = UnityEngine.Random.Range(paperMinimunGeneration, paperMaximunGeneration);
         garbage.paper += amount;
         // TODO: if the house is recycling, put it in the paper can. If not, in the ordinary can.
         TrashCanCurrentAmount += amount;
 
         // glass 
-        amount = rnd.Next(glassMinimunGeneration, glassMaximunGeneration);
+        amount = UnityEngine.Random.Range(glassMinimunGeneration, glassMaximunGeneration);
         garbage.glass += amount;
         // TODO: if the house is recycling, put it in the glass can. If not, in the ordinary can.
         TrashCanCurrentAmount += amount;
 
         // metal 
-        amount = rnd.Next(metalMinimunGeneration, metalMaximunGeneration);
+        amount = UnityEngine.Random.Range(metalMinimunGeneration, metalMaximunGeneration);
         garbage.metal += amount;
         // TODO: if the house is recycling, put it in the metal can. If not, in the ordinary can.
         TrashCanCurrentAmount += amount;
