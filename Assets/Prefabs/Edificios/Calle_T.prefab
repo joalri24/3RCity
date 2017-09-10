@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4448897579900448}
   - component: {fileID: 33878659613821548}
   - component: {fileID: 23694836220117860}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Calle2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4249528115364098}
   - component: {fileID: 33247701213378942}
   - component: {fileID: 23223618639669410}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4994378981313510}
   - component: {fileID: 33001506943030884}
   - component: {fileID: 23664672717577408}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Calle3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4811188780276820}
-  m_Layer: 0
+  - component: {fileID: 65743679351871414}
+  m_Layer: 8
   m_Name: Calle_T
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +88,7 @@ GameObject:
   - component: {fileID: 4349299148702260}
   - component: {fileID: 33967548311946446}
   - component: {fileID: 23557014729321146}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +105,7 @@ GameObject:
   - component: {fileID: 4202248514136686}
   - component: {fileID: 33219527344079406}
   - component: {fileID: 23225979189322542}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +171,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1775443264773936}
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 32, y: 0, z: 16}
+  m_LocalPosition: {x: 37.404865, y: 13.154381, z: 9.1214075}
   m_LocalScale: {x: 203, y: 203, z: 203}
   m_Children:
   - {fileID: 4349299148702260}
@@ -389,3 +390,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1923858555668140}
   m_Mesh: {fileID: 4300014, guid: 0239c4b7b2b7ead4581f2e5174342770, type: 3}
+--- !u!65 &65743679351871414
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1775443264773936}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.02, z: 0.002}
+  m_Center: {x: 0, y: 0, z: 0}

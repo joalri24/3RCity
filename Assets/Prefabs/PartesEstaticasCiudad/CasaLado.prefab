@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 33133298591895722}
   - component: {fileID: 23623026664632182}
   - component: {fileID: 65348528964947236}
+  - component: {fileID: 114562107830567968}
   m_Layer: 0
   m_Name: VTP_House_01
   m_TagString: Untagged
@@ -92,7 +93,7 @@ GameObject:
   - component: {fileID: 23532607374719342}
   - component: {fileID: 65393190758841298}
   - component: {fileID: 114282902093831576}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Piso1
   m_TagString: PisoTipo1
   m_Icon: {fileID: 0}
@@ -144,9 +145,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4165812331741254}
+  - component: {fileID: 114680284619624534}
+  - component: {fileID: 114568426975442708}
+  - component: {fileID: 114686833807867388}
+  - component: {fileID: 114911603035692038}
   m_Layer: 0
   m_Name: CasaLado
-  m_TagString: Untagged
+  m_TagString: Casa
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -201,7 +206,7 @@ GameObject:
   - component: {fileID: 65018791659259252}
   m_Layer: 0
   m_Name: Casa_Con_Basura
-  m_TagString: Casa
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -243,7 +248,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1541443451353634}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 30.903233, y: -0.33546114, z: 56.266758}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4521175343166868}
@@ -420,6 +425,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23123855588418312
 MeshRenderer:
@@ -451,6 +457,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23143682515526462
 MeshRenderer:
@@ -482,6 +489,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23365783432609396
 MeshRenderer:
@@ -513,6 +521,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23481615556876296
 MeshRenderer:
@@ -544,6 +553,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23532607374719342
 MeshRenderer:
@@ -575,6 +585,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23623026664632182
 MeshRenderer:
@@ -606,6 +617,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23666399205370658
 MeshRenderer:
@@ -637,6 +649,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33133298591895722
 MeshFilter:
@@ -873,6 +886,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8789626eec3c6474c977d4f1d6f41fc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114562107830567968
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1374032828274622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e7414703155424bbdbe4189f6b4ab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generateTrashCooldown: 0
+--- !u!114 &114568426975442708
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1541443451353634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e7414703155424bbdbe4189f6b4ab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generateTrashCooldown: 10
+--- !u!114 &114680284619624534
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1541443451353634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d43e104b3ad2a664a8f5baa6fe856be2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trashCan: {fileID: 4856586519086148}
+--- !u!114 &114686833807867388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1541443451353634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e09105fe8c09eab418b61473e16af0a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trashText: {fileID: 0}
 --- !u!114 &114773302135429458
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -887,3 +948,22 @@ MonoBehaviour:
   basura: {fileID: 1117824191176706, guid: 9f28f73a65ac7ad45a2d306c8943801d, type: 2}
   basuraOrdinaria: {fileID: 1803370103536778, guid: b5c13a8f28e73434e8f6fba60beff048,
     type: 2}
+  basuraPapel: {fileID: 0}
+  basuraPlastico: {fileID: 0}
+  basuraVidrio: {fileID: 0}
+  lastUpdate: 0
+  lastUpdate1: 0
+  lastUpdate2: 0
+  lastUpdate3: 0
+--- !u!114 &114911603035692038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1541443451353634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e707667abbaf4644a1f72bfe7705b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2

@@ -69,6 +69,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4118630443981216}
+  - component: {fileID: 114287975879158736}
+  - component: {fileID: 114883568869857058}
   m_Layer: 0
   m_Name: Vertedero
   m_TagString: GarbagePlace
@@ -599,3 +601,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8.105609, y: 0.16172075, z: 8.049427}
   m_Center: {x: 2.0292687, y: -0.02671361, z: 2.019868}
+--- !u!114 &114287975879158736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1142921746709974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12182fdfeb3c1bc4ba7e1be7c3fcdebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 0
+  type: 1
+--- !u!114 &114883568869857058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1142921746709974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d817af07d2507e44be908ba4190b2fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

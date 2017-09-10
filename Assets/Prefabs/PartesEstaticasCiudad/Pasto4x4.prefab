@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4283193126307304}
   - component: {fileID: 33612483712345228}
   - component: {fileID: 23732397536711268}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: VTP_Found_Grass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4359803911779738}
-  m_Layer: 0
+  - component: {fileID: 65617543990519738}
+  m_Layer: 8
   m_Name: Pasto4x4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +64,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1535730109832008}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 30.885986, y: 0.2030003, z: 0.017044067}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4283193126307304}
@@ -109,3 +110,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1290831696598964}
   m_Mesh: {fileID: 4300000, guid: 8217cef62e86e458bb8c38501c49f9fc, type: 3}
+--- !u!65 &65617543990519738
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1535730109832008}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8, y: 1, z: 8}
+  m_Center: {x: 2, y: 0, z: 2}

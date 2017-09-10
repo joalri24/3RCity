@@ -21,7 +21,8 @@ GameObject:
   - component: {fileID: 4000012568757812}
   - component: {fileID: 33000013056517742}
   - component: {fileID: 23000011586208908}
-  m_Layer: 0
+  - component: {fileID: 65993845523088320}
+  m_Layer: 8
   m_Name: VTP_Found_Grass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014159080006}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 25.49633, y: 10.19827, z: 2.1234581}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -80,3 +81,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014159080006}
   m_Mesh: {fileID: 4300000, guid: 8217cef62e86e458bb8c38501c49f9fc, type: 3}
+--- !u!65 &65993845523088320
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014159080006}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8, y: 0.049999967, z: 8}
+  m_Center: {x: 0, y: 0.024999984, z: 0}

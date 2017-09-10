@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4991033622287878}
   - component: {fileID: 33810552609233226}
   - component: {fileID: 23588179295591760}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Piso1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4311251204917156}
   - component: {fileID: 65428802082013820}
   - component: {fileID: 114988271502057408}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PisoEdificiosLargos
   m_TagString: PisoTipo2
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4391647735985484}
   - component: {fileID: 33292600760702676}
   - component: {fileID: 23127591325587182}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Piso1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1962704925918038}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 88.24431, y: 54.354706, z: -23.469275}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4391647735985484}
@@ -133,6 +133,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23588179295591760
 MeshRenderer:
@@ -164,6 +165,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33292600760702676
 MeshFilter:

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4859451140151556}
   - component: {fileID: 33411548329987562}
   - component: {fileID: 23526141898800668}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Parte2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4148667887756566}
   - component: {fileID: 65496260317246920}
   - component: {fileID: 114974253618571164}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PisoFabrica
   m_TagString: PisoTipo3
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4474424614676528}
   - component: {fileID: 33894336940364700}
   - component: {fileID: 23748686818455270}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Parte3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4158698564881074}
   - component: {fileID: 33219234655271246}
   - component: {fileID: 23412567083383480}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Parte4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4385355421873984}
   - component: {fileID: 33021126772441236}
   - component: {fileID: 23098267166894624}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Parte1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1820042137653916}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 89.57838, y: 53.60056, z: -26.07497}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4385355421873984}
@@ -195,6 +195,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23412567083383480
 MeshRenderer:
@@ -226,6 +227,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23526141898800668
 MeshRenderer:
@@ -257,6 +259,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23748686818455270
 MeshRenderer:
@@ -288,6 +291,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33021126772441236
 MeshFilter:

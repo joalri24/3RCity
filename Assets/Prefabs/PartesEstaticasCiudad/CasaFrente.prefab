@@ -36,6 +36,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4233949334305560}
+  - component: {fileID: 114104439245067494}
+  - component: {fileID: 114396495903344256}
+  - component: {fileID: 114344267931341430}
+  - component: {fileID: 114543691804445622}
   m_Layer: 0
   m_Name: CasaFrente
   m_TagString: Untagged
@@ -318,7 +322,7 @@ GameObject:
   - component: {fileID: 23019466984867744}
   - component: {fileID: 65222413697130274}
   - component: {fileID: 114751480927236852}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Piso1
   m_TagString: PisoTipo1
   m_Icon: {fileID: 0}
@@ -493,7 +497,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1085254559888928}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 33.21679, y: 0.10150053, z: 56.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4168054766177782}
@@ -1673,6 +1677,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8970773, y: 0.9979144, z: 0.107277155}
   m_Center: {x: -0.010422587, y: 0.55473495, z: 0.046140432}
+--- !u!114 &114104439245067494
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1085254559888928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d43e104b3ad2a664a8f5baa6fe856be2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trashCan: {fileID: 4951813620992018}
 --- !u!114 &114236564373818924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1693,6 +1709,46 @@ MonoBehaviour:
     type: 2}
   basuraVidrio: {fileID: 1655196458592084, guid: 8e64ae268488120469f54765c5dd8ddc,
     type: 2}
+  lastUpdate: 0
+  lastUpdate1: 0
+  lastUpdate2: 0
+  lastUpdate3: 0
+--- !u!114 &114344267931341430
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1085254559888928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e09105fe8c09eab418b61473e16af0a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trashText: {fileID: 0}
+--- !u!114 &114396495903344256
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1085254559888928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e7414703155424bbdbe4189f6b4ab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generateTrashCooldown: 10
+--- !u!114 &114543691804445622
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1085254559888928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e707667abbaf4644a1f72bfe7705b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
 --- !u!114 &114751480927236852
 MonoBehaviour:
   m_ObjectHideFlags: 1
