@@ -6,18 +6,18 @@ public class PrefabManager : MonoBehaviour {
 
     [SerializeField]
     GameObject trashTruckStationPrefab;
-    //[SerializeField]
-    //GameObject landfillPrefab;
+    [SerializeField]
+    GameObject landfillPrefab;
 
-    //[Header("Trash")]
+    [Header("Trash")]
 
-    //[SerializeField]
-    //GameObject trash;
+    [SerializeField]
+    GameObject trash;
 
-    //[Header("Trucks")]
+    [Header("Trucks")]
 
-    //[SerializeField]
-    //GameObject regularTrashTruck;
+    [SerializeField]
+    GameObject regularTrashTruck;
 
     public GameObject MapBuildingToPrefab(Buildings.Type building)
     {
@@ -43,13 +43,13 @@ public class PrefabManager : MonoBehaviour {
         return answer;
     }
 
-    //public GameObject TrashPrefab()
-    //{
-    //    return trash;
-    //}
+    public GameObject TrashPrefab()
+    {
+        return trash;
+    }
 
-    //public GameObject TrashTruckPrefab()
-    //{
-    //    return regularTrashTruck;
-    //}
+    public GameObject TrashTruckPrefab()
+    {
+        return regularTrashTruck;
+    }
 }

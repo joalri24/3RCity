@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,4 +20,39 @@ public interface IGeneradora
 public interface IRecogedor
 {
     void recoger();
+}
+
+public interface IMoneyChangedListener
+{
+    void onMoneyChanged();
+}
+
+public interface IEnvironmentalImpactChangedListener
+{
+    void onEnvironmentalImpactChanged();
+}
+
+public interface IApprovalChangedListener
+{
+    void onApprovalChanged();
+}
+
+public interface IUIStateChangedListener
+{
+    void onUIStateChanged();
+}
+
+public interface ITrashChangedListener
+{
+    void onTrashChanged();
+}
+
+public interface ISelectable
+{
+    void onSelected();
+}
+
+public interface IObjectiveChangedListener
+{
+    void onObjectiveChanged();
 }

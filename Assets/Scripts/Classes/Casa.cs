@@ -56,7 +56,6 @@ public class Casa :IGeneradora {
         set { numBasuraPlastico = value; }
     }
 
-
     public float PosicionEnX
     {
         get { return posicionX; }
@@ -65,7 +64,6 @@ public class Casa :IGeneradora {
     {
         get { return posicionZ; }
     }
-
 
     public void generar()
     {
@@ -83,7 +81,6 @@ public class Casa :IGeneradora {
     {
         if (numBasuraVidrio < NUM_MAX_BASURA) { numBasuraVidrio++; }
     }
-
 
     public bool estaLlena()
     {
@@ -109,7 +106,6 @@ public class Casa :IGeneradora {
         else { llenaVidrio = true; }
         return llenaVidrio;
     }
-
 
     public bool EnVisita
     {

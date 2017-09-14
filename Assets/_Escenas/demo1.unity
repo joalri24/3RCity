@@ -18451,6 +18451,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trashTruckStationPrefab: {fileID: 1225243728837770, guid: 59a2dfbc46159b14b89c21a8b9cd8c7f,
     type: 2}
+  landfillPrefab: {fileID: 0}
+  trash: {fileID: 0}
+  regularTrashTruck: {fileID: 0}
 --- !u!1 &1901959201
 GameObject:
   m_ObjectHideFlags: 0

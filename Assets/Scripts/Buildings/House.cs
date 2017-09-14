@@ -97,16 +97,15 @@ public class House : MonoBehaviour
     [Tooltip("The maximum of metal garbage that can be generated daily")]
     public int metalMaximunGeneration;
 
+    public Transform trashCan;
 
     // ------------------------------------------------------------
     // Methods
     // ------------------------------------------------------------
 
-    // Use this for initialization
     void Start ()
     {
         garbage = new Garbage(0, 0, 0, 0);
-        
     }
 	
     /// <summary>
@@ -139,9 +138,10 @@ public class House : MonoBehaviour
         garbage.metal += amount;
         // TODO: if the house is recycling, put it in the metal can. If not, in the ordinary can.
         TrashCanCurrentAmount += amount;
-         
-
-
     }
-    
+
+    public Transform TrashCan
+    {
+        get { return trashCan; }
+    }
 }
