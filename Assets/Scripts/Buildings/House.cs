@@ -46,7 +46,65 @@ public class House : MonoBehaviour
         }
     }
 
-    // TODO: cans for recyclable garbage.
+    /// <summary>
+    /// Paper can current garbage.
+    /// </summary>
+    private int paperCanCurrentGarbage;
+
+    /// <summary>
+    /// Property to access the current ammount of garbage in the paper trash can.
+    /// Only recycled paper goes here.
+    /// </summary>
+    public int PaperCanCurrentAmount
+    {
+        get { return paperCanCurrentGarbage; }
+        set
+        {
+            paperCanCurrentGarbage = value;
+            // TODO: do something else if neccesary, like updating the model if 
+            // the current amount if higher than the capacity, etc.
+        }
+    }
+
+    /// <summary>
+    /// Glass can current garbage.
+    /// </summary>
+    private int glassCanCurrentGarbage;
+
+    /// <summary>
+    /// Property to access the current ammount of garbage in the glass trash can.
+    /// Only recycled glass goes here.
+    /// </summary>
+    public int GlassCanCurrentAmount
+    {
+        get { return glassCanCurrentGarbage; }
+        set
+        {
+            glassCanCurrentGarbage = value;
+            // TODO: do something else if neccesary, like updating the model if 
+            // the current amount if higher than the capacity, etc.
+        }
+    }
+
+    /// <summary>
+    /// Metal can current garbage.
+    /// </summary>
+    private int metalCanCurrentGarbage;
+
+    /// <summary>
+    /// Property to access the current ammount of garbage in the metal trash can.
+    /// Only recycled metal goes here.
+    /// </summary>
+    public int MetalCanCurrentAmount
+    {
+        get { return metalCanCurrentGarbage; }
+        set
+        {
+            metalCanCurrentGarbage = value;
+            // TODO: do something else if neccesary, like updating the model if 
+            // the current amount if higher than the capacity, etc.
+        }
+    }
 
     /// <summary>
     /// The minimun of ordinary garbage that can be generated daily
@@ -97,7 +155,18 @@ public class House : MonoBehaviour
     [Tooltip("The maximum of metal garbage that can be generated daily")]
     public int metalMaximunGeneration;
 
-    public Transform trashCan;
+    /// <summary>
+    /// The transform of the place where the trucks stop to collect the garbage. 
+    /// </summary>
+    public Transform trashCanTrasnform;
+
+    /// <summary>
+    /// Position of the trash can
+    /// </summary>
+    public Transform TrashCan
+    {
+        get { return trashCanTrasnform; }
+    }
 
     // ------------------------------------------------------------
     // Methods
@@ -118,7 +187,7 @@ public class House : MonoBehaviour
 
         // Ordinary garbage
         amount = UnityEngine.Random.Range(ordinaryMinimunGeneration, ordinaryMaximunGeneration);
-        garbage.regular += amount;
+        garbage.ordinary += amount;
         TrashCanCurrentAmount += amount;
 
         // Paper  
@@ -140,8 +209,4 @@ public class House : MonoBehaviour
         TrashCanCurrentAmount += amount;
     }
 
-    public Transform TrashCan
-    {
-        get { return trashCan; }
-    }
 }

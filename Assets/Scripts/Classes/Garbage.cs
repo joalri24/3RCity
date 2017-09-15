@@ -16,7 +16,7 @@ public class Garbage
     /// <summary>
     /// Amount of ordinary garbage. This is the garbage that can't be recicled by any means.
     /// </summary>
-    public int regular;
+    public int ordinary;
 
     /// <summary>
     /// Amount of paper and cardboard. Recyclable.
@@ -47,7 +47,7 @@ public class Garbage
     /// <param name="nMetal"></param>
     public Garbage(int nRegular, int nPaper, int nGlass, int nMetal)
     {
-        regular = nRegular;
+        ordinary = nRegular;
         paper = nPaper;
         glass = nGlass;
         metal = nMetal;
