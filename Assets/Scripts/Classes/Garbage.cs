@@ -38,13 +38,8 @@ public class Garbage
     // Methods
     // -----------------------------------------------------------
 
-    /// <summary>
-    /// Constructor. 
-    /// </summary>
-    /// <param name="nRegular"></param>
-    /// <param name="nPaper"></param>
-    /// <param name="nGlass"></param>
-    /// <param name="nMetal"></param>
+    public Garbage() { }
+
     public Garbage(int nRegular, int nPaper, int nGlass, int nMetal)
     {
         ordinary = nRegular;

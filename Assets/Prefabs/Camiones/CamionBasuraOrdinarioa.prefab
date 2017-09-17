@@ -69,7 +69,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4801356315636128}
   - component: {fileID: 195389869772769146}
-  - component: {fileID: 114821074769489550}
+  - component: {fileID: 114704321748734718}
+  - component: {fileID: 114970465002348566}
   m_Layer: 0
   m_Name: CamionBasuraOrdinarioa
   m_TagString: Untagged
@@ -823,7 +824,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1076057897995980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 31.073128, y: 0.101500034, z: 9.581322}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4903516681238314}
@@ -1866,7 +1867,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1704889746903306}
   m_Mesh: {fileID: 4300002, guid: cf6d74fcecfd17a49a476593d44a98f9, type: 3}
---- !u!114 &114821074769489550
+--- !u!114 &114704321748734718
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1874,11 +1875,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1076057897995980}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a25ca0362616cef4aa90a945d2048da8, type: 3}
+  m_Script: {fileID: 11500000, guid: 56fcf45fe698dd543947dff25b1ae86c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numBasuras: 0
-  estadoRecogedor: 0
+--- !u!114 &114970465002348566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1076057897995980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2159b19a8f301314c849dc3ac14f70dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!195 &195389869772769146
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -1889,7 +1899,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 4
-  m_Acceleration: 8
+  m_Acceleration: 4
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0

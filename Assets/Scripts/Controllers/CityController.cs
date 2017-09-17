@@ -4,16 +4,16 @@ using System;
 using UnityEngine;
 
 /// <summary>
-/// Scene controllers.
-/// It knows the city' status and what building currently exists on it.
+/// Scene controllers. It knows the city' status and what building currently exists on it.
 /// It also makes the city's date advance.
 /// </summary>
 public class CityController : MonoBehaviour
 {
-
     // -----------------------------------------------------------
     // Attributes and properties
     // -----------------------------------------------------------
+
+    public TrashDeposit defaultTrashDeposit;
 
     /// <summary>
     /// The duration in game days of the current match.
@@ -46,9 +46,9 @@ public class CityController : MonoBehaviour
     [Header("City buildings")]
     [Tooltip("List with all the houses of the city")]
     public List<House> houses;
+    int nextHouseToVisitIndex = -1;
 
     // TODO: list of other buildings
-
 
     /// <summary>
     /// Timer to know when to advance to the next day.
@@ -91,10 +91,11 @@ public class CityController : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        defaultTrashDeposit = FindObjectOfType<TrashDeposit>();
         currentDay = 0;
         timer = 0f;
         startDate = DateTime.Now;
-        Debug.Log("Current date: " + startDate.AddDays(currentDay).ToString("dd/MM/yyyy"));
+        //Debug.Log("Current date: " + startDate.AddDays(currentDay).ToString("dd/MM/yyyy"));
     }
 
     /// <summary>
@@ -109,18 +110,16 @@ public class CityController : MonoBehaviour
         {
             house.GenerateGarbage();
         }
-
-        Debug.Log("Current date: " + startDate.AddDays(currentDay).ToString("dd/MM/yyyy"));
+        //Debug.Log("Current date: " + startDate.AddDays(currentDay).ToString("dd/MM/yyyy"));
 
         if(currentDay >= matchLength)
         {
             // TODO: llamar al método de terminar partida
             Paused = true;
-            Debug.Log("Time's up!");
+            //Debug.Log("Time's up!");
         }
     }
 
-	// Update is called once per frame
 	void Update ()
     {
         // Pause the game when the key is pressed.
@@ -139,4 +138,12 @@ public class CityController : MonoBehaviour
         }
             
 	}
+
+    public House NextHouseToCollect() {
+        nextHouseToVisitIndex++;
+        if (nextHouseToVisitIndex >= houses.Count) {
+            nextHouseToVisitIndex = 0;
+        }
+        return houses[nextHouseToVisitIndex];
+    }
 }

@@ -14,10 +14,6 @@ public class TrashTruckStationAI : MonoBehaviour {
         station = GetComponent<TrashTruckStation>();
     }
 
-	void Update () {
-        LoseDurability();
-	}
-
     public void BeginOperations()
     {
         PlaceTrucks();
@@ -31,16 +27,6 @@ public class TrashTruckStationAI : MonoBehaviour {
         {
             currentTruck = Instantiate(Managers.Instance.PrefabManager.TrashTruckPrefab(), station.TrashTruckSpawn, Quaternion.identity);
             station.AddTrashTruck(currentTruck.GetComponent<TrashTruck>());
-        }
-    }
-
-    void LoseDurability()
-    {
-        timeSinceDurabilityLost += Time.deltaTime;
-        if (timeSinceDurabilityLost > loseDurabilityCooldown)
-        {
-            timeSinceDurabilityLost = 0f;
-            station.Durability -= 1;
         }
     }
 }

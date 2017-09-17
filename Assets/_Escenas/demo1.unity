@@ -9478,10 +9478,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d17a6563dd79e7499c815343efffdef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WidthPercentageSideThreshold: 0.03
-  HeightPercentageTopThreshold: 0.03
-  MinSideThreshold: 10
-  MinTopThreshold: 10
+  WidthPercentageSideThreshold: 0.02
+  HeightPercentageTopThreshold: 0.02
+  MinSideThreshold: 5
+  MinTopThreshold: 5
   MovementSpeed: 25
   MaxRightTranslation: 34
   MaxLeftTranslation: -20
@@ -12875,7 +12875,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1188031903}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57ba1f4e0dbd9a6459a7d14d347d8f7e, type: 3}
   m_Name: 
@@ -18453,7 +18453,8 @@ MonoBehaviour:
     type: 2}
   landfillPrefab: {fileID: 0}
   trash: {fileID: 0}
-  regularTrashTruck: {fileID: 0}
+  regularTrashTruck: {fileID: 1076057897995980, guid: 24db11f7e1d24d14fa86b28584409c10,
+    type: 2}
 --- !u!1 &1901959201
 GameObject:
   m_ObjectHideFlags: 0

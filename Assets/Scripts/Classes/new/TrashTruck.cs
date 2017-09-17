@@ -18,6 +18,9 @@ public class TrashTruck : MonoBehaviour
     /// </summary>
     public Garbage Garbage { get; set; }
 
+    void Start() {
+        Garbage = new Garbage();
+    }
     /// <summary>
     /// Property to access the current amount of trash in the truck.
     /// </summary>

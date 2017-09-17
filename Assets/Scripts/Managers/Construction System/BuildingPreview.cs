@@ -7,7 +7,7 @@ public class BuildingPreview : MonoBehaviour {
     public LayerMask placeableLayerMask;
 
     [Tooltip("Layers where objects would prevent building from being placed")]
-    public LayerMask obstacleLayerMask; //Inefficient! But this is a prototype
+    public LayerMask obstacleLayerMask; 
 
     Buildings.Type previewingBuildingType;
     GameObject previewingBuilding;
@@ -29,9 +29,6 @@ public class BuildingPreview : MonoBehaviour {
     {
         Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        //TODO - Note: Just to preview it isn't necessary to actually raycast every frame,
-        // it only needs to translate preview aligned with the camera container's
-        // local X and Z axes, with the constant Y of the City plane + previewingObjectHeight/2
         if (Physics.Raycast(mouseRay, out hit, 200, placeableLayerMask)) 
         {
             previewingBuilding.transform.position = hit.point;
@@ -39,8 +36,6 @@ public class BuildingPreview : MonoBehaviour {
                             CanBuildingBePlacedInTile(previewingBuildingType, hit.collider.tag);
             if (isPreviewPlaceable)
             {
-                //Note: using only .material might not work for more complicated models, have to update in
-                //the future
                 previewingRenderer.material.SetColor("_Color", Color.green);
                 previewingRenderer.transform.position =
                     new Vector3(hit.collider.gameObject.transform.position.x + 1.8f,

@@ -7,8 +7,8 @@ public class TrashDeposit : MonoBehaviour {
     [SerializeField]
     private Transform truckStop;
 
-    [SerializeField]
-    private int environmentalImpact;
+    //[SerializeField]
+    //private int environmentalImpact;
 
     [SerializeField]
     private TrashDeposits.Type type;
@@ -24,11 +24,6 @@ public class TrashDeposit : MonoBehaviour {
     {
         get { return trashDeposited; }
         set { trashDeposited = value; }
-    }
-
-    public int EnvironmentalImpact
-    {
-        get { return environmentalImpact; }
     }
 
     public TrashDeposits.Type Type

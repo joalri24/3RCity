@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TrashTruckStation : MonoBehaviour {
 
-    public const int TRUCK_CAPACITY = 3; //will eventually change into a reference to something else to allow for upgrades
+    public const int TRUCK_CAPACITY = 3;
 
     [SerializeField]
     Transform trashTrucksSpawn;
@@ -20,7 +20,7 @@ public class TrashTruckStation : MonoBehaviour {
     int durability;
 
 	void Start () {
-        TrashDeposit = City.Instance.DefaultTrashDeposit;
+        TrashDeposit = GameObject.FindGameObjectWithTag("Controller").GetComponent<CityController>().defaultTrashDeposit;
         durability = maxDurability;
         durabilityChangedListeners = new List<IDurabilityChangedListener>(1);
         trashTrucks = new List<TrashTruck>(TRUCK_CAPACITY);
@@ -44,24 +44,6 @@ public class TrashTruckStation : MonoBehaviour {
     {
         truck.AssignedTrashDeposit = trashDeposit;
         trashTrucks.Add(truck);
-    }
-
-    public void AddDurabilityChangedListener(IDurabilityChangedListener listener)
-    {
-        durabilityChangedListeners.Add(listener);
-    }
-
-    public int Durability
-    {
-        get { return durability; }
-        set
-        {
-            durability = value;
-            for (int i = 0; i < durabilityChangedListeners.Count; i++)
-            {
-                durabilityChangedListeners[i].onDurabilityChanged();
-            }
-        }
     }
 
     public Vector3 TrashTruckSpawn

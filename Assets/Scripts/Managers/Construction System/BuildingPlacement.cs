@@ -18,7 +18,7 @@ public class BuildingPlacement : MonoBehaviour {
         if (buildingType == Buildings.Type.TrashTruckStation)
         {
             buildingInstance.transform.Find("Model").gameObject.layer = Buildings.Layer;
-            //buildingInstance.GetComponent<TrashTruckStationAI>().BeginOperations();
+            buildingInstance.GetComponent<TrashTruckStationAI>().BeginOperations();
         }
         buildingPreview.StopPreview();
     }

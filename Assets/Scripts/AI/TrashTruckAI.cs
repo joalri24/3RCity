@@ -12,14 +12,15 @@ public class TrashTruckAI : MonoBehaviour {
         GoingToDeposit
     }
 
+    CityController city;
     State currentState;
-
     NavMeshAgent navMeshAgent;
     TrashTruck trashTruck;
     GameObject destination;
 
     void Start()
     {
+        city = GameObject.FindGameObjectWithTag("Controller").GetComponent<CityController>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         trashTruck = GetComponent<TrashTruck>();
         TransitionToCollectState();
@@ -51,7 +52,7 @@ public class TrashTruckAI : MonoBehaviour {
 
     void TransitionToCollectState()
     {
-        trashTruck.TrashCollectTarget = City.Instance.NextHouseToCollect();
+        trashTruck.TrashCollectTarget = city.NextHouseToCollect();
         navMeshAgent.SetDestination(trashTruck.TrashCollectTarget.TrashCan.position);
         currentState = State.GoingToCollect;
     }

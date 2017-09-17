@@ -14,9 +14,9 @@ public class ShowDurability : MonoBehaviour, IDurabilityChangedListener {
 
     public void onDurabilityChanged()
     {
-        if (durabilityText.text != null)
-        {
-            durabilityText.text = station.Durability + "/" + station.MaxDurability;
-        }
+        //if (durabilityText.text != null)
+        //{
+        //    durabilityText.text = station.Durability + "/" + station.MaxDurability;
+        //}
     }
 }
