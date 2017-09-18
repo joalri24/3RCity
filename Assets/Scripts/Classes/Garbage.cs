@@ -38,7 +38,13 @@ public class Garbage
     // Methods
     // -----------------------------------------------------------
 
-    public Garbage() { }
+    public Garbage()
+    {
+        ordinary = 0;
+        paper = 0;
+        glass = 0;
+        metal = 0;
+    }
 
     public Garbage(int nRegular, int nPaper, int nGlass, int nMetal)
     {
@@ -46,6 +52,18 @@ public class Garbage
         paper = nPaper;
         glass = nGlass;
         metal = nMetal;
+    }
+
+    /// <summary>
+    /// Add the garbage given as parameter to the Garbage object that calls this method.
+    /// </summary>
+    /// <param name="garbage"></param>
+    public void AddGarbage(Garbage garbage)
+    {
+        ordinary += garbage.ordinary;
+        paper += garbage.paper;
+        glass += garbage.glass;
+        metal += garbage.metal;
     }
     
 }
