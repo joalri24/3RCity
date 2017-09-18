@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 114405535377226164}
   - component: {fileID: 23817799623507116}
   - component: {fileID: 33221928863045944}
+  - component: {fileID: 65782471261949558}
   m_Layer: 0
   m_Name: House
   m_TagString: Untagged
@@ -1235,6 +1236,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1482593091484114}
   m_Mesh: {fileID: 4300010, guid: 477a253460d11244e9e6e890fb0a1910, type: 3}
+--- !u!65 &65782471261949558
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1355684557350194}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.2, y: 5, z: 2.9000006}
+  m_Center: {x: 0.000000059604645, y: 2.5, z: 0.05000019}
 --- !u!114 &114405535377226164
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1247,6 +1260,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ordinaryCanCapacity: 50
+  paperCanCapacity: 20
+  glassCanCapacity: 20
+  metalCanCapacity: 20
   ordinaryMinimunGeneration: 1
   ordinaryMaximunGeneration: 13
   paperMinimunGeneration: 1

@@ -6,6 +6,8 @@ using UnityEngine;
 /// <summary>
 /// Script for a single house. A house generates garbage over time.
 /// </summary>
+///
+[RequireComponent(typeof(Collider))]
 public class House : MonoBehaviour
 {
     // ------------------------------------------------------------
@@ -47,6 +49,13 @@ public class House : MonoBehaviour
     }
 
     /// <summary>
+    /// Paper trash can's maximum capacity. 
+    /// </summary>
+    [Tooltip("Paper  can's maximum capacity")]
+    [Range(1, 100)]
+    public int paperCanCapacity;
+
+    /// <summary>
     /// Paper can current garbage.
     /// </summary>
     private int paperCanCurrentGarbage;
@@ -67,6 +76,13 @@ public class House : MonoBehaviour
     }
 
     /// <summary>
+    /// Glass trash can's maximum capacity. 
+    /// </summary>
+    [Tooltip("Glass can's maximum capacity")]
+    [Range(1, 100)]
+    public int glassCanCapacity;
+
+    /// <summary>
     /// Glass can current garbage.
     /// </summary>
     private int glassCanCurrentGarbage;
@@ -85,6 +101,13 @@ public class House : MonoBehaviour
             // the current amount if higher than the capacity, etc.
         }
     }
+
+    /// <summary>
+    /// Metal trash can's maximum capacity. 
+    /// </summary>
+    [Tooltip("Metal can's maximum capacity")]
+    [Range(1, 100)]
+    public int metalCanCapacity;
 
     /// <summary>
     /// Metal can current garbage.
@@ -207,6 +230,21 @@ public class House : MonoBehaviour
         garbage.metal += amount;
         // TODO: if the house is recycling, put it in the metal can. If not, in the ordinary can.
         TrashCanCurrentAmount += amount;
+    }
+
+    /// <summary>
+    /// Executed when the mouse enters the collider.
+    /// </summary>
+    private void OnMouseEnter()
+    {
+        /*Debug.Log("--------------------");
+        Debug.Log("Ordinary can: " + TrashCanCurrentAmount+"/"+ordinaryCanCapacity);
+        Debug.Log("Paper can: " + PaperCanCurrentAmount + "/" + paperCanCapacity);*/
+    }
+
+    private void OnMouseExit()
+    {
+        // TODO: hide the house info.
     }
 
 }
