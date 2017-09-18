@@ -191,6 +191,10 @@ public class House : MonoBehaviour
         get { return trashCanTrasnform; }
     }
 
+	public GameObject ordinaryTrashBag;
+
+	private Transform ordinaryCanTransform;
+
     // ------------------------------------------------------------
     // Methods
     // ------------------------------------------------------------
@@ -198,6 +202,8 @@ public class House : MonoBehaviour
     void Start ()
     {
         garbage = new Garbage(0, 0, 0, 0);
+		ordinaryCanTransform = transform.GetChild (0);
+
     }
 	
     /// <summary>
@@ -212,6 +218,13 @@ public class House : MonoBehaviour
         amount = UnityEngine.Random.Range(ordinaryMinimunGeneration, ordinaryMaximunGeneration);
         garbage.ordinary += amount;
         TrashCanCurrentAmount += amount;
+		Vector3 bagPosition = ordinaryCanTransform.position;
+		bagPosition.y += 1f;
+		bagPosition.x += -0.166f;
+		bagPosition.z += -0.7481f;
+		GameObject instance= Instantiate(ordinaryTrashBag, bagPosition, Quaternion.identity, this.transform );
+
+
 
         // Paper  
         amount = UnityEngine.Random.Range(paperMinimunGeneration, paperMaximunGeneration);

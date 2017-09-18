@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33541904295623042}
   - component: {fileID: 23228235254011814}
   - component: {fileID: 54455538333015152}
-  - component: {fileID: 135483014336338254}
+  - component: {fileID: 114647357120591654}
   m_Layer: 0
   m_Name: BasuraOrdinaria
   m_TagString: BasuraGeneral
@@ -97,15 +97,14 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &135483014336338254
-SphereCollider:
+--- !u!114 &114647357120591654
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1803370103536778}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.03195812
-  m_Center: {x: 0.05945028, y: 0.10436776, z: 0.07938604}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7e356a405009547a8e5d70f4449ed1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
