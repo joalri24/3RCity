@@ -123,8 +123,11 @@ public class TrashTruckAI : MonoBehaviour {
 
     void DepositTrash()
     {
-        trashTruck.AssignedTrashDeposit.TrashDeposited += trashTruck.CollectedTrash;
+        /*trashTruck.AssignedTrashDeposit.TrashDeposited += trashTruck.CollectedTrash;
+        trashTruck.CollectedTrash = 0;*/
+        trashTruck.AssignedTrashDeposit.ReceiveGarbage(trashTruck.Garbage);
         trashTruck.CollectedTrash = 0;
+        trashTruck.Garbage= new Garbage();
     }
 
     bool HasArrivedToDestination()

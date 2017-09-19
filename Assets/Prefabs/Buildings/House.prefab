@@ -1264,13 +1264,13 @@ MonoBehaviour:
   glassCanCapacity: 20
   metalCanCapacity: 20
   ordinaryMinimunGeneration: 1
-  ordinaryMaximunGeneration: 13
+  ordinaryMaximunGeneration: 5
   paperMinimunGeneration: 1
-  paperMaximunGeneration: 13
+  paperMaximunGeneration: 5
   glassMinimunGeneration: 1
-  glassMaximunGeneration: 13
+  glassMaximunGeneration: 5
   metalMinimunGeneration: 1
-  metalMaximunGeneration: 13
+  metalMaximunGeneration: 5
   trashCanTrasnform: {fileID: 4552899327488496}
   ordinaryTrashBag: {fileID: 1803370103536778, guid: b5c13a8f28e73434e8f6fba60beff048,
     type: 2}

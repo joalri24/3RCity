@@ -33,6 +33,15 @@ public class Garbage
     /// </summary>
     public int metal;
 
+    /// <summary>
+    /// The total amount of garbage.
+    /// </summary>
+    public int Total
+    {
+        get { return ordinary + paper + metal + glass; }
+    }
+
+
 
     // -----------------------------------------------------------
     // Methods
@@ -65,5 +74,6 @@ public class Garbage
         glass += garbage.glass;
         metal += garbage.metal;
     }
-    
+
+
 }

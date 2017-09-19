@@ -1878,6 +1878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56fcf45fe698dd543947dff25b1ae86c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trashCapacity: 80
 --- !u!114 &114970465002348566
 MonoBehaviour:
   m_ObjectHideFlags: 1

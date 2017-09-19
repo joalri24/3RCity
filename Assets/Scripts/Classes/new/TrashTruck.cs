@@ -2,8 +2,12 @@
 
 public class TrashTruck : MonoBehaviour
 {
-
-    int trashCapacity = 8;
+    /// <summary>
+    /// Truck's storage capacity
+    /// </summary>
+    [Tooltip("Storage capacity")]
+    [Range(1,300)]
+    public int trashCapacity = 200;
 
     /// <summary>
     /// Total amount of trash currently in the truck.
