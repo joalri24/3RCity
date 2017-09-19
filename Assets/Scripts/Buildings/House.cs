@@ -191,9 +191,40 @@ public class House : MonoBehaviour
         get { return trashCanTrasnform; }
     }
 
+    /// <summary>
+    /// Prefab of the garbage bag model thet is displayed when the House generates garbage.
+    /// </summary>
 	public GameObject ordinaryTrashBag;
 
+    /// <summary>
+    /// Reference to the ordinary can transform. Is used to know where to place the garbage bags.
+    /// </summary>
 	private Transform ordinaryCanTransform;
+
+    /// <summary>
+    /// True if the house is recycling paper
+    /// </summary>
+    public bool IsRecyclingPaper { get; set; }
+
+    /// <summary>
+    /// True if the house is recycling metal
+    /// </summary>
+    public bool IsRecyclingMetal { get; set; }
+
+    /// <summary>
+    /// True if the house is recycling glass
+    /// </summary>
+    public bool IsRecyclingGlass { get; set; }
+
+    /// <summary>
+    /// Reference to the controller of the scene.
+    /// </summary>
+    private CityController controller;
+
+    /// <summary>
+    /// Reference to the UI panel tha diplays info about the house.
+    /// </summary>
+    private DisplayGarbagePanel houseInfoDisplay;
 
     // ------------------------------------------------------------
     // Methods
@@ -203,6 +234,11 @@ public class House : MonoBehaviour
     {
         garbage = new Garbage(0, 0, 0, 0);
 		ordinaryCanTransform = transform.GetChild (0);
+        IsRecyclingGlass = false;
+        IsRecyclingMetal = false;
+        IsRecyclingPaper = false;
+        controller = GameObject.FindGameObjectWithTag("Controller").GetComponent<CityController>();
+        houseInfoDisplay = controller.houseInfoPanel;
 
     }
 	
@@ -220,10 +256,9 @@ public class House : MonoBehaviour
         TrashCanCurrentAmount += amount;
 		Vector3 bagPosition = ordinaryCanTransform.position;
 		bagPosition.y += 1f;
-		bagPosition.x += -0.166f;
+		bagPosition.x += -0.166f; 
 		bagPosition.z += -0.7481f;
 		GameObject instance= Instantiate(ordinaryTrashBag, bagPosition, Quaternion.identity, this.transform );
-
 
 
         // Paper  
@@ -247,17 +282,39 @@ public class House : MonoBehaviour
 
     /// <summary>
     /// Executed when the mouse enters the collider.
+    /// Activates the Panel that displays the house's data.
     /// </summary>
     private void OnMouseEnter()
     {
-        /*Debug.Log("--------------------");
-        Debug.Log("Ordinary can: " + TrashCanCurrentAmount+"/"+ordinaryCanCapacity);
-        Debug.Log("Paper can: " + PaperCanCurrentAmount + "/" + paperCanCapacity);*/
+        houseInfoDisplay.DisplayPanel(
+            displayOrdinary: true, ordinaryAmount: TrashCanCurrentAmount, ordinaryCapacityP: ordinaryCanCapacity, 
+            displayGlass: IsRecyclingGlass, glassAmount: glassCanCurrentGarbage, glassCapacityP: glassCanCapacity,
+            displayMetal: IsRecyclingMetal, metalAmount: metalCanCurrentGarbage, metalCapacityP: metalCanCapacity,
+            displayPaper: IsRecyclingPaper, paperAmount: paperCanCurrentGarbage, paperCapacityP: paperCanCapacity);      
     }
 
+    /// <summary>
+    /// Executed each frame the mouse is over the collider.
+    /// Updates the info panel's data.
+    /// </summary>
+    private void OnMouseOver()
+    {
+        houseInfoDisplay.UpdateValues(
+            ordinaryAmount: TrashCanCurrentAmount,
+            glassAmount: glassCanCurrentGarbage,
+            metalAmount: metalCanCurrentGarbage,
+            paperAmount: paperCanCurrentGarbage);
+    }
+
+    /// <summary>
+    /// Executed when the mouse leaves the collider.
+    /// Hides the panel that displays the House's data.
+    /// </summary>
     private void OnMouseExit()
     {
-        // TODO: hide the house info.
+        houseInfoDisplay.gameObject.SetActive(false);
     }
+
+   
 
 }

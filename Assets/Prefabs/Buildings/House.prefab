@@ -1259,7 +1259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29909fdaf1730fb4db6f48dfd967a414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ordinaryCanCapacity: 50
+  ordinaryCanCapacity: 80
   paperCanCapacity: 20
   glassCanCapacity: 20
   metalCanCapacity: 20

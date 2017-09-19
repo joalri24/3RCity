@@ -82,6 +82,8 @@ public class CityController : MonoBehaviour
         }
     }
 
+    public DisplayGarbagePanel houseInfoPanel;
+
     // -----------------------------------------------------------
     // Methods
     // -----------------------------------------------------------
