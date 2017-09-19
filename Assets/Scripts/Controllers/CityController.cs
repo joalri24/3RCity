@@ -82,7 +82,17 @@ public class CityController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Panel that displays a House's info
+    /// </summary>
+    [Tooltip("Panel that displays a House's info")]
     public DisplayGarbagePanel houseInfoPanel;
+
+    /// <summary>
+    /// Panel that displays the landfill's info
+    /// </summary>
+    [Tooltip("Panel that displays the landfill's info")]
+    public DisplayGarbagePanel landfillInfoPanel;
 
     // -----------------------------------------------------------
     // Methods

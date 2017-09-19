@@ -41,7 +41,7 @@ public class TrashDeposit : MonoBehaviour
     // Methods
     // --------------------------------------------------------
 
-    private void Start()
+    protected virtual void Start()
     {
         Garbage = new Garbage();
     }

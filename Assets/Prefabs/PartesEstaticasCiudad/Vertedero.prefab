@@ -70,6 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4118630443981216}
   - component: {fileID: 114317084748277268}
+  - component: {fileID: 65172608338675904}
   m_Layer: 0
   m_Name: Vertedero
   m_TagString: GarbagePlace
@@ -214,7 +215,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1142921746709974}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.681522, y: -4.2999325, z: 72.94867}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4315333835086940}
@@ -577,10 +578,22 @@ BoxCollider:
   m_GameObject: {fileID: 1160522011796792}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 8.105609, y: 0.16172075, z: 8.049427}
   m_Center: {x: 2.0292687, y: -0.02671361, z: 2.019868}
+--- !u!65 &65172608338675904
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1142921746709974}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.264225, y: 2.8747978, z: 8.64801}
+  m_Center: {x: 2.3113651, y: 0.9373989, z: 2.0149307}
 --- !u!65 &65618216471064528
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -589,7 +602,7 @@ BoxCollider:
   m_GameObject: {fileID: 1121294976959418}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 8.105609, y: 0.16172075, z: 8.049427}
   m_Center: {x: 2.0292687, y: -0.02671361, z: 2.019868}
@@ -601,7 +614,7 @@ BoxCollider:
   m_GameObject: {fileID: 1570553341034910}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 8.105609, y: 0.16172075, z: 8.049427}
   m_Center: {x: 2.0292687, y: -0.02671361, z: 2.019868}
@@ -613,7 +626,7 @@ BoxCollider:
   m_GameObject: {fileID: 1876888773442220}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 8.105609, y: 0.16172075, z: 8.049427}
   m_Center: {x: 2.0292687, y: -0.02671361, z: 2.019868}
@@ -625,7 +638,7 @@ BoxCollider:
   m_GameObject: {fileID: 1784141545547186}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 8.105609, y: 0.16172075, z: 8.049427}
   m_Center: {x: 2.0292687, y: -0.02671361, z: 2.019868}
