@@ -103,7 +103,7 @@ public class CityController : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        defaultTrashDeposit = FindObjectOfType<Landfill>();
+        //defaultTrashDeposit = FindObjectOfType<Landfill>();
         currentDay = 0;
         timer = 0f;
         startDate = DateTime.Now;

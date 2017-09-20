@@ -106,10 +106,11 @@ public class CityLoader : MonoBehaviour
                     {
                         if (matrizCiudad[i + 1][j].Equals("PV") && matrizCiudad[i + 1][j + 1].Equals("PV") && matrizCiudad[i][j + 1].Equals("PV"))
                         {
-                            Instantiate(pisoVertedero, new Vector3(i * 4, 0, j * 4), Quaternion.identity);
+                            instance = Instantiate(pisoVertedero, new Vector3(i * 4, 0, j * 4), Quaternion.identity);
                             matrizCiudad[i + 1][j] = "U";
                             matrizCiudad[i + 1][j + 1] = "U";
                             matrizCiudad[i][j + 1] = "U";
+                            controller.defaultTrashDeposit = instance.GetComponent<TrashDeposit>();
                         }
                     }
                 }
