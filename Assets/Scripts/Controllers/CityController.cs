@@ -94,6 +94,41 @@ public class CityController : MonoBehaviour
     [Tooltip("Panel that displays the landfill's info")]
     public DisplayGarbagePanel landfillInfoPanel;
 
+    /// <summary>
+    /// Informs if the Paper campaign has been bought.
+    /// </summary>
+    public bool PaperCampaignBought { get; set; }
+
+    /// <summary>
+    /// Informs if the Glass campaign has been bought.
+    /// </summary>
+    public bool GlassCampaignBought { get; set; }
+
+    /// <summary>
+    /// Informs if the Metal campaign has been bought.
+    /// </summary>
+    public bool MetalCampaignBought { get; set; }
+
+    /// <summary>
+    /// The current money on the city's arcs
+    /// </summary>
+    private int currentMoney;
+
+    /// <summary>
+    /// Property to access the city's current money.
+    /// </summary>
+    public int CurrentMoney
+    {
+        get
+        {
+            return currentMoney;
+        }
+        set
+        {
+            currentMoney = value;
+        }
+    }
+
     // -----------------------------------------------------------
     // Methods
     // -----------------------------------------------------------
@@ -103,11 +138,13 @@ public class CityController : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        //defaultTrashDeposit = FindObjectOfType<Landfill>();
         currentDay = 0;
         timer = 0f;
         startDate = DateTime.Now;
         //Debug.Log("Current date: " + startDate.AddDays(currentDay).ToString("dd/MM/yyyy"));
+        PaperCampaignBought = false;
+        MetalCampaignBought = false;
+        GlassCampaignBought = false;
     }
 
     /// <summary>
@@ -128,7 +165,7 @@ public class CityController : MonoBehaviour
         {
             // TODO: llamar al método de terminar partida
             Paused = true;
-            //Debug.Log("Time's up!");
+            Debug.Log("Time's up!");
         }
     }
 
@@ -137,9 +174,9 @@ public class CityController : MonoBehaviour
         // Pause the game when the key is pressed.
         if (Input.GetKeyDown("pause") || Input.GetKeyDown("p"))
             Paused = (Paused) ? false : true;
-        
+
         // Add the passed time to the timer if the game is unpaused.
-        if(!Paused)
+        if (!Paused)
             timer += Time.deltaTime;
 
         // Advance day when the proper amount of time has passed.
@@ -158,4 +195,38 @@ public class CityController : MonoBehaviour
         }
         return houses[nextHouseToVisitIndex];
     }
+
+    /// <summary>
+    /// Applies the given recycling campaign on the city's buildings.
+    /// </summary>
+    /// <param name="campaign"></param>
+    public void ApplyCampaign(Campaign campaign)
+    {
+        CurrentMoney -= campaign.cost;
+        switch (campaign.camapaignType)
+        {
+            case Campaign.CampaignType.Paper:
+                PaperCampaignBought = true;
+                foreach (var house in houses)
+                    house.IsRecyclingPaper = true;
+                                           
+                break;
+
+            case Campaign.CampaignType.Glass:
+                GlassCampaignBought = true;
+                foreach (var house in houses)
+                    house.IsRecyclingGlass = true;
+                break;
+
+            case Campaign.CampaignType.Metal:
+                MetalCampaignBought = true;
+                foreach (var house in houses)
+                    house.IsRecyclingMetal = true;
+                break;
+            default:
+                break;
+        }
+    }
+
+
 }

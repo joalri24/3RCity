@@ -412,6 +412,7 @@ MonoBehaviour:
   paperPanel: {fileID: 224043462370039844}
   glassPanel: {fileID: 224271785888057078}
   metalPanel: {fileID: 224275333741452052}
+  extraInfoText: {fileID: 114222707650512806}
   ordinaryText: {fileID: 114776300152266036}
   paperText: {fileID: 114292561425097918}
   glassText: {fileID: 114798468937625516}

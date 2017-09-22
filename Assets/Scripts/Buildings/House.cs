@@ -204,17 +204,55 @@ public class House : MonoBehaviour
     /// <summary>
     /// True if the house is recycling paper
     /// </summary>
-    public bool IsRecyclingPaper { get; set; }
+    private bool isRecyclingPaper; 
+    /// <summary>
+    /// True if the house is recycling paper
+    /// </summary>
+    public bool IsRecyclingPaper
+    {
+        get { return isRecyclingPaper; }
+        set
+        {
+            isRecyclingPaper = value;
+            PaperCanObject.SetActive(value);          
+        }
+    }
 
     /// <summary>
     /// True if the house is recycling metal
     /// </summary>
-    public bool IsRecyclingMetal { get; set; }
+    private bool isRecyclingMetal;
 
     /// <summary>
-    /// True if the house is recycling glass
+    /// True if the house is recycling metal.
     /// </summary>
-    public bool IsRecyclingGlass { get; set; }
+    public bool IsRecyclingMetal
+    {
+        get { return isRecyclingMetal; }
+        set
+        {
+            isRecyclingMetal = value;
+            MetalCanObject.SetActive(value);
+        }
+    }
+
+    /// <summary>
+    /// True if the house is recycling glass.
+    /// </summary>
+    private bool isRecyclingGlass;
+
+    /// <summary>
+    /// True if the house is recycling glass.
+    /// </summary>
+    public bool IsRecyclingGlass
+    {
+        get { return isRecyclingGlass; }
+        set
+        {
+            isRecyclingGlass = value;
+            GlassCanObject.SetActive(value);
+        }
+    }
 
     /// <summary>
     /// Reference to the controller of the scene.
@@ -226,6 +264,21 @@ public class House : MonoBehaviour
     /// </summary>
     private DisplayGarbagePanel houseInfoDisplay;
 
+    /// <summary>
+    /// The Object with the Paper can model.
+    /// </summary>
+    private GameObject PaperCanObject;
+
+    /// <summary>
+    /// The Object with the Glass can model.
+    /// </summary>
+    private GameObject GlassCanObject;
+
+    /// <summary>
+    /// The Object with the Metal can model.
+    /// </summary>
+    private GameObject MetalCanObject;
+
     // ------------------------------------------------------------
     // Methods
     // ------------------------------------------------------------
@@ -233,7 +286,10 @@ public class House : MonoBehaviour
     void Start ()
     {
         garbage = new Garbage(0, 0, 0, 0);
-		ordinaryCanTransform = transform.GetChild (0);
+		ordinaryCanTransform = transform.GetChild (0); // 0 is the ordinary can
+        PaperCanObject = transform.GetChild(1).gameObject; // 1 is the paper can
+        MetalCanObject = transform.GetChild(2).gameObject; // 2 is the metal can
+        GlassCanObject = transform.GetChild(3).gameObject; // 3 is the glass can
         IsRecyclingGlass = false;
         IsRecyclingMetal = false;
         IsRecyclingPaper = false;
@@ -264,20 +320,38 @@ public class House : MonoBehaviour
         // Paper  
         amount = UnityEngine.Random.Range(paperMinimunGeneration, paperMaximunGeneration);
         garbage.paper += amount;
-        // TODO: if the house is recycling, put it in the paper can. If not, in the ordinary can.
-        TrashCanCurrentAmount += amount;
+        if (IsRecyclingPaper)
+        {
+            PaperCanCurrentAmount += amount;
+            // Instanciate paper bag
+        }
+            
+        else
+            TrashCanCurrentAmount += amount;
 
         // glass 
         amount = UnityEngine.Random.Range(glassMinimunGeneration, glassMaximunGeneration);
         garbage.glass += amount;
-        // TODO: if the house is recycling, put it in the glass can. If not, in the ordinary can.
-        TrashCanCurrentAmount += amount;
+        if (IsRecyclingGlass)
+        {
+            GlassCanCurrentAmount += amount;
+            // Instanciate paper bag
+        }
+
+        else
+            TrashCanCurrentAmount += amount;
 
         // metal 
         amount = UnityEngine.Random.Range(metalMinimunGeneration, metalMaximunGeneration);
         garbage.metal += amount;
-        // TODO: if the house is recycling, put it in the metal can. If not, in the ordinary can.
-        TrashCanCurrentAmount += amount;
+        if (IsRecyclingMetal)
+        {
+            MetalCanCurrentAmount += amount;
+            // Instanciate paper bag
+        }
+
+        else
+            TrashCanCurrentAmount += amount;
     }
 
     /// <summary>
@@ -286,7 +360,7 @@ public class House : MonoBehaviour
     /// </summary>
     private void OnMouseEnter()
     {
-        houseInfoDisplay.DisplayPanel(
+        houseInfoDisplay.DisplayPanel( FindExtraInfoMessage(),
             displayOrdinary: true, ordinaryAmount: TrashCanCurrentAmount, ordinaryCapacityP: ordinaryCanCapacity, 
             displayGlass: IsRecyclingGlass, glassAmount: glassCanCurrentGarbage, glassCapacityP: glassCanCapacity,
             displayMetal: IsRecyclingMetal, metalAmount: metalCanCurrentGarbage, metalCapacityP: metalCanCapacity,
@@ -313,6 +387,59 @@ public class House : MonoBehaviour
     private void OnMouseExit()
     {
         houseInfoDisplay.gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// Returns the message that should be displayed on the House info panel.
+    /// </summary>
+    /// <returns></returns>
+    private string FindExtraInfoMessage()
+    {
+        string message = "";
+        int recyclingCansCounter = 0;
+        List<string> garbageNames = new List<string>();
+
+        if(IsRecyclingPaper)
+        {
+            recyclingCansCounter++;
+            garbageNames.Add( "papel");
+        }
+
+        if (IsRecyclingMetal)
+        {
+            recyclingCansCounter++;
+            garbageNames.Add("metal");
+        }
+
+        if (IsRecyclingGlass)
+        {
+            recyclingCansCounter++;
+            garbageNames.Add("vidrio");
+        }
+
+        switch (recyclingCansCounter)
+        {
+            case 0:
+                message = "Esta casa no recicla.";
+                break;
+
+            case 1:
+                message = "Esta casa solo recicla " + garbageNames[0] + ".";
+                break;
+
+            case 2:
+                message = "Esta casa recicla " + garbageNames[0] + " y " + garbageNames[1] + ".";
+                break;
+
+            case 3:
+                message = "Esta casa recicla todo tipo de desechos.";
+                break;
+
+            default:
+                break;
+        }
+
+        return message;
     }
 
    
