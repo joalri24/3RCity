@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class ShowCurrentMoney : MonoBehaviour, IMoneyChangedListener {
 
     Text moneyText;

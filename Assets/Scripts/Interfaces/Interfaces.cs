@@ -41,18 +41,3 @@ public interface IUIStateChangedListener
 {
     void onUIStateChanged();
 }
-
-public interface ITrashChangedListener
-{
-    void onTrashChanged();
-}
-
-public interface ISelectable
-{
-    void onSelected();
-}
-
-public interface IObjectiveChangedListener
-{
-    void onObjectiveChanged();
-}

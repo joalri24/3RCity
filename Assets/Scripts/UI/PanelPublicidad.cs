@@ -31,7 +31,7 @@ public class PanelPublicidad : MonoBehaviour {
 
     void aplicarPublicidadPuertaAPuerta()
     {
-        AplicarPublicidad.numMensaje = 1;
+        //AplicarPublicidad.numMensaje = 1;
         textoDescr.text = "Una campaña informativa “puerta a puerta” sobre separación de basura se implementará en la ciudad."
            + " Es reciclable el plástico (Caneca azul), el vidrio (Caneca vidrio), el papel y cartón (Caneca gris), "
            + " siempre que se encuentren limpios y secos. \n"
@@ -41,7 +41,7 @@ public class PanelPublicidad : MonoBehaviour {
 
     void aplicarPublicidad2()
     {
-        AplicarPublicidad.numMensaje = 2;
+        //AplicarPublicidad.numMensaje = 2;
         textoDescr.text = "Los periodicos locales han reconocido el esfuerzo del ministro de ambiente y han decidido a ayudar"
             + " con la campaña de reciclaje mediante columnas dedicadas a enseñar buenas practicas de reciclaje.\n"
             + " Costo: 50$";
@@ -49,7 +49,7 @@ public class PanelPublicidad : MonoBehaviour {
 
     void aplicarPublicidad3()
     {
-        AplicarPublicidad.numMensaje = 3;
+        //AplicarPublicidad.numMensaje = 3;
         textoDescr.text = "Algunas emisoras de radio han accedido a emitir información relacionada con el reciclaje"
             + " y esperamos que los oyentes aprendan algo en donde quiera que se encuentren.\n"
             + " Costo: 50$";
@@ -57,7 +57,7 @@ public class PanelPublicidad : MonoBehaviour {
 
     void aplicarPublicidad4()
     {
-        AplicarPublicidad.numMensaje = 4;
+        //AplicarPublicidad.numMensaje = 4;
         textoDescr.text = "El parque ha sido de gran ayuda para reunir grandes cantidades de personas"
             + " y eso te permite realizar una gran campaña informativa para ayudar a los cuidadanos con dudas"
             + " a entender mejor el proceso de reciclaje que se lleva a cabo desde las casas. \n"
@@ -66,11 +66,10 @@ public class PanelPublicidad : MonoBehaviour {
 
     void aplicarPublicidad5()
     {
-        AplicarPublicidad.numMensaje = 5;
+        //AplicarPublicidad.numMensaje = 5;
         textoDescr.text = "El museo permite a los cuidadanos ver la historia de la ciudad y de cuanto ha cambiado a lo largo"
             + " de los tiempos, más aún cuando se incorporo el reciclaje. La gente que viene siente que esta ayudando al ambiente de la ciudad"
             + " y desean continuar mejorando sus habilidades de reciclaje. \n"
             + " Costo: 200$";
     }
-
 }

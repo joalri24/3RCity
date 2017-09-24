@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public sealed class EstadoJuego {
-    //Elementos del Singleton
+
     private static EstadoJuego instance = null;
     private static readonly object padlock = new object();
     private int elementoSeleccionadoUI;
@@ -15,7 +15,7 @@ public sealed class EstadoJuego {
     private int cantidadDinero;
     private float income;
     private float expense;
-    private Ciudad city;
+    private City currentCity;
 
     EstadoJuego()
     {
@@ -23,7 +23,6 @@ public sealed class EstadoJuego {
         elementoSeleccionadoUI = 0;
         mensajeInformacion = "";
         hayMensaje = false;
-        city = Ciudad.InstanciaCiudad;
     }
 
     public static EstadoJuego InstanciaEstadoJuego
@@ -86,27 +85,6 @@ public sealed class EstadoJuego {
 
     public void egresosBalance()
     {
-        float prom = city.NumBasuraSinRecoger / 5;
-            int egre1 = 0;
-        if (city.NumBasuraSinRecoger > 100 && city.NumBasuraSinRecoger<=200)
-        {
-            egre1 = (int)(prom * (prom / city.NumBasuraSinRecoger));
-        }
-        else if (city.NumBasuraSinRecoger > 200 && city.NumBasuraSinRecoger <= 300)
-        {
-            egre1 = (int)(prom * (prom / (city.NumBasuraSinRecoger*1.65)));
-        }
-        else if (city.NumBasuraSinRecoger > 300 && city.NumBasuraSinRecoger <= 400)
-        {
-            egre1 = (int)(prom * 0.55f);
-        }
-        else
-        {
-            egre1 = (int)(prom * 0.75f);
-        }
-         
-        cantidadDinero -= egre1;
-        expense -= egre1;
     }
 
     public void borrarEstado()
