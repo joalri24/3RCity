@@ -39,8 +39,9 @@ GameObject:
   - component: {fileID: 4168975775515438}
   - component: {fileID: 114088382636020394}
   - component: {fileID: 114779548997721676}
+  - component: {fileID: 114212574191769678}
   m_Layer: 0
-  m_Name: FabricaOrdinariaCompleta
+  m_Name: MetalRecyclingCenter
   m_TagString: Ordinaria
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1225243728837770}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 340.22174, y: 221.76724, z: 187.18979}
+  m_LocalPosition: {x: 346.8604, y: 217.83951, z: 194.29135}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 4381783391458214}
@@ -115,8 +116,8 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
+  - {fileID: 2100000, guid: cacf9c127d4fea245b5cc60022c4ef6d, type: 2}
   - {fileID: 2100000, guid: b1ea4517dc9f80444893722518d9cab8, type: 2}
-  - {fileID: 2100000, guid: 6821c5a088b4f664f9115521daba3fdb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -165,9 +166,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af4b0384b5c5286499565a86b91f9a20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 50
+  cost: 40
   trashTrucksSpawn: {fileID: 4584324513170772}
-  collectedGarbageType: 0
+  collectedGarbageType: 3
+--- !u!114 &114212574191769678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1225243728837770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d435dcd9031985e42894f0ec4a22b467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  truckStop: {fileID: 4584324513170772}
+  maxCapacity: 500
 --- !u!114 &114779548997721676
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -7,13 +7,10 @@ public abstract class TrashTreatmentCenter : MonoBehaviour
     // --------------------------------------------------------
 
     [Header("Trash Treatment Center Settings")]
+    
     [SerializeField]
     [Tooltip("Where trucks will go to deposit their trash in the center")]
     protected Transform truckStop;
-
-    [SerializeField]
-    [Tooltip("Type of garbage the treatment center handles")]
-    protected Garbage.Type typeOfGarbageTreated;
 
     [SerializeField]
     [Tooltip("Amount of trash the center can hold before overflowing")]
@@ -36,7 +33,7 @@ public abstract class TrashTreatmentCenter : MonoBehaviour
 
     protected virtual void Start()
     {
-        trashDeposit = new TrashCan(typeOfGarbageTreated, maxCapacity);
+        trashDeposit = new TrashCan(Garbage.Type.Ordinary, maxCapacity);
     }
 
     /// <summary>

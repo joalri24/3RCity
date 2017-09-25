@@ -141,7 +141,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 3}
-  m_SizeDelta: {x: 220, y: 82}
+  m_SizeDelta: {x: 200, y: 82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &19683708
 MonoBehaviour:
@@ -175,8 +175,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Esta f\xE1brica se encarga recoger el vidrio que generan las casas y empezar
-    su proceso de reciclaje.\nCosto: 100 $\n"
+  m_Text: 'Recoge el vidrio que reciclan las casas. Si las casas no reciclan vidrio,
+    no recoge nada.
+
+    Costo: 40 $
+
+'
 --- !u!222 &19683709
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -928,12 +932,12 @@ GameObject:
   - component: {fileID: 93090666}
   - component: {fileID: 93090665}
   m_Layer: 5
-  m_Name: "DescripcionPl\xE1stico"
+  m_Name: DescripcionMetal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &93090664
 RectTransform:
   m_ObjectHideFlags: 0
@@ -950,7 +954,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 60, y: -62.02382}
+  m_AnchoredPosition: {x: 69.00002, y: -62.02382}
   m_SizeDelta: {x: 220, y: 88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &93090665
@@ -1086,13 +1090,14 @@ GameObject:
   - component: {fileID: 117088751}
   - component: {fileID: 117088750}
   - component: {fileID: 117088754}
+  - component: {fileID: 117088753}
   m_Layer: 5
   m_Name: BotonPapel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &117088749
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1109,7 +1114,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -127.25, y: 33.826218}
+  m_AnchoredPosition: {x: -118.249985, y: 33.826218}
   m_SizeDelta: {x: 114.5, y: 88.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &117088750
@@ -1173,6 +1178,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 117088753}
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &117088751
@@ -1208,13 +1224,25 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 117088748}
---- !u!114 &117088754
+--- !u!114 &117088753
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 117088748}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 726a27f78ed15954a968268f12c389c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  building: 1
+--- !u!114 &117088754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 117088748}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3493f3113106ea54aa6494941b7e96a2, type: 3}
   m_Name: 
@@ -3778,7 +3806,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 3.0000687}
-  m_SizeDelta: {x: 220, y: 82}
+  m_SizeDelta: {x: 200, y: 82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &403209578
 MonoBehaviour:
@@ -3812,8 +3840,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Esta f\xE1brica se encarga recoger el material pl\xE1stico que generan
-    las casas y empezar su proceso de reciclaje.\nCosto: 100 $\n"
+  m_Text: 'Recoge el metal que las casas reciclan. Si las casas no reciclan, no recoge
+    nada.
+
+    Costo: 40 $'
 --- !u!222 &403209579
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3883,13 +3913,14 @@ GameObject:
   - component: {fileID: 412154662}
   - component: {fileID: 412154661}
   - component: {fileID: 412154665}
+  - component: {fileID: 412154664}
   m_Layer: 5
-  m_Name: BotonPlastico
+  m_Name: BotonMetal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &412154660
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3906,7 +3937,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -127.25, y: -62.173813}
+  m_AnchoredPosition: {x: -118.249985, y: -62.173813}
   m_SizeDelta: {x: 114.5, y: 88.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &412154661
@@ -3970,6 +4001,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 412154664}
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &412154662
@@ -4005,13 +4047,25 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 412154659}
---- !u!114 &412154665
+--- !u!114 &412154664
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 412154659}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 726a27f78ed15954a968268f12c389c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  building: 3
+--- !u!114 &412154665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 412154659}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3493f3113106ea54aa6494941b7e96a2, type: 3}
   m_Name: 
@@ -4960,7 +5014,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &505003747
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4977,7 +5031,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 59.999985, y: 33.976196}
+  m_AnchoredPosition: {x: 69.00001, y: 33.976196}
   m_SizeDelta: {x: 220, y: 88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &505003748
@@ -5381,48 +5435,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ae3b959429be0974fb59be0b12415fea, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &534490644
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4603624130143554, guid: 11cace01a840f254bb46eb70e6eecc9b, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 32.23562
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603624130143554, guid: 11cace01a840f254bb46eb70e6eecc9b, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.9456043
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603624130143554, guid: 11cace01a840f254bb46eb70e6eecc9b, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 104.12055
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603624130143554, guid: 11cace01a840f254bb46eb70e6eecc9b, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603624130143554, guid: 11cace01a840f254bb46eb70e6eecc9b, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603624130143554, guid: 11cace01a840f254bb46eb70e6eecc9b, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603624130143554, guid: 11cace01a840f254bb46eb70e6eecc9b, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603624130143554, guid: 11cace01a840f254bb46eb70e6eecc9b, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 11cace01a840f254bb46eb70e6eecc9b, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &542804014
 GameObject:
   m_ObjectHideFlags: 0
@@ -5740,7 +5752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &584795713
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5757,7 +5769,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 59.999977, y: -163.3238}
+  m_AnchoredPosition: {x: 69, y: -163.3238}
   m_SizeDelta: {x: 220, y: 88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &584795714
@@ -5826,7 +5838,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 60, y: 130.82623}
+  m_AnchoredPosition: {x: 69.24997, y: 130.82623}
   m_SizeDelta: {x: 220, y: 88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &592459758
@@ -5874,13 +5886,14 @@ GameObject:
   - component: {fileID: 605740020}
   - component: {fileID: 605740019}
   - component: {fileID: 605740023}
+  - component: {fileID: 605740022}
   m_Layer: 5
-  m_Name: Botonvidrio
+  m_Name: BotonVidrio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &605740018
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5897,7 +5910,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -127.25, y: -163.17372}
+  m_AnchoredPosition: {x: -118.249985, y: -163.17374}
   m_SizeDelta: {x: 114.5, y: 88.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &605740019
@@ -5961,6 +5974,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 605740022}
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &605740020
@@ -5996,13 +6020,25 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 605740017}
---- !u!114 &605740023
+--- !u!114 &605740022
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 605740017}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 726a27f78ed15954a968268f12c389c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  building: 2
+--- !u!114 &605740023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 605740017}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3493f3113106ea54aa6494941b7e96a2, type: 3}
   m_Name: 
@@ -8474,6 +8510,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &803717356
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4168975775515438, guid: 59a2dfbc46159b14b89c21a8b9cd8c7f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -170.82271
+      objectReference: {fileID: 0}
+    - target: {fileID: 4168975775515438, guid: 59a2dfbc46159b14b89c21a8b9cd8c7f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 106.99244
+      objectReference: {fileID: 0}
+    - target: {fileID: 4168975775515438, guid: 59a2dfbc46159b14b89c21a8b9cd8c7f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 463.13858
+      objectReference: {fileID: 0}
+    - target: {fileID: 4168975775515438, guid: 59a2dfbc46159b14b89c21a8b9cd8c7f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4168975775515438, guid: 59a2dfbc46159b14b89c21a8b9cd8c7f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4168975775515438, guid: 59a2dfbc46159b14b89c21a8b9cd8c7f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4168975775515438, guid: 59a2dfbc46159b14b89c21a8b9cd8c7f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4168975775515438, guid: 59a2dfbc46159b14b89c21a8b9cd8c7f, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 59a2dfbc46159b14b89c21a8b9cd8c7f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &818358958 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4811188780276820, guid: 5c92c42cde9da8542a566be404a66347,
@@ -9916,7 +9994,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -127.25, y: 130.82623}
+  m_AnchoredPosition: {x: -118, y: 130.82623}
   m_SizeDelta: {x: 114.5, y: 88.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &945788087
@@ -12737,8 +12815,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Esta f\xE1brica se encarga de crear camiones para recoger la basura ordinaria
-    en las casas y posteriormente enviarla al vertedero.\nCosto: 75 $\n"
+  m_Text: 'Crea camiones para recoger la basura ordinaria en las casas y posteriormente
+    enviarla al vertedero.
+
+    Costo: 50 $
+
+'
 --- !u!222 &1168204663
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14367,7 +14449,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4106099536828768, guid: 20d9e22f71aa5504b92d594210f0b158, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114297103738770668, guid: 20d9e22f71aa5504b92d594210f0b158,
         type: 2}
@@ -14822,7 +14904,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4338753873018972, guid: 1ef705fd39b680642b44f2a2ce0b7ca3, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114371518979800994, guid: 1ef705fd39b680642b44f2a2ce0b7ca3,
         type: 2}
@@ -15291,8 +15373,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1796355530}
   m_HandleRect: {fileID: 1796355528}
   m_Direction: 2
-  m_Value: 0.99979156
-  m_Size: 0.36416256
+  m_Value: 0.99979144
+  m_Size: 0.36416253
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -17070,7 +17152,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 3.0000343}
-  m_SizeDelta: {x: 220, y: 82}
+  m_SizeDelta: {x: 200, y: 82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1711803687
 MonoBehaviour:
@@ -17104,8 +17186,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Esta f\xE1brica se encarga recoger el papel y cart\xF3n que generan las
-    casas y empezar su proceso de reciclaje.\nCosto: 100 $\n"
+  m_Text: 'Recoge el papel que reciclan las casas. Si las casas no reciclan, no recoge
+    nada.
+
+    Costo: 100 $'
 --- !u!222 &1711803688
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18871,8 +18955,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trashTruckStationPrefab: {fileID: 1225243728837770, guid: 59a2dfbc46159b14b89c21a8b9cd8c7f,
     type: 2}
-  landfillPrefab: {fileID: 0}
-  trash: {fileID: 0}
+  paperRecyclingCenterPrefab: {fileID: 1225243728837770, guid: 70b9554fcfa3d774a82e419cb5feb75b,
+    type: 2}
+  glassRecyclingCenterPrefab: {fileID: 1225243728837770, guid: 30ee08f09d6b7364ba04e541537611f8,
+    type: 2}
+  metalRecyclingCenterPrefab: {fileID: 1225243728837770, guid: aeeea54e54da96b42bff24dd7bbb1e8f,
+    type: 2}
   regularTrashTruck: {fileID: 1076057897995980, guid: 24db11f7e1d24d14fa86b28584409c10,
     type: 2}
 --- !u!1 &1901959201
@@ -19789,7 +19877,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 21a5fad6ade3244498e46ecf243fb9fb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2f28da8c535401947865989f336b0a50, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -20374,7 +20462,7 @@ GameObject:
   - component: {fileID: 1979622714}
   - component: {fileID: 1979622713}
   m_Layer: 5
-  m_Name: PanelConstruir
+  m_Name: PanelEscogerEdificio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21023,7 +21111,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 2f28da8c535401947865989f336b0a50, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 21a5fad6ade3244498e46ecf243fb9fb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

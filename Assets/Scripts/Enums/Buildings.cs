@@ -9,7 +9,9 @@ public class Buildings {
 	public enum Type
     {
         TrashTruckStation,
-        Landfill,
-        House
+        PaperRecyclingCenter,
+        GlassRecyclingCenter,
+        MetalRecyclingCenter,
+        House,
     }
 }

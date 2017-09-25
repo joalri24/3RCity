@@ -34,10 +34,10 @@ public class BuildingPlacement : MonoBehaviour {
     List<string> TilesBuildingCanBePlaced(Buildings.Type buildingType)
     {
         List<string> answer = new List<string>(2);
-        if (buildingType == Buildings.Type.TrashTruckStation)
-        {
-            answer.Add("PisoTipo3");
-        }
+        answer.Add("PisoTipo3"); //so far, all buildings can be built in PisoTipo3
+        //if (buildingType == Buildings.Type.TrashTruckStation)
+        //{
+        //}
         return answer;
     }
 }

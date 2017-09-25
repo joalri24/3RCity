@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// 
+/// Manages trash in the streets logic related to trash deposit. If trash is deposited when over 
+/// capacity, trash in streets will increase. If trash is withrawed when the can's trash is in the 
+/// streets, trash in the streets will decrease.
 /// </summary>
 public class TrashCan {
 
@@ -45,7 +47,8 @@ public class TrashCan {
     }
 
     /// <summary>
-    /// Deposits trash in the trash can. If the trash can is over its max capacity, 
+    /// Deposits trash in the trash can. If the trash can is over its max capacity, increases
+    /// trash in the streets
     /// </summary>
     /// <param name="depositAmount">Amount of trash to deposit</param>
     public void DepositTrash(int depositAmount) {

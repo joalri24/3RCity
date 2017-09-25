@@ -560,7 +560,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1355684557350194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 32.23562, y: 0.9456043, z: 104.12055}
+  m_LocalPosition: {x: 32.3005, y: 0.93681526, z: 104.18221}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4680889654250658}
@@ -1355,13 +1355,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ordinaryCanCapacity: 85
-  paperCanCapacity: 25
-  glassCanCapacity: 25
-  metalCanCapacity: 25
+  paperCanCapacity: 30
+  glassCanCapacity: 30
+  metalCanCapacity: 30
   ordinaryMinimunGeneration: 1
   ordinaryMaximunGeneration: 2
   paperMinimunGeneration: 1
-  paperMaximunGeneration: 2
+  paperMaximunGeneration: 3
   glassMinimunGeneration: 1
   glassMaximunGeneration: 2
   metalMinimunGeneration: 1

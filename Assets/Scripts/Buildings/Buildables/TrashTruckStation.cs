@@ -9,6 +9,10 @@ public class TrashTruckStation : Buildable {
     [SerializeField]
     Transform trashTrucksSpawn;
 
+    [SerializeField]
+    [Tooltip("Type of garbage the trucks of this station will collect")]
+    private Garbage.Type collectedGarbageType;
+
     List<TrashTruck> trashTrucks;
 
     TrashTreatmentCenter currentTreatmentCenter;
@@ -34,17 +38,27 @@ public class TrashTruckStation : Buildable {
     public void AddTrashTruck(TrashTruck truck)
     {
         truck.AssignedTrashTreatmentCenter = currentTreatmentCenter;
+        truck.CollectedGabargeType = collectedGarbageType;
         trashTrucks.Add(truck);
     }
 
+    /// <summary>
+    /// Colors the station green
+    /// </summary>
     public override void ColorGreen() {
         buildingRenderer.material.color = Color.green;
     }
 
+    /// <summary>
+    /// Colors the station red
+    /// </summary>
     public override void ColorRed() {
         buildingRenderer.material.color = Color.red;
     }
 
+    /// <summary>
+    /// Returns the station to its original color
+    /// </summary>
     public override void ColorOriginal() {
         buildingRenderer.material.color = originalColor;
     }
@@ -52,7 +66,20 @@ public class TrashTruckStation : Buildable {
     public override void Place() {
         ColorOriginal();
         transform.Find("Model").gameObject.layer = Buildings.Layer;
-        GetComponent<TrashTruckStationAI>().BeginOperations();
+         
+        if (collectedGarbageType == Garbage.Type.Ordinary) { //if it's an ordinary station
+            GetComponent<TrashTruckStationAI>().BeginOperations(); //spawn trucks and stuff as soon as placed
+        }
+        //if it's a paper station, it'll probably be a treatment center too, so...
+        else if (collectedGarbageType == Garbage.Type.Paper) { 
+            //do something like only spawning trucks if there's a campaign active
+        }
+        else if (collectedGarbageType == Garbage.Type.Glass) {
+
+        }
+        else if(collectedGarbageType == Garbage.Type.Metal) {
+
+        }
     }
 
     public Vector3 TrashTruckSpawn

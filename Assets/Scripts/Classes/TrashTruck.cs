@@ -45,6 +45,7 @@ public class TrashTruck : MonoBehaviour
     /// </summary>
     public Garbage.Type CollectedGabargeType {
         get { return collectedGarbageType; }
+        set { collectedGarbageType = value; }
     }
 
     public House TrashCollectTarget
