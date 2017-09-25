@@ -63,12 +63,15 @@ public class TrashTruckStation : Buildable {
         buildingRenderer.material.color = originalColor;
     }
 
+    /// <summary>
+    /// Is executed when the truck station gets actually placed in the world after previewing
+    /// </summary>
     public override void Place() {
         ColorOriginal();
         transform.Find("Model").gameObject.layer = Buildings.Layer;
          
         if (collectedGarbageType == Garbage.Type.Ordinary) { //if it's an ordinary station
-            GetComponent<TrashTruckStationAI>().BeginOperations(); //spawn trucks and stuff as soon as placed
+            BeginOperations(); //spawn trucks and stuff as soon as placed
         }
         //if it's a paper station, it'll probably be a treatment center too, so...
         else if (collectedGarbageType == Garbage.Type.Paper) { 
@@ -80,6 +83,10 @@ public class TrashTruckStation : Buildable {
         else if(collectedGarbageType == Garbage.Type.Metal) {
 
         }
+    }
+
+    public void BeginOperations() {
+        GetComponent<TrashTruckStationAI>().BeginOperations();
     }
 
     public Vector3 TrashTruckSpawn
