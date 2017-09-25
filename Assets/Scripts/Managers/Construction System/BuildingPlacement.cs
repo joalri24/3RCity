@@ -11,16 +11,9 @@ public class BuildingPlacement : MonoBehaviour {
         buildingPreview = GetComponent<BuildingPreview>();
     }
 
-    public void Place(Buildings.Type buildingType, GameObject buildingInstance)
-    {
-        //play building sound or something
-        buildingInstance.layer = Buildings.Layer;
-        if (buildingType == Buildings.Type.TrashTruckStation)
-        {
-            buildingInstance.transform.Find("Model").gameObject.layer = Buildings.Layer;
-            buildingInstance.GetComponent<TrashTruckStationAI>().BeginOperations();
-        }
-        buildingPreview.StopPreview();
+    public void Place(Buildable buildable) {
+        buildable.Place();
+        CityController.Current.CurrentMoney -= buildable.Cost;
     }
 
 	public void PreviewBuilding(Buildings.Type buildingType)
@@ -37,6 +30,7 @@ public class BuildingPlacement : MonoBehaviour {
     /// Returns array of the tags of tiles where a building of buildingType can be placed.
     /// Exists so logic regarding building placement doesn't have to be repeated
     /// </summary>
+    /// <returns>List with the tags of tiles where a building of buildingType can be placed</returns>
     List<string> TilesBuildingCanBePlaced(Buildings.Type buildingType)
     {
         List<string> answer = new List<string>(2);

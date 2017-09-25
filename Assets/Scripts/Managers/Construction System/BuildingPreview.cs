@@ -11,10 +11,9 @@ public class BuildingPreview : MonoBehaviour {
 
     Buildings.Type previewingBuildingType;
     GameObject previewingBuilding;
-    Renderer previewingRenderer;
+    Buildable previewingBuildable;
 
     bool isPreviewPlaceable;
-    Color originalBuildingColor;
 
     void Update()
     {
@@ -32,12 +31,12 @@ public class BuildingPreview : MonoBehaviour {
         if (Physics.Raycast(mouseRay, out hit, 200, placeableLayerMask)) 
         {
             previewingBuilding.transform.position = hit.point;
-            isPreviewPlaceable = (!Physics.Raycast(mouseRay, 200, obstacleLayerMask)) && Managers.Instance.BuildingPlacement.
+            isPreviewPlaceable = (!Physics.Raycast(mouseRay, 200, obstacleLayerMask)) && Managers.BuildingPlacementManager.
                             CanBuildingBePlacedInTile(previewingBuildingType, hit.collider.tag);
             if (isPreviewPlaceable)
             {
-                previewingRenderer.material.SetColor("_Color", Color.green);
-                previewingRenderer.transform.position =
+                previewingBuildable.ColorGreen();
+                previewingBuilding.transform.position =
                     new Vector3(hit.collider.gameObject.transform.position.x + 1.8f,
                                 hit.collider.gameObject.transform.position.y,
                                 hit.collider.gameObject.transform.position.z + 2f); //should actually fix prefabs
@@ -45,26 +44,28 @@ public class BuildingPreview : MonoBehaviour {
             }
             else
             {
-                previewingRenderer.material.SetColor("_Color", Color.red);
+                previewingBuildable.ColorRed();
             }
         }
     }
-
+    
+    /// <summary>
+    /// Listens to player clicks and tries to place current building or cancels preview as appropriate.
+    /// </summary>
     void HandlePlayerClick()
     {
         if (Input.GetMouseButtonDown(0))
         {
             if (isPreviewPlaceable)
             {
-                previewingRenderer.material.color = originalBuildingColor;
-                Managers.Instance.BuildingPlacement.Place(previewingBuildingType, previewingBuilding);
+                Managers.BuildingPlacementManager.Place(previewingBuildable);
+                StopPreview();
             }
             else
             {
                 //give feedback that building can't be placed, like playing a sound
             }
         } 
-        //Cancel placement
         if (Input.GetMouseButtonDown(1))
         {
             CancelPreview();
@@ -74,10 +75,9 @@ public class BuildingPreview : MonoBehaviour {
 	public void StartBuildingPreview(Buildings.Type buildingType)
     {
         previewingBuildingType = buildingType;
-        previewingBuilding = Managers.Instance.PrefabManager.MapBuildingToPrefab(buildingType);
+        previewingBuilding = Managers.PrefabManager.MapBuildingToPrefab(buildingType);
         previewingBuilding = Instantiate(previewingBuilding, new Vector3(-100f, -100f, -100f), Quaternion.identity);
-        previewingRenderer = previewingBuilding.transform.Find("Model").gameObject.GetComponent<Renderer>();
-        originalBuildingColor = previewingRenderer.material.color;
+        previewingBuildable = previewingBuilding.GetComponent<Buildable>();
         enabled = true;
     }
 

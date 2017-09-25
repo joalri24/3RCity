@@ -17,7 +17,7 @@ public class Managers : MonoBehaviour {
         prefabManager = GameObject.FindGameObjectWithTag("PrefabManager").GetComponent<PrefabManager>();
     }
 
-    public static Managers Instance
+    private static Managers Instance
     {
         get
         {
@@ -32,11 +32,11 @@ public class Managers : MonoBehaviour {
         }
     }
 
-    public PrefabManager PrefabManager
+    public static PrefabManager PrefabManager
     {
-        get { return prefabManager; }
+        get { return Instance.prefabManager; }
     }
-    public BuildingPlacement BuildingPlacement {
-        get { return buildingPlacement; }
+    public static BuildingPlacement BuildingPlacementManager {
+        get { return Instance.buildingPlacement; }
     }
 }

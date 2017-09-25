@@ -19,12 +19,11 @@ TagManager:
   - TextoDescriptivo
   - Tooltip
   - Ordinaria
-  - Parque
-  - Museo
   - Controller
   - BuildManager
   - PrefabManager
   - HouseInfo
+  - LevelState
   layers:
   - Default
   - TransparentFX

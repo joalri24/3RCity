@@ -1,30 +1,26 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class TrashTruckStation : MonoBehaviour {
+public class TrashTruckStation : Buildable {
 
     public const int TRUCK_CAPACITY = 3;
 
     [SerializeField]
     Transform trashTrucksSpawn;
 
-    List<IDurabilityChangedListener> durabilityChangedListeners;
     List<TrashTruck> trashTrucks;
-
-    int maxNumberOfTrucks = 5;
-    int maxDurability = 50;
 
     TrashDeposit trashDeposit;
     int trashCollected = 0;
     int numberOfTrucks = 0;
-    int durability;
 
 	void Start () {
         TrashDeposit = GameObject.FindGameObjectWithTag("Controller").GetComponent<CityController>().defaultTrashDeposit;
-        durability = maxDurability;
-        durabilityChangedListeners = new List<IDurabilityChangedListener>(1);
         trashTrucks = new List<TrashTruck>(TRUCK_CAPACITY);
-	}
+        buildingRenderer = transform.Find("Model").gameObject.GetComponent<Renderer>();
+        originalColor = buildingRenderer.material.color;
+    }
 
     public TrashDeposit TrashDeposit
     {
@@ -35,15 +31,28 @@ public class TrashTruckStation : MonoBehaviour {
         }
     }
 
-    public int MaxDurability
-    {
-        get { return maxDurability; }
-    }
-
     public void AddTrashTruck(TrashTruck truck)
     {
         truck.AssignedTrashDeposit = trashDeposit;
         trashTrucks.Add(truck);
+    }
+
+    public override void ColorGreen() {
+        buildingRenderer.material.color = Color.green;
+    }
+
+    public override void ColorRed() {
+        buildingRenderer.material.color = Color.red;
+    }
+
+    public override void ColorOriginal() {
+        buildingRenderer.material.color = originalColor;
+    }
+
+    public override void Place() {
+        ColorOriginal();
+        transform.Find("Model").gameObject.layer = Buildings.Layer;
+        GetComponent<TrashTruckStationAI>().BeginOperations();
     }
 
     public Vector3 TrashTruckSpawn

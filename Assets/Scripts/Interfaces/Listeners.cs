@@ -1,5 +1,7 @@
-﻿public interface IDurabilityChangedListener
-{
-    void onDurabilityChanged();
+﻿public interface IMoneyChangedListener {
+    void onMoneyChanged();
 }
 
+public interface ITrashInStreetsChangedListener {
+    void onTrashInStreetsChanged();
+}

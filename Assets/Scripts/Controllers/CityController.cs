@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System;
 using UnityEngine;
 
@@ -30,15 +29,13 @@ public class CityController : MonoBehaviour
     [Range(0.5f, 200)]
     public float dayDuration;
 
+    [SerializeField]
+    private int maxTrashInStreets;
+
     /// <summary>
     /// The current day on the game.
     /// </summary>
     private int currentDay;
-
-    /// <summary>
-    /// The start date on the game.
-    /// </summary>
-    private DateTime startDate;
 
     /// <summary>
     /// List with all the houses of the city.
@@ -46,9 +43,8 @@ public class CityController : MonoBehaviour
     [Header("City buildings")]
     [Tooltip("List with all the houses of the city")]
     public List<House> houses;
-    int nextHouseToVisitIndex = -1;
 
-    // TODO: list of other buildings
+    private int nextHouseToVisitIndex = -1;
 
     /// <summary>
     /// Timer to know when to advance to the next day.
@@ -59,6 +55,27 @@ public class CityController : MonoBehaviour
     /// Flag to know if the game is paused or not.
     /// </summary>
     private bool paused;
+
+    private int trashInStreets;
+
+    private List<ITrashInStreetsChangedListener> trashInStreetsChangedListeners;
+
+    public int MaxTrashInStreets {
+        get { return maxTrashInStreets; }
+        set { maxTrashInStreets = value;}
+    }
+    public int TrashInStreets {
+        get { return trashInStreets; }
+        set {
+            trashInStreets = value;
+            if (trashInStreetsChangedListeners == null) {
+                trashInStreetsChangedListeners = new List<ITrashInStreetsChangedListener>();
+            }
+            foreach(ITrashInStreetsChangedListener listener in trashInStreetsChangedListeners) {
+                listener.onTrashInStreetsChanged();
+            }
+        }
+    }
 
     /// <summary>
     /// Property used to pause and unpause the game.
@@ -114,6 +131,10 @@ public class CityController : MonoBehaviour
     /// </summary>
     private int currentMoney;
 
+    private List<IMoneyChangedListener> moneyChangedListeners;
+
+    private static CityController currentController;
+
     /// <summary>
     /// Property to access the city's current money.
     /// </summary>
@@ -126,6 +147,12 @@ public class CityController : MonoBehaviour
         set
         {
             currentMoney = value;
+            if (moneyChangedListeners == null) {
+                moneyChangedListeners = new List<IMoneyChangedListener>();
+            }
+            foreach(IMoneyChangedListener listener in moneyChangedListeners) {
+                listener.onMoneyChanged();
+            }
         }
     }
 
@@ -140,11 +167,23 @@ public class CityController : MonoBehaviour
     {
         currentDay = 0;
         timer = 0f;
-        startDate = DateTime.Now;
-        //Debug.Log("Current date: " + startDate.AddDays(currentDay).ToString("dd/MM/yyyy"));
         PaperCampaignBought = false;
         MetalCampaignBought = false;
         GlassCampaignBought = false;
+    }
+
+    public void RegisterMoneyChangedListener(IMoneyChangedListener listener) {
+        if (moneyChangedListeners == null) {
+            moneyChangedListeners = new List<IMoneyChangedListener>();
+        }
+        moneyChangedListeners.Add(listener);
+    }
+
+    public void RegisterTrashInStreetsChangedListener(ITrashInStreetsChangedListener listener) {
+        if (trashInStreetsChangedListeners == null) {
+            trashInStreetsChangedListeners = new List<ITrashInStreetsChangedListener>();
+        }
+        trashInStreetsChangedListeners.Add(listener);
     }
 
     /// <summary>
@@ -159,7 +198,6 @@ public class CityController : MonoBehaviour
         {
             house.GenerateGarbage();
         }
-        //Debug.Log("Current date: " + startDate.AddDays(currentDay).ToString("dd/MM/yyyy"));
 
         if(currentDay >= matchLength)
         {
@@ -185,7 +223,6 @@ public class CityController : MonoBehaviour
             AdvanceDay();
             timer = 0;
         }
-            
 	}
 
     public House NextHouseToCollect() {
@@ -228,5 +265,15 @@ public class CityController : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// CityController component of first object tagged "Controller"
+    /// </summary>
+    public static CityController Current {
+        get {
+            if (currentController == null) {
+                currentController = GameObject.FindGameObjectWithTag("Controller").GetComponent<CityController>();
+            }
+            return currentController;
+        }
+    }
 }

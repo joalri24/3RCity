@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1225243728837770}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 67.1898, y: 23.983677, z: -5.478384}
+  m_LocalPosition: {x: 40.26303, y: 27.93308, z: 95.70178}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 4381783391458214}
@@ -83,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1081573387654124}
   m_LocalRotation: {x: -0, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.19000001, y: 0.027, z: 0.12800004}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4168975775515438}
@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af4b0384b5c5286499565a86b91f9a20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 50
   trashTrucksSpawn: {fileID: 4584324513170772}
 --- !u!114 &114779548997721676
 MonoBehaviour:

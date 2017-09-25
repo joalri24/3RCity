@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
 /// Script for a single house. A house generates garbage over time.
 /// </summary>
-///
 [RequireComponent(typeof(Collider))]
 public class House : MonoBehaviour
 {
@@ -15,34 +12,26 @@ public class House : MonoBehaviour
     // ------------------------------------------------------------
 
     /// <summary>
-    /// The current garbage in the house. 
-    /// </summary>
-    public Garbage garbage;
-
-    /// <summary>
     /// Ordinary trash can's maximum capacity. 
     /// All recyclable garbage that is not currently being recycled goes here.
     /// </summary>
-    [Header("Trash cans capacity")]
+    [Header("Trash Cans Settings")]
     [Tooltip("Ordinary trash can's maximum capacity")]
+    [SerializeField]
     [Range(1,100)]
-    public int ordinaryCanCapacity;
+    private int ordinaryCanCapacity;
+
+    private TrashCan ordinaryTrashCan;
 
     /// <summary>
-    /// Ordinary trash current garbage.
+    /// The house's trash can for ordinary and unclassified trash
     /// </summary>
-    private int trashCanCurrentGarbage;
-
-    /// <summary>
-    /// Property to access the current ammount of garbage in the ordinary trash can.
-    /// All recyclable garbage that is not currently being recycled goes here.
-    /// </summary>
-    public int TrashCanCurrentAmount
+    public TrashCan OrdinaryTrashCan
     {
-        get { return trashCanCurrentGarbage; }
+        get { return ordinaryTrashCan; }
         set
         {
-            trashCanCurrentGarbage = value;
+            ordinaryTrashCan = value;
             // TODO: do something else if neccesary, like updating the model if 
             // the current amount if higher than the capacity, etc.
         }
@@ -56,20 +45,19 @@ public class House : MonoBehaviour
     public int paperCanCapacity;
 
     /// <summary>
-    /// Paper can current garbage.
+    /// The house's trash can for paper
     /// </summary>
-    private int paperCanCurrentGarbage;
+    private TrashCan paperTrashCan;
 
     /// <summary>
-    /// Property to access the current ammount of garbage in the paper trash can.
-    /// Only recycled paper goes here.
+    /// The house's trash can for paper
     /// </summary>
-    public int PaperCanCurrentAmount
+    public TrashCan PaperTrashCan
     {
-        get { return paperCanCurrentGarbage; }
+        get { return paperTrashCan; }
         set
         {
-            paperCanCurrentGarbage = value;
+            paperTrashCan = value;
             // TODO: do something else if neccesary, like updating the model if 
             // the current amount if higher than the capacity, etc.
         }
@@ -83,20 +71,20 @@ public class House : MonoBehaviour
     public int glassCanCapacity;
 
     /// <summary>
-    /// Glass can current garbage.
+    /// The house's trash can for glass
     /// </summary>
-    private int glassCanCurrentGarbage;
+    private TrashCan glassTrashCan;
 
     /// <summary>
     /// Property to access the current ammount of garbage in the glass trash can.
     /// Only recycled glass goes here.
     /// </summary>
-    public int GlassCanCurrentAmount
+    public TrashCan GlassTrashCan
     {
-        get { return glassCanCurrentGarbage; }
+        get { return glassTrashCan; }
         set
         {
-            glassCanCurrentGarbage = value;
+            glassTrashCan = value;
             // TODO: do something else if neccesary, like updating the model if 
             // the current amount if higher than the capacity, etc.
         }
@@ -110,20 +98,19 @@ public class House : MonoBehaviour
     public int metalCanCapacity;
 
     /// <summary>
-    /// Metal can current garbage.
+    /// The house's trash can for metal
     /// </summary>
-    private int metalCanCurrentGarbage;
+    private TrashCan metalTrashCan;
 
     /// <summary>
-    /// Property to access the current ammount of garbage in the metal trash can.
-    /// Only recycled metal goes here.
+    /// The house's trash can for metal
     /// </summary>
-    public int MetalCanCurrentAmount
+    public TrashCan MetalTrashCan
     {
-        get { return metalCanCurrentGarbage; }
+        get { return metalTrashCan; }
         set
         {
-            metalCanCurrentGarbage = value;
+            metalTrashCan = value;
             // TODO: do something else if neccesary, like updating the model if 
             // the current amount if higher than the capacity, etc.
         }
@@ -205,6 +192,7 @@ public class House : MonoBehaviour
     /// True if the house is recycling paper
     /// </summary>
     private bool isRecyclingPaper; 
+
     /// <summary>
     /// True if the house is recycling paper
     /// </summary>
@@ -285,7 +273,7 @@ public class House : MonoBehaviour
 
     void Start ()
     {
-        garbage = new Garbage(0, 0, 0, 0);
+        InitializeTrashCans();
 		ordinaryCanTransform = transform.GetChild (0); // 0 is the ordinary can
         PaperCanObject = transform.GetChild(1).gameObject; // 1 is the paper can
         MetalCanObject = transform.GetChild(2).gameObject; // 2 is the metal can
@@ -295,7 +283,13 @@ public class House : MonoBehaviour
         IsRecyclingPaper = false;
         controller = GameObject.FindGameObjectWithTag("Controller").GetComponent<CityController>();
         houseInfoDisplay = controller.houseInfoPanel;
+    }
 
+    private void InitializeTrashCans() {
+        ordinaryTrashCan = new TrashCan(Garbage.Type.Ordinary, ordinaryCanCapacity);
+        paperTrashCan = new TrashCan(Garbage.Type.Paper, paperCanCapacity);
+        glassTrashCan = new TrashCan(Garbage.Type.Glass, glassCanCapacity);
+        metalTrashCan = new TrashCan(Garbage.Type.Metal, metalCanCapacity);
     }
 	
     /// <summary>
@@ -307,51 +301,44 @@ public class House : MonoBehaviour
         int amount = 0;
 
         // Ordinary garbage
-        amount = UnityEngine.Random.Range(ordinaryMinimunGeneration, ordinaryMaximunGeneration);
-        garbage.ordinary += amount;
-        TrashCanCurrentAmount += amount;
+        amount = Random.Range(ordinaryMinimunGeneration, ordinaryMaximunGeneration);
+        ordinaryTrashCan.DepositTrash(amount);
 		Vector3 bagPosition = ordinaryCanTransform.position;
 		bagPosition.y += 1f;
 		bagPosition.x += -0.166f; 
 		bagPosition.z += -0.7481f;
-		GameObject instance= Instantiate(ordinaryTrashBag, bagPosition, Quaternion.identity, this.transform );
-
+		GameObject instance = Instantiate(ordinaryTrashBag, bagPosition, Quaternion.identity, transform);
 
         // Paper  
-        amount = UnityEngine.Random.Range(paperMinimunGeneration, paperMaximunGeneration);
-        garbage.paper += amount;
+        amount = Random.Range(paperMinimunGeneration, paperMaximunGeneration);
         if (IsRecyclingPaper)
         {
-            PaperCanCurrentAmount += amount;
-            // Instanciate paper bag
+            paperTrashCan.DepositTrash(amount);
+            // Instantiate paper bag
+        } else {
+            ordinaryTrashCan.DepositTrash(amount);
         }
-            
-        else
-            TrashCanCurrentAmount += amount;
 
         // glass 
-        amount = UnityEngine.Random.Range(glassMinimunGeneration, glassMaximunGeneration);
-        garbage.glass += amount;
+        amount = Random.Range(glassMinimunGeneration, glassMaximunGeneration);
         if (IsRecyclingGlass)
         {
-            GlassCanCurrentAmount += amount;
+            glassTrashCan.DepositTrash(amount);
             // Instanciate paper bag
+        } else {
+            ordinaryTrashCan.DepositTrash(amount);
         }
-
-        else
-            TrashCanCurrentAmount += amount;
 
         // metal 
-        amount = UnityEngine.Random.Range(metalMinimunGeneration, metalMaximunGeneration);
-        garbage.metal += amount;
+        amount = Random.Range(metalMinimunGeneration, metalMaximunGeneration);
+        metalTrashCan.DepositTrash(amount);
         if (IsRecyclingMetal)
         {
-            MetalCanCurrentAmount += amount;
+            metalTrashCan.DepositTrash(amount);
             // Instanciate paper bag
+        } else {
+            ordinaryTrashCan.DepositTrash(amount);
         }
-
-        else
-            TrashCanCurrentAmount += amount;
     }
 
     /// <summary>
@@ -361,10 +348,10 @@ public class House : MonoBehaviour
     private void OnMouseEnter()
     {
         houseInfoDisplay.DisplayPanel( FindExtraInfoMessage(),
-            displayOrdinary: true, ordinaryAmount: TrashCanCurrentAmount, ordinaryCapacityP: ordinaryCanCapacity, 
-            displayGlass: IsRecyclingGlass, glassAmount: glassCanCurrentGarbage, glassCapacityP: glassCanCapacity,
-            displayMetal: IsRecyclingMetal, metalAmount: metalCanCurrentGarbage, metalCapacityP: metalCanCapacity,
-            displayPaper: IsRecyclingPaper, paperAmount: paperCanCurrentGarbage, paperCapacityP: paperCanCapacity);      
+            displayOrdinary: true, ordinaryAmount: ordinaryTrashCan.CurrentAmount, ordinaryCapacityP: ordinaryCanCapacity, 
+            displayGlass: IsRecyclingGlass, glassAmount: glassTrashCan.CurrentAmount, glassCapacityP: glassCanCapacity,
+            displayMetal: IsRecyclingMetal, metalAmount: metalTrashCan.CurrentAmount, metalCapacityP: metalCanCapacity,
+            displayPaper: IsRecyclingPaper, paperAmount: paperTrashCan.CurrentAmount, paperCapacityP: paperCanCapacity);      
     }
 
     /// <summary>
@@ -374,10 +361,10 @@ public class House : MonoBehaviour
     private void OnMouseOver()
     {
         houseInfoDisplay.UpdateValues(
-            ordinaryAmount: TrashCanCurrentAmount,
-            glassAmount: glassCanCurrentGarbage,
-            metalAmount: metalCanCurrentGarbage,
-            paperAmount: paperCanCurrentGarbage);
+            ordinaryAmount: ordinaryTrashCan.CurrentAmount,
+            glassAmount: glassTrashCan.CurrentAmount,
+            metalAmount: metalTrashCan.CurrentAmount,
+            paperAmount: paperTrashCan.CurrentAmount);
     }
 
     /// <summary>

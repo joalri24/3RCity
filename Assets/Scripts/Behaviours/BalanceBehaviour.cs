@@ -4,19 +4,12 @@ using UnityEngine;
 
 public class BalanceBehaviour : MonoBehaviour {
 
-    private EstadoJuego estado;
-    private float lastUpdate;
-	// Use this for initialization
-	void Start () {
-        estado = EstadoJuego.InstanciaEstadoJuego;
-	}
-	
-	// Update is called once per frame
+    private float lastBalance;
+
 	void Update () {
-        if (Time.time - lastUpdate >= 3.25f)
+        if (Time.time - lastBalance >= 3.25f)
         {
-            estado.egresosBalance();
-            lastUpdate = Time.time;
+            lastBalance = Time.time;
         }
 	}
 }

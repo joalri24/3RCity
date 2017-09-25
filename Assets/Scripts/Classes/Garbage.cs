@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +9,12 @@ using UnityEngine;
 /// </summary>
 public class Garbage
 {
+    public enum Type {
+        Ordinary,
+        Paper,
+        Glass,
+        Metal
+    }
     // -----------------------------------------------------------
     // Attributes
     // -----------------------------------------------------------
@@ -41,8 +47,6 @@ public class Garbage
         get { return ordinary + paper + metal + glass; }
     }
 
-
-
     // -----------------------------------------------------------
     // Methods
     // -----------------------------------------------------------
@@ -74,6 +78,4 @@ public class Garbage
         glass += garbage.glass;
         metal += garbage.metal;
     }
-
-
 }

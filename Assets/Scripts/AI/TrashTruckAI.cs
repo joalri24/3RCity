@@ -12,7 +12,6 @@ public class TrashTruckAI : MonoBehaviour {
         GoingToDeposit
     }
 
-    CityController city;
     State currentState;
     NavMeshAgent navMeshAgent;
     TrashTruck trashTruck;
@@ -20,7 +19,6 @@ public class TrashTruckAI : MonoBehaviour {
 
     void Start()
     {
-        city = GameObject.FindGameObjectWithTag("Controller").GetComponent<CityController>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         trashTruck = GetComponent<TrashTruck>();
         TransitionToCollectState();
@@ -50,87 +48,82 @@ public class TrashTruckAI : MonoBehaviour {
         }
     }
 
-    void TransitionToCollectState()
+    private void TransitionToCollectState()
     {
-        trashTruck.TrashCollectTarget = city.NextHouseToCollect();
+        trashTruck.TrashCollectTarget = CityController.Current.NextHouseToCollect();
         navMeshAgent.SetDestination(trashTruck.TrashCollectTarget.TrashCan.position);
         currentState = State.GoingToCollect;
     }
 
-    void TransitionToDepositState()
+    private void TransitionToDepositState()
     {
         navMeshAgent.SetDestination(trashTruck.AssignedTrashDeposit.TruckStop.position);
         currentState = State.GoingToDeposit;
     }
 
     /// <summary>
-    /// Collects all the possible garbage from a House and puts it on the truck.
-    /// This method assumes (for the moment) that the truck is and ordinary garbage truck.
+    /// Collects as much as possible of the type of trash the truck is supposed to pick up from the house
+    /// the truck is currently attending
     /// </summary>
-    void CollectTrash()
+    private void CollectTrash()
     {
         int availableCapacity = trashTruck.TrashCapacity - trashTruck.CollectedTrash;
-        int amountToCollect;
+        int amountToCollect = 0;
         House house = trashTruck.TrashCollectTarget;
 
-        // ---------- Collect Ordinary garbage --------------------------
-        amountToCollect = Mathf.Min(house.garbage.ordinary, availableCapacity); // The minimun between the available space and the house's curent ordinary garbage.
-        trashTruck.CollectedTrash += amountToCollect; // Increase the truck's total garbage counter
-        trashTruck.Garbage.ordinary += amountToCollect; // Put the garbage in the truck.
-        house.garbage.ordinary -= amountToCollect; // Removes the garbage from the house.
-        house.TrashCanCurrentAmount -= amountToCollect; // Decrease the House's ordinary trash counter
-        // ---------------------------------------------------------------
-
-        availableCapacity = trashTruck.TrashCapacity - trashTruck.CollectedTrash;    
-        if (availableCapacity <= 0)
-            return; // Stop collecting if there's no capacity available.
-
-        // ---------- Collect wasted Paper --------------------------+
-        int wastedPaper = house.garbage.paper - house.PaperCanCurrentAmount; // All paper that is not on the Paper Can is being wasted.
-        amountToCollect = Mathf.Min(wastedPaper, availableCapacity); // The minimun between the available space and the house's curent wasted paper.
-        trashTruck.CollectedTrash += amountToCollect; // Increase the truck's total garbage counter
-        trashTruck.Garbage.paper += amountToCollect; // Put the garbage in the truck.
-        house.garbage.paper -= amountToCollect; // Removes the garbage from the house.
-        house.TrashCanCurrentAmount -= amountToCollect; // Decrease the House's ordinary trash counter
-        // ---------------------------------------------------------------
-
-        availableCapacity = trashTruck.TrashCapacity - trashTruck.CollectedTrash;    
-        if (availableCapacity <= 0)
-            return; // Stop collecting if there's no capacity available.
-
-        // ---------- Collect wasted Glass --------------------------+
-        int wastedGlass = house.garbage.glass - house.GlassCanCurrentAmount; // All glass that is not on the Glass Can is being wasted.
-        amountToCollect = Mathf.Min(wastedGlass, availableCapacity); // The minimun between the available space and the house's curent wasted paper.
-        trashTruck.CollectedTrash += amountToCollect; // Increase the truck's total garbage counter
-        trashTruck.Garbage.glass += amountToCollect; // Put the garbage in the truck.
-        house.garbage.glass -= amountToCollect; // Removes the garbage from the house.
-        house.TrashCanCurrentAmount -= amountToCollect; // Decrease the House's ordinary trash counter
-        // ---------------------------------------------------------------
-
-        availableCapacity = trashTruck.TrashCapacity - trashTruck.CollectedTrash;
-        if (availableCapacity <= 0)
-            return; // Stop collecting if there's no capacity available.
-
-        // ---------- Collect wasted Metal --------------------------+
-        int wastedMetal = house.garbage.metal - house.MetalCanCurrentAmount; // All metal that is not on the Paper Can is being wasted.
-        amountToCollect = Mathf.Min(wastedMetal, availableCapacity); // The minimun between the available space and the house's curent wasted paper.
-        trashTruck.CollectedTrash += amountToCollect; // Increase the truck's total garbage counter
-        trashTruck.Garbage.metal += amountToCollect; // Put the garbage in the truck.
-        house.garbage.metal -= amountToCollect; // Removes the garbage from the house.
-        house.TrashCanCurrentAmount -= amountToCollect; // Decrease the House's ordinary trash counter
-        // ---------------------------------------------------------------
+        //if the truck collects ordinary trash
+        if (trashTruck.CollectedGabargeType == Garbage.Type.Ordinary) { 
+            //collect as much ordinary trash as possible
+            amountToCollect = Mathf.Min(house.OrdinaryTrashCan.CurrentAmount, availableCapacity);
+            CollectOrdinaryTrashFrom(house, amountToCollect);
+        }
+        //if the truck collects paper
+        else if (trashTruck.CollectedGabargeType == Garbage.Type.Paper) {
+            //collect as much paper as possible
+            amountToCollect = Mathf.Min(house.PaperTrashCan.CurrentAmount, availableCapacity);
+            CollectPaperFrom(house, amountToCollect);
+        }
+        //if the truck collects glass
+        else if (trashTruck.CollectedGabargeType == Garbage.Type.Glass) {
+            //collect as much glass as possible
+            amountToCollect = Mathf.Min(house.GlassTrashCan.CurrentAmount, availableCapacity);
+            CollectGlassFrom(house, amountToCollect);
+        }
+        else if (trashTruck.CollectedGabargeType == Garbage.Type.Metal) {
+            amountToCollect = Mathf.Min(house.GlassTrashCan.CurrentAmount, availableCapacity);
+            CollectMetalFrom(house, amountToCollect);
+        }
+        trashTruck.CollectedTrash += amountToCollect;
     }
 
-    void DepositTrash()
+    private void CollectOrdinaryTrashFrom(House house, int amountToCollect) {
+        trashTruck.Garbage.ordinary += amountToCollect;
+        house.OrdinaryTrashCan.PickupTrash(amountToCollect);
+    }
+
+    private void CollectPaperFrom(House house, int amountToCollect) {
+        trashTruck.Garbage.paper += amountToCollect;
+        house.PaperTrashCan.PickupTrash(amountToCollect);
+    }
+
+    private void CollectGlassFrom(House house, int amountToCollect) {
+        trashTruck.Garbage.glass += amountToCollect;
+        house.GlassTrashCan.PickupTrash(amountToCollect);
+    }
+
+    private void CollectMetalFrom(House house, int amountToCollect) {
+        trashTruck.Garbage.metal += amountToCollect;
+        house.MetalTrashCan.PickupTrash(amountToCollect);
+    }
+
+    private void DepositTrash()
     {
-        /*trashTruck.AssignedTrashDeposit.TrashDeposited += trashTruck.CollectedTrash;
-        trashTruck.CollectedTrash = 0;*/
         trashTruck.AssignedTrashDeposit.ReceiveGarbage(trashTruck.Garbage);
         trashTruck.CollectedTrash = 0;
-        trashTruck.Garbage= new Garbage();
+        trashTruck.Garbage = new Garbage();
     }
 
-    bool HasArrivedToDestination()
+    private bool HasArrivedToDestination()
     {
         return navMeshAgent.hasPath && navMeshAgent.remainingDistance < 1f;
     }
