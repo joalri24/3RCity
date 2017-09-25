@@ -63,6 +63,10 @@ public class CityController : MonoBehaviour
     public List<TrashTruckStation> metalCenters;
 
     private int nextHouseToVisitIndex = -1;
+    private int nextHouseToVisitOrdinaryIndex = -1;
+    private int nextHouseToVisitGlassIndex = -1;
+    private int nextHouseToVisitPaperIndex = -1;
+    private int nextHouseToVisitMetalIndex = -1;
 
     /// <summary>
     /// Timer to know when to advance to the next day.
@@ -243,12 +247,57 @@ public class CityController : MonoBehaviour
         }
 	}
 
-    public House NextHouseToCollect() {
+    /*public House NextHouseToCollect() {
         nextHouseToVisitIndex++;
         if (nextHouseToVisitIndex >= houses.Count) {
             nextHouseToVisitIndex = 0;
         }
+        Debug.Log("Next House: " + nextHouseToVisitIndex);
         return houses[nextHouseToVisitIndex];
+    }*/
+
+    /// <summary>
+    /// This method works as four different independent Round Robins, one for each garbage type.
+    /// </summary>
+    /// <param name="truckGarbageType"></param>
+    /// <returns></returns>
+    public House NextHouseToCollect(Garbage.Type truckGarbageType)
+    {
+        int houseIndex = 0;
+        switch (truckGarbageType)
+        {
+            case Garbage.Type.Ordinary:
+                nextHouseToVisitOrdinaryIndex++;
+                if (nextHouseToVisitOrdinaryIndex >= houses.Count)
+                    nextHouseToVisitOrdinaryIndex = 0;
+                houseIndex = nextHouseToVisitOrdinaryIndex;
+                break;
+
+            case Garbage.Type.Paper:
+                nextHouseToVisitPaperIndex++;
+                if (nextHouseToVisitPaperIndex >= houses.Count)
+                    nextHouseToVisitPaperIndex = 0;
+                houseIndex = nextHouseToVisitPaperIndex;
+                break;
+
+            case Garbage.Type.Glass:
+                nextHouseToVisitGlassIndex++;
+                if (nextHouseToVisitGlassIndex >= houses.Count)
+                    nextHouseToVisitGlassIndex = 0;
+                houseIndex = nextHouseToVisitGlassIndex;
+                break;
+
+            case Garbage.Type.Metal:
+                nextHouseToVisitMetalIndex++;
+                if (nextHouseToVisitMetalIndex >= houses.Count)
+                    nextHouseToVisitMetalIndex = 0;
+                houseIndex = nextHouseToVisitMetalIndex;
+                break;
+
+            default:
+                break;
+        }
+        return houses[houseIndex];
     }
 
     /// <summary>
