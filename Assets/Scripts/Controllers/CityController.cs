@@ -44,6 +44,24 @@ public class CityController : MonoBehaviour
     [Tooltip("List with all the houses of the city")]
     public List<House> houses;
 
+    /// <summary>
+    /// List with all the Paper reclycling Centers of the city.
+    /// </summary>   
+    [Tooltip("List with all the Paper reclycling Centers of the city")]
+    public List<TrashTruckStation> paperCenters;
+
+    /// <summary>
+    /// List with all the Glass reclycling Centers of the city.
+    /// </summary>   
+    [Tooltip("List with all the Glass reclycling Centers of the city")]
+    public List<TrashTruckStation> glassCenters;
+
+    /// <summary>
+    /// List with all the Metal reclycling Centers of the city.
+    /// </summary>   
+    [Tooltip("List with all the metal reclycling Centers of the city")]
+    public List<TrashTruckStation> metalCenters;
+
     private int nextHouseToVisitIndex = -1;
 
     /// <summary>
@@ -246,19 +264,26 @@ public class CityController : MonoBehaviour
                 PaperCampaignBought = true;
                 foreach (var house in houses)
                     house.IsRecyclingPaper = true;
-                                           
+                foreach (var paperCenter in paperCenters)
+                    paperCenter.BeginOperations();
+                                        
                 break;
 
             case Campaign.CampaignType.Glass:
                 GlassCampaignBought = true;
                 foreach (var house in houses)
                     house.IsRecyclingGlass = true;
+                foreach (var glassCenter in glassCenters)
+                    glassCenter.BeginOperations();
+
                 break;
 
             case Campaign.CampaignType.Metal:
                 MetalCampaignBought = true;
                 foreach (var house in houses)
                     house.IsRecyclingMetal = true;
+                foreach (var metalCenter in metalCenters)
+                    metalCenter.BeginOperations();
                 break;
             default:
                 break;

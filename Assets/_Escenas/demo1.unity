@@ -18921,11 +18921,11 @@ MonoBehaviour:
     type: 2}
   regularTrashTruck: {fileID: 1076057897995980, guid: 24db11f7e1d24d14fa86b28584409c10,
     type: 2}
-  paperTrashTruck: {fileID: 1903302226638122, guid: 9d78a060981db734283e6db8c4d35c19,
+  paperTrashTruck: {fileID: 1903302226638122, guid: d0a14eba2711f4d48b19c7d84e1ecfe3,
     type: 2}
   glassTrashTruck: {fileID: 1201110487289004, guid: 380ff51d4d0bc164db745bfd416399f1,
     type: 2}
-  metalTrashTruck: {fileID: 1192607126037734, guid: d0a14eba2711f4d48b19c7d84e1ecfe3,
+  metalTrashTruck: {fileID: 1192607126037734, guid: 0b47b54bbd9d5ce4aa47cbf4eb241c0f,
     type: 2}
 --- !u!1 &1901959201
 GameObject:

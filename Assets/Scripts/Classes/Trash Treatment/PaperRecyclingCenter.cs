@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PaperRecyclingCenter : TrashTreatmentCenter {
 
-    void Start() {
+    override protected void Start() {
         trashDeposit = new TrashCan(Garbage.Type.Glass, maxCapacity);
     }
 

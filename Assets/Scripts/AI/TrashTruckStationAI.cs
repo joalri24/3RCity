@@ -15,6 +15,9 @@ public class TrashTruckStationAI : MonoBehaviour {
 
     public void BeginOperations()
     {
+        if (enabled)
+            return;  // Don't do anything if already enabled.
+
         PlaceTrucks();
         enabled = true;
     }

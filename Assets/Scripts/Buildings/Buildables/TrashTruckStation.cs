@@ -72,21 +72,34 @@ public class TrashTruckStation : Buildable {
         transform.Find("Model").gameObject.layer = Buildings.Layer;
          
         if (collectedGarbageType == Garbage.Type.Ordinary) { //if it's an ordinary station
-          //  BeginOperations(); //spawn trucks and stuff as soon as placed
+            BeginOperations(); //spawn trucks and stuff as soon as placed
         }
         //if it's a paper station, it'll probably be a treatment center too, so...
-        else if (collectedGarbageType == Garbage.Type.Paper) {
+        else if (collectedGarbageType == Garbage.Type.Paper)
+        {
             //trucks of this station also deposit trash at the station, so do something like ...
             CurrentTrashTreatmentCenter = GetComponent<PaperRecyclingCenter>();
-            //also do something like only spawning trucks if there's a campaign active
+            CityController.Current.paperCenters.Add(this); //add this center to the controller's list.
+            //spaw trucks if there's a campaign active
+            if (CityController.Current.PaperCampaignBought)
+                BeginOperations();
+            
         }
-        else if (collectedGarbageType == Garbage.Type.Glass) {
+        else if (collectedGarbageType == Garbage.Type.Glass)        {
             CurrentTrashTreatmentCenter = GetComponent<GlassRecyclingCenter>();
+            CityController.Current.glassCenters.Add(this); //add this center to the controller's list.
+            //spaw trucks if there's a campaign active
+            if (CityController.Current.GlassCampaignBought)
+                BeginOperations();
         }
         else if(collectedGarbageType == Garbage.Type.Metal) {
             CurrentTrashTreatmentCenter = GetComponent<MetalRecyclingCenter>();
+            CityController.Current.metalCenters.Add(this); //add this center to the controller's list.
+            //spaw trucks if there's a campaign active          
+            if (CityController.Current.MetalCampaignBought)
+                BeginOperations();        
         }
-        BeginOperations();
+
     }
 
     public void BeginOperations() {
