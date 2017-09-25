@@ -21,10 +21,10 @@ public class TrashTruckStationAI : MonoBehaviour {
 
     void PlaceTrucks()
     {
-        GameObject currentTruck = null;
+        GameObject currentTruck = Managers.PrefabManager.TrashTruckPrefabOfType(station.CollectedGarbageType);
         for (int i = 0; i < TrashTruckStation.TRUCK_CAPACITY; i++)
         {
-            currentTruck = Instantiate(Managers.PrefabManager.TrashTruckPrefab(), station.TrashTruckSpawn, Quaternion.identity);
+            currentTruck = Instantiate(currentTruck, station.TrashTruckSpawn, Quaternion.identity);
             station.AddTrashTruck(currentTruck.GetComponent<TrashTruck>());
         }
     }

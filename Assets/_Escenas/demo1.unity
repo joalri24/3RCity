@@ -6241,7 +6241,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &669581127
 Prefab:
@@ -8508,50 +8508,8 @@ Transform:
   - {fileID: 1061014505}
   - {fileID: 1444575139}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &803717356
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4168975775515438, guid: 59a2dfbc46159b14b89c21a8b9cd8c7f, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -170.82271
-      objectReference: {fileID: 0}
-    - target: {fileID: 4168975775515438, guid: 59a2dfbc46159b14b89c21a8b9cd8c7f, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 106.99244
-      objectReference: {fileID: 0}
-    - target: {fileID: 4168975775515438, guid: 59a2dfbc46159b14b89c21a8b9cd8c7f, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 463.13858
-      objectReference: {fileID: 0}
-    - target: {fileID: 4168975775515438, guid: 59a2dfbc46159b14b89c21a8b9cd8c7f, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4168975775515438, guid: 59a2dfbc46159b14b89c21a8b9cd8c7f, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4168975775515438, guid: 59a2dfbc46159b14b89c21a8b9cd8c7f, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4168975775515438, guid: 59a2dfbc46159b14b89c21a8b9cd8c7f, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4168975775515438, guid: 59a2dfbc46159b14b89c21a8b9cd8c7f, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 59a2dfbc46159b14b89c21a8b9cd8c7f, type: 2}
-  m_IsPrefabParent: 0
 --- !u!4 &818358958 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4811188780276820, guid: 5c92c42cde9da8542a566be404a66347,
@@ -12163,7 +12121,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1155170458
 Prefab:
@@ -12889,7 +12847,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1201809824
 Prefab:
@@ -16300,7 +16258,7 @@ RectTransform:
   - {fileID: 287018070}
   - {fileID: 2060573173}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -16434,7 +16392,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1626684965
 GameObject:
@@ -16949,7 +16907,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1703820446
 Prefab:
@@ -17388,7 +17346,7 @@ Transform:
   - {fileID: 1468755024}
   - {fileID: 309674185}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1726900662 stripped
 Transform:
@@ -17877,7 +17835,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1819114085
 Prefab:
@@ -18962,6 +18920,12 @@ MonoBehaviour:
   metalRecyclingCenterPrefab: {fileID: 1225243728837770, guid: aeeea54e54da96b42bff24dd7bbb1e8f,
     type: 2}
   regularTrashTruck: {fileID: 1076057897995980, guid: 24db11f7e1d24d14fa86b28584409c10,
+    type: 2}
+  paperTrashTruck: {fileID: 1903302226638122, guid: 9d78a060981db734283e6db8c4d35c19,
+    type: 2}
+  glassTrashTruck: {fileID: 1201110487289004, guid: 380ff51d4d0bc164db745bfd416399f1,
+    type: 2}
+  metalTrashTruck: {fileID: 1192607126037734, guid: d0a14eba2711f4d48b19c7d84e1ecfe3,
     type: 2}
 --- !u!1 &1901959201
 GameObject:

@@ -16,18 +16,19 @@ public class PrefabManager : MonoBehaviour {
     [SerializeField]
     private GameObject metalRecyclingCenterPrefab;
 
-    //[SerializeField]
-    //GameObject landfillPrefab;
-
-    //[Header("Trash")]
-
-    //[SerializeField]
-    //GameObject trash;
-
     [Header("Trucks")]
 
     [SerializeField]
-    GameObject regularTrashTruck;
+    private GameObject regularTrashTruck;
+
+    [SerializeField]
+    private GameObject paperTrashTruck;
+
+    [SerializeField]
+    private GameObject glassTrashTruck;
+
+    [SerializeField]
+    private GameObject metalTrashTruck;
 
     public GameObject MapBuildingToPrefab(Buildings.Type building)
     {
@@ -47,8 +48,18 @@ public class PrefabManager : MonoBehaviour {
         return answer;
     }
 
-    public GameObject TrashTruckPrefab()
+    public GameObject TrashTruckPrefabOfType(Garbage.Type trashTruckType)
     {
-        return regularTrashTruck;
+        GameObject answer = regularTrashTruck;
+        if (trashTruckType == Garbage.Type.Paper) {
+            answer = paperTrashTruck;
+        }
+        else if (trashTruckType == Garbage.Type.Glass) {
+            answer = glassTrashTruck;
+        }
+        else if (trashTruckType == Garbage.Type.Metal) {
+            answer = metalTrashTruck;
+        }
+        return answer;
     }
 }

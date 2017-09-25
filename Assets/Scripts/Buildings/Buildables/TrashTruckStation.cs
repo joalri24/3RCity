@@ -29,10 +29,11 @@ public class TrashTruckStation : Buildable {
     public TrashTreatmentCenter CurrentTrashTreatmentCenter
     {
         get { return currentTreatmentCenter; }
-        set {
-            currentTreatmentCenter = value;
-            //EstadoJuego.InstanciaEstadoJuego.EnvironmentalImpact += TrashTreatmentCenter.EnvironmentalImpact;
-        }
+        set { currentTreatmentCenter = value; }
+    }
+
+    public Garbage.Type CollectedGarbageType {
+        get { return collectedGarbageType; }
     }
 
     public void AddTrashTruck(TrashTruck truck)
@@ -71,18 +72,21 @@ public class TrashTruckStation : Buildable {
         transform.Find("Model").gameObject.layer = Buildings.Layer;
          
         if (collectedGarbageType == Garbage.Type.Ordinary) { //if it's an ordinary station
-            BeginOperations(); //spawn trucks and stuff as soon as placed
+          //  BeginOperations(); //spawn trucks and stuff as soon as placed
         }
         //if it's a paper station, it'll probably be a treatment center too, so...
-        else if (collectedGarbageType == Garbage.Type.Paper) { 
-            //do something like only spawning trucks if there's a campaign active
+        else if (collectedGarbageType == Garbage.Type.Paper) {
+            //trucks of this station also deposit trash at the station, so do something like ...
+            CurrentTrashTreatmentCenter = GetComponent<PaperRecyclingCenter>();
+            //also do something like only spawning trucks if there's a campaign active
         }
         else if (collectedGarbageType == Garbage.Type.Glass) {
-
+            CurrentTrashTreatmentCenter = GetComponent<GlassRecyclingCenter>();
         }
         else if(collectedGarbageType == Garbage.Type.Metal) {
-
+            CurrentTrashTreatmentCenter = GetComponent<MetalRecyclingCenter>();
         }
+        BeginOperations();
     }
 
     public void BeginOperations() {
