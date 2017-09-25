@@ -1,19 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
-public class Landfill : TrashDeposit
+public class Landfill : TrashTreatmentCenter
 {
     // --------------------------------------------------------
     // Attributes
     // --------------------------------------------------------
-
-    /// <summary>
-    /// Maximun capacity of the landfill.
-    /// </summary>
-    [Tooltip("Maximun capacity of the landfill.")]
-    public int capacity;
 
     /// <summary>
     /// Reference to the controller of the scene.
@@ -36,11 +29,6 @@ public class Landfill : TrashDeposit
         base.Start();
     }
 
-    public override void TreatGarbage()
-    {
-        // Do something if the landfill is full.
-    }
-
     /// <summary>
     /// Executed when the mouse enters the collider.
     /// Activates the Panel that displays the house's data.
@@ -48,10 +36,10 @@ public class Landfill : TrashDeposit
     private void OnMouseEnter()
     {
         infoDisplay.DisplayPanel(
-            displayOrdinary: true, ordinaryAmount: Garbage.ordinary, ordinaryCapacityP: capacity,
-            displayGlass: true, glassAmount: Garbage.glass, glassCapacityP: 0,
-            displayMetal: true, metalAmount: Garbage.metal, metalCapacityP: 0,
-            displayPaper: true, paperAmount: Garbage.paper, paperCapacityP: 0);
+            displayOrdinary: true, ordinaryAmount: trashDeposit.CurrentAmount, ordinaryCapacityP: maxCapacity,
+            displayGlass: false, glassAmount: 0, glassCapacityP: 0,
+            displayMetal: false, metalAmount: 0, metalCapacityP: 0,
+            displayPaper: false, paperAmount: 0, paperCapacityP: 0);
     }
 
     /// <summary>
@@ -61,10 +49,10 @@ public class Landfill : TrashDeposit
     private void OnMouseOver()
     {
         infoDisplay.UpdateValues(
-            ordinaryAmount: Garbage.ordinary,
-            glassAmount: Garbage.glass,
-            metalAmount: Garbage.metal,
-            paperAmount: Garbage.paper);
+            ordinaryAmount: trashDeposit.CurrentAmount,
+            glassAmount: 0,
+            metalAmount: 0,
+            paperAmount: 0);
     }
 
     /// <summary>
@@ -76,7 +64,7 @@ public class Landfill : TrashDeposit
         infoDisplay.gameObject.SetActive(false);
     }
 
-
-
-
+    public override void TreatGarbage() {
+        //landfill doesn't treat garbage
+    }
 }

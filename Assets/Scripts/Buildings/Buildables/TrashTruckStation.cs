@@ -11,29 +11,29 @@ public class TrashTruckStation : Buildable {
 
     List<TrashTruck> trashTrucks;
 
-    TrashDeposit trashDeposit;
+    TrashTreatmentCenter currentTreatmentCenter;
     int trashCollected = 0;
     int numberOfTrucks = 0;
 
 	void Start () {
-        TrashDeposit = GameObject.FindGameObjectWithTag("Controller").GetComponent<CityController>().defaultTrashDeposit;
+        currentTreatmentCenter = GameObject.FindGameObjectWithTag("Controller").GetComponent<CityController>().defaultTrashTreatmentCenter;
         trashTrucks = new List<TrashTruck>(TRUCK_CAPACITY);
         buildingRenderer = transform.Find("Model").gameObject.GetComponent<Renderer>();
         originalColor = buildingRenderer.material.color;
     }
 
-    public TrashDeposit TrashDeposit
+    public TrashTreatmentCenter CurrentTrashTreatmentCenter
     {
-        get { return trashDeposit; }
+        get { return currentTreatmentCenter; }
         set {
-            trashDeposit = value;
-            //EstadoJuego.InstanciaEstadoJuego.EnvironmentalImpact += trashDeposit.EnvironmentalImpact;
+            currentTreatmentCenter = value;
+            //EstadoJuego.InstanciaEstadoJuego.EnvironmentalImpact += TrashTreatmentCenter.EnvironmentalImpact;
         }
     }
 
     public void AddTrashTruck(TrashTruck truck)
     {
-        truck.AssignedTrashDeposit = trashDeposit;
+        truck.AssignedTrashTreatmentCenter = currentTreatmentCenter;
         trashTrucks.Add(truck);
     }
 

@@ -12,7 +12,7 @@ public class CityController : MonoBehaviour
     // Attributes and properties
     // -----------------------------------------------------------
 
-    public TrashDeposit defaultTrashDeposit;
+    public TrashTreatmentCenter defaultTrashTreatmentCenter;
 
     /// <summary>
     /// The duration in game days of the current match.

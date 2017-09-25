@@ -110,7 +110,7 @@ public class CityLoader : MonoBehaviour
                             matrizCiudad[i + 1][j] = "U";
                             matrizCiudad[i + 1][j + 1] = "U";
                             matrizCiudad[i][j + 1] = "U";
-                            controller.defaultTrashDeposit = instance.GetComponent<TrashDeposit>();
+                            controller.defaultTrashTreatmentCenter = instance.GetComponent<TrashTreatmentCenter>();
                         }
                     }
                 }

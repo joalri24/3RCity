@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 195661990700079920}
   - component: {fileID: 114455007327364544}
   m_Layer: 0
-  m_Name: CamionVidriof
+  m_Name: TruckGlass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1877,8 +1877,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a51ccf72d6ea21246ade1c00d595e501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posIni: {x: 0, y: 0, z: 0}
+  agent: {fileID: 0}
   numBasuras: 0
   estadoRecogedor: 0
+  basuraRecoger: {fileID: 0}
 --- !u!195 &195661990700079920
 NavMeshAgent:
   m_ObjectHideFlags: 1

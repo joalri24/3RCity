@@ -57,7 +57,7 @@ public class TrashTruckAI : MonoBehaviour {
 
     private void TransitionToDepositState()
     {
-        navMeshAgent.SetDestination(trashTruck.AssignedTrashDeposit.TruckStop.position);
+        navMeshAgent.SetDestination(trashTruck.AssignedTrashTreatmentCenter.TruckStop.position);
         currentState = State.GoingToDeposit;
     }
 
@@ -118,13 +118,13 @@ public class TrashTruckAI : MonoBehaviour {
 
     private void DepositTrash()
     {
-        trashTruck.AssignedTrashDeposit.ReceiveGarbage(trashTruck.Garbage);
+        trashTruck.AssignedTrashTreatmentCenter.ReceiveGarbage(trashTruck.CollectedTrash);
         trashTruck.CollectedTrash = 0;
         trashTruck.Garbage = new Garbage();
     }
 
     private bool HasArrivedToDestination()
     {
-        return navMeshAgent.hasPath && navMeshAgent.remainingDistance < 1f;
+        return !navMeshAgent.pathPending && navMeshAgent.hasPath && navMeshAgent.remainingDistance < 1f;
     }
 }

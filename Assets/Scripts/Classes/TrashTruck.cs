@@ -18,7 +18,7 @@ public class TrashTruck : MonoBehaviour
     int collectedTrash = 0;
 
     House trashCollectTarget;
-    TrashDeposit assignedTrashDeposit;
+    TrashTreatmentCenter assignedTrashTreatmentCenter;
 
     /// <summary>
     /// The current garbage. used to know the amount of each type of thrash.
@@ -53,10 +53,10 @@ public class TrashTruck : MonoBehaviour
         set { trashCollectTarget = value; }
     }
 
-    public TrashDeposit AssignedTrashDeposit
+    public TrashTreatmentCenter AssignedTrashTreatmentCenter
     {
-        get { return assignedTrashDeposit; }
-        set { assignedTrashDeposit = value; }
+        get { return assignedTrashTreatmentCenter; }
+        set { assignedTrashTreatmentCenter = value; }
     }
 
     public int TrashCapacity

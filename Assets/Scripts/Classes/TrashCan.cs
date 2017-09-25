@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// 
+/// </summary>
 public class TrashCan {
 
     Garbage.Type type;
@@ -32,7 +35,7 @@ public class TrashCan {
     /// Withraws trash from the trash can. If there was trash in the streets when picking up,
     /// reduces trash in the streets
     /// </summary>
-    /// <param name="pickupAmount"></param>
+    /// <param name="pickupAmount">Amount of trash to withraw</param>
     public void PickupTrash(int pickupAmount) {
         if (amountInStreets > 0) {
             CityController.Current.TrashInStreets -= Mathf.Min(pickupAmount, amountInStreets);
@@ -41,6 +44,10 @@ public class TrashCan {
         currentAmount -= pickupAmount;
     }
 
+    /// <summary>
+    /// Deposits trash in the trash can. If the trash can is over its max capacity, 
+    /// </summary>
+    /// <param name="depositAmount">Amount of trash to deposit</param>
     public void DepositTrash(int depositAmount) {
         if (currentAmount > capacity) {
             amountInStreets += depositAmount;
