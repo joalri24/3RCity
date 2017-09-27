@@ -247,15 +247,6 @@ public class CityController : MonoBehaviour
         }
 	}
 
-    /*public House NextHouseToCollect() {
-        nextHouseToVisitIndex++;
-        if (nextHouseToVisitIndex >= houses.Count) {
-            nextHouseToVisitIndex = 0;
-        }
-        Debug.Log("Next House: " + nextHouseToVisitIndex);
-        return houses[nextHouseToVisitIndex];
-    }*/
-
     /// <summary>
     /// This method works as four different independent Round Robins, one for each garbage type.
     /// </summary>

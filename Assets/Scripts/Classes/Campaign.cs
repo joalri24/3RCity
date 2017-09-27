@@ -48,16 +48,16 @@ public class Campaign : MonoBehaviour
     [Tooltip("Short description that's going to be displayed on the UI.")]
     public string description;
 
-    // TODO: Remove! this was for debbuging only!
-    public void Update()
-    {
-        // Pause the game when the key is pressed.
-        if (Input.GetKeyDown("a"))
-        {
-            CityController c = GameObject.FindGameObjectWithTag("Controller").GetComponent<CityController>();
-            c.ApplyCampaign(this);
-        }
-    }
+    /// <summary>
+    /// Camapign Logo
+    /// </summary>
+    [Tooltip("Short description that's going to be displayed on the UI.")]
+    public Sprite logo;
+
+
+
+
+
 
 
 }

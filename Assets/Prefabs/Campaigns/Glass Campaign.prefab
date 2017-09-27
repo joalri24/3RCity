@@ -57,3 +57,4 @@ MonoBehaviour:
   description: "El vidrio es un desecho altamente reciclable. Esta campa\xF1a le ense\xF1a
     a los ciudadanos a tratar el vidrio de forma segura y a depositarlo en una caneca
     aparte."
+  logo: {fileID: 21300000, guid: 93dac3e47aab4fa43a927d23301c8336, type: 3}

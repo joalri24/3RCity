@@ -56,3 +56,4 @@ MonoBehaviour:
   campaignName: Reciclar papel
   description: "Los ciudadanos aprenden a separar el papel y el cart\xF3n de los residuos
     ordinarios y los depositan en una caneca separada."
+  logo: {fileID: 21300000, guid: 1f30c5287dd869a41af782eaac65ff3f, type: 3}
