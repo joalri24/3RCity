@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 /// <summary>
 /// Script for a single house. A house generates garbage over time.
@@ -299,7 +300,9 @@ public class House : MonoBehaviour
     public void GenerateGarbage()
     {
         int amount = 0;
-
+        int paperRec = 0;
+        int glassRec = 0;
+        int metalRec = 0;
         // Ordinary garbage
         amount = Random.Range(ordinaryMinimunGeneration, ordinaryMaximunGeneration);
         ordinaryTrashCan.DepositTrash(amount);
@@ -308,12 +311,13 @@ public class House : MonoBehaviour
 		bagPosition.x += -0.166f; 
 		bagPosition.z += -0.7481f;
 		GameObject instance = Instantiate(ordinaryTrashBag, bagPosition, Quaternion.identity, transform);
-
+     
         // Paper  
         amount = Random.Range(paperMinimunGeneration, paperMaximunGeneration);
         if (IsRecyclingPaper)
         {
             paperTrashCan.DepositTrash(amount);
+            paperRec = amount;
             // Instantiate paper bag
         } else {
             ordinaryTrashCan.DepositTrash(amount);
@@ -324,6 +328,7 @@ public class House : MonoBehaviour
         if (IsRecyclingGlass)
         {
             glassTrashCan.DepositTrash(amount);
+            glassRec = amount;
             // Instanciate paper bag
         } else {
             ordinaryTrashCan.DepositTrash(amount);
@@ -335,10 +340,19 @@ public class House : MonoBehaviour
         if (IsRecyclingMetal)
         {
             metalTrashCan.DepositTrash(amount);
+            metalRec = amount;
             // Instanciate paper bag
         } else {
             ordinaryTrashCan.DepositTrash(amount);
         }
+        Analytics.CustomEvent("basuraCE", new Dictionary<string, object>
+        {
+            { "TrashBags", amount },
+            { "Paper", paperRec },
+            { "Metal", metalRec },
+            { "Glass", glassRec },
+            { "Ordinary", 0 }
+        });
     }
 
     /// <summary>
