@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 /// <summary>
 /// Scene controllers. It knows the city' status and what building currently exists on it.
@@ -227,6 +228,12 @@ public class CityController : MonoBehaviour
             Paused = true;
             Debug.Log("Time's up!");
         }
+        Analytics.CustomEvent("builtCampaing", new Dictionary<string, object>
+        {
+            { "paperCamp", PaperCampaignBought },
+            { "metalCamp", MetalCampaignBought },
+            { "glassCamp", GlassCampaignBought }
+        });
     }
 
 	void Update ()
