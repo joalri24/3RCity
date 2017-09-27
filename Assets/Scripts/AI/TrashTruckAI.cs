@@ -90,7 +90,7 @@ public class TrashTruckAI : MonoBehaviour {
             CollectGlassFrom(house, amountToCollect);
         }
         else if (trashTruck.CollectedGabargeType == Garbage.Type.Metal) {
-            amountToCollect = Mathf.Min(house.GlassTrashCan.CurrentAmount, availableCapacity);
+            amountToCollect = Mathf.Min(house.MetalTrashCan.CurrentAmount, availableCapacity);
             CollectMetalFrom(house, amountToCollect);
         }
         trashTruck.CollectedTrash += amountToCollect;
