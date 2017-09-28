@@ -2,6 +2,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Analytics;
+using UnityEditor.AI;
 
 /// <summary>
 /// Scene controllers. It knows the city' status and what building currently exists on it.
@@ -108,17 +109,24 @@ public class CityController : MonoBehaviour
         get {return  paused; }
         set
         {
+            // If the paused state does not change.
+            if (paused == value) 
+                return;
+
             paused = value;
+            TrashTruckAI[] trucks = (TrashTruckAI[]) FindObjectsOfType(typeof(TrashTruckAI));
             if (paused)
             {
-                // TODO:
                 Debug.Log("Paused");
+                foreach (var truck in trucks)
+                    truck.Pause();               
             }
             else
             {
                 Debug.Log("Unpaused");
-            }
-            
+                foreach (var truck in trucks)
+                    truck.Resume();
+            }           
         }
     }
 
@@ -348,4 +356,5 @@ public class CityController : MonoBehaviour
             return currentController;
         }
     }
+
 }

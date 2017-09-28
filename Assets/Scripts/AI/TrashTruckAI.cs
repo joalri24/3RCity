@@ -16,12 +16,17 @@ public class TrashTruckAI : MonoBehaviour {
     NavMeshAgent navMeshAgent;
     TrashTruck trashTruck;
     GameObject destination;
+    Vector3 lastVelocity;
+    NavMeshPath lastPath;
+    
 
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         trashTruck = GetComponent<TrashTruck>();
         TransitionToCollectState();
+        lastVelocity = Vector3.zero;
+        lastPath = null;
     }
 
     void Update()
@@ -126,5 +131,20 @@ public class TrashTruckAI : MonoBehaviour {
     private bool HasArrivedToDestination()
     {
         return !navMeshAgent.pathPending && navMeshAgent.hasPath && navMeshAgent.remainingDistance < 1f;
+    }
+
+    public void Pause()
+    {
+        lastVelocity = navMeshAgent.velocity;
+        lastPath = navMeshAgent.path;
+        navMeshAgent.velocity = Vector3.zero;
+        navMeshAgent.ResetPath();
+
+    }
+
+    public void Resume()
+    {
+        navMeshAgent.velocity = lastVelocity;
+        navMeshAgent.SetPath(lastPath);
     }
 }
