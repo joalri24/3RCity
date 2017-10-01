@@ -144,7 +144,11 @@ public class TrashTruckAI : MonoBehaviour {
 
     public void Resume()
     {
-        navMeshAgent.velocity = lastVelocity;
-        navMeshAgent.SetPath(lastPath);
+        if(lastVelocity != Vector3.zero)
+        {
+            navMeshAgent.velocity = lastVelocity;
+            navMeshAgent.SetPath(lastPath);
+        }
+
     }
 }

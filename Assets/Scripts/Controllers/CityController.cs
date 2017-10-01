@@ -206,6 +206,7 @@ public class CityController : MonoBehaviour
         }
     }
 
+    private NoticePanel noticePanel;
 
 
     // -----------------------------------------------------------
@@ -223,6 +224,8 @@ public class CityController : MonoBehaviour
         PaperCampaignBought = false;
         MetalCampaignBought = false;
         GlassCampaignBought = false;
+        noticePanel = GameObject.FindGameObjectWithTag("Notice").GetComponent<NoticePanel>();
+        noticePanel.gameObject.SetActive(false);
     }
 
     public void RegisterMoneyChangedListener(IMoneyChangedListener listener) {
@@ -388,10 +391,13 @@ public class CityController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Pays some money to the player and displays a notice.
+    /// </summary>
     public void PaymentToPlayer()
     {
         CurrentMoney += basePayment;
-        Debug.Log("+$" + basePayment + " from the Hall Town");
+        noticePanel.DisplayNotice("Has recibido $" + basePayment + " de la alcaldía");
     }
 
 }

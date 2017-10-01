@@ -24,6 +24,7 @@ TagManager:
   - PrefabManager
   - HouseInfo
   - LevelState
+  - Notice
   layers:
   - Default
   - TransparentFX
