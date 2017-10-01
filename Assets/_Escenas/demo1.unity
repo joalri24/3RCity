@@ -15284,6 +15284,21 @@ Prefab:
       propertyPath: landfillInfoPanel
       value: 
       objectReference: {fileID: 1505139233}
+    - target: {fileID: 114297103738770668, guid: 20d9e22f71aa5504b92d594210f0b158,
+        type: 2}
+      propertyPath: paymentFrequency
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114297103738770668, guid: 20d9e22f71aa5504b92d594210f0b158,
+        type: 2}
+      propertyPath: basePayment
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 114297103738770668, guid: 20d9e22f71aa5504b92d594210f0b158,
+        type: 2}
+      propertyPath: dayDuration
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 20d9e22f71aa5504b92d594210f0b158, type: 2}
   m_IsPrefabParent: 0

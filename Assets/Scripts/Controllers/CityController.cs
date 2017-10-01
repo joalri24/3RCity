@@ -25,6 +25,20 @@ public class CityController : MonoBehaviour
     public int matchLength;
 
     /// <summary>
+    /// Number of days between payments to the player.
+    /// </summary>
+    [Tooltip("Number of days between payments to the player")]
+    [Range(1, 1000)]
+    public int paymentFrequency;
+
+    /// <summary>
+    /// The base amount of money given to the player on each payment.
+    /// </summary>
+    [Tooltip("The base amount of money given to the player on each payment.")]
+    [Range(0, 1000)]
+    public int basePayment;
+
+    /// <summary>
     /// The duration in real life seconds of a day in the game.
     /// </summary>
     [Tooltip("The duration in real life seconds of a day in the game")]
@@ -74,6 +88,11 @@ public class CityController : MonoBehaviour
     /// Timer to know when to advance to the next day.
     /// </summary>
     private float timer;
+
+    /// <summary>
+    /// Counts the days since the last payment.
+    /// </summary>
+    private int paymentTimer;
 
     /// <summary>
     /// Flag to know if the game is paused or not.
@@ -187,6 +206,8 @@ public class CityController : MonoBehaviour
         }
     }
 
+
+
     // -----------------------------------------------------------
     // Methods
     // -----------------------------------------------------------
@@ -198,6 +219,7 @@ public class CityController : MonoBehaviour
     {
         currentDay = 0;
         timer = 0f;
+        paymentTimer = 0;
         PaperCampaignBought = false;
         MetalCampaignBought = false;
         GlassCampaignBought = false;
@@ -223,6 +245,7 @@ public class CityController : MonoBehaviour
     private void AdvanceDay()
     {
         currentDay++;
+        paymentTimer++;
 
         // Generate garbage in all houses
         foreach (var house in houses)
@@ -236,6 +259,14 @@ public class CityController : MonoBehaviour
             Paused = true;
             Debug.Log("Time's up!");
         }
+
+        // Pay the player if enough days have passed.
+        if(paymentTimer >= paymentFrequency)
+        {
+            paymentTimer = 0;
+            PaymentToPlayer();
+        }
+
         Analytics.CustomEvent("builtCampaing", new Dictionary<string, object>
         {
             { "paperCamp", PaperCampaignBought },
@@ -355,6 +386,12 @@ public class CityController : MonoBehaviour
             }
             return currentController;
         }
+    }
+
+    public void PaymentToPlayer()
+    {
+        CurrentMoney += basePayment;
+        Debug.Log("+$" + basePayment + " from the Hall Town");
     }
 
 }
