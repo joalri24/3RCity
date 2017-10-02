@@ -311,13 +311,20 @@ public class House : MonoBehaviour
 		bagPosition.x += -0.166f; 
 		bagPosition.z += -0.7481f;
 		GameObject instance = Instantiate(ordinaryTrashBag, bagPosition, Quaternion.identity, transform);
-     
+
         // Paper  
         amount = Random.Range(paperMinimunGeneration, paperMaximunGeneration);
         if (IsRecyclingPaper)
         {
             paperTrashCan.DepositTrash(amount);
             paperRec = amount;
+
+            ordinaryTrashCan.DepositTrash(amount);
+            Vector3 bagPositionPaper = PaperCanObject.transform.position;
+            bagPositionPaper.y += 1f;
+            bagPositionPaper.x += -0.166f;
+            bagPositionPaper.z += -0.551f;
+            GameObject instancePaperB = Instantiate(ordinaryTrashBag, bagPositionPaper, Quaternion.identity, transform);
             // Instantiate paper bag
         } else {
             ordinaryTrashCan.DepositTrash(amount);
@@ -329,6 +336,13 @@ public class House : MonoBehaviour
         {
             glassTrashCan.DepositTrash(amount);
             glassRec = amount;
+
+            ordinaryTrashCan.DepositTrash(amount);
+            Vector3 bagPositionGlass = PaperCanObject.transform.position;
+            bagPositionGlass.y += 1f;
+            bagPositionGlass.x += -0.066f;
+            bagPositionGlass.z += 0.475f; 
+            GameObject instanceGlassB = Instantiate(ordinaryTrashBag, bagPositionGlass, Quaternion.identity, transform);
             // Instanciate paper bag
         } else {
             ordinaryTrashCan.DepositTrash(amount);
@@ -341,8 +355,16 @@ public class House : MonoBehaviour
         {
             metalTrashCan.DepositTrash(amount);
             metalRec = amount;
+
+            ordinaryTrashCan.DepositTrash(amount);
+            Vector3 bagPositionMetal = MetalCanObject.transform.position;
+            bagPositionMetal.y += 1f;
+            bagPositionMetal.x += -0.166f;
+            bagPositionMetal.z += -0.7481f;
+            GameObject instanceMetalB = Instantiate(ordinaryTrashBag, bagPositionMetal, Quaternion.identity, transform);
             // Instanciate paper bag
-        } else {
+        }
+        else {
             ordinaryTrashCan.DepositTrash(amount);
         }
         Analytics.CustomEvent("basuraCE", new Dictionary<string, object>
