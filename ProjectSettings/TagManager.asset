@@ -25,6 +25,7 @@ TagManager:
   - HouseInfo
   - LevelState
   - Notice
+  - UIController
   layers:
   - Default
   - TransparentFX

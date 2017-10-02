@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class NoticePanel : MonoBehaviour
 {
-
     /// <summary>
     /// UI Text elemts that have the message that's going to be displayed.
     /// </summary>
@@ -20,7 +19,7 @@ public class NoticePanel : MonoBehaviour
 
     private void Start()
     {
-        messageText = gameObject.GetComponentInChildren<Text>();
+        messageText = GetComponentInChildren<Text>();
     }
 
     public void DisplayNotice(string noticeText = "")

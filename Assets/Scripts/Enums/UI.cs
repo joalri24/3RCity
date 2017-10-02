@@ -6,7 +6,7 @@ public class UI : MonoBehaviour {
 
 	public enum State
     {
-        Normal,
-        Construction,
+        Default,
+        BuildingPreview
     }
 }

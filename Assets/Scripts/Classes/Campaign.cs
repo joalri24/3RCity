@@ -19,7 +19,6 @@ public class Campaign : MonoBehaviour
         Metal
     }
 
-
     // --------------------------------------------------------
     // Attributes
     // --------------------------------------------------------
@@ -53,11 +52,4 @@ public class Campaign : MonoBehaviour
     /// </summary>
     [Tooltip("Short description that's going to be displayed on the UI.")]
     public Sprite logo;
-
-
-
-
-
-
-
 }

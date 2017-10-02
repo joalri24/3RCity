@@ -18,6 +18,10 @@ public class BuildingPlacement : MonoBehaviour {
 
 	public void PreviewBuilding(Buildings.Type buildingType)
     {
+        if (UIController.Current.State == UI.State.BuildingPreview) {
+            buildingPreview.CancelPreview();
+        }
+        UIController.Current.State = UI.State.BuildingPreview;
         buildingPreview.StartBuildingPreview(buildingType);
     }
 

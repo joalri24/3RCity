@@ -34,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1776938029762782}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -66.6843, y: 37.044243, z: 103.71009}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camapaignType: 2
-  cost: 0
+  cost: 195
   campaignName: Reciclar Metal
   description: "El m\xE9tal es un tipo de rock pesado que se origin\xF3 a mediados
     de los a\xF1os 70, teniendo su apogeo en los 80. Cuando se recicla m\xE9tal de

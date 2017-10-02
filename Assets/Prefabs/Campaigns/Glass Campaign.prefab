@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camapaignType: 1
-  cost: 0
+  cost: 93
   campaignName: Reciclar vidrio
   description: "El vidrio es un desecho altamente reciclable. Esta campa\xF1a le ense\xF1a
     a los ciudadanos a tratar el vidrio de forma segura y a depositarlo en una caneca

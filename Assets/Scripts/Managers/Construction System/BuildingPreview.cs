@@ -83,6 +83,7 @@ public class BuildingPreview : MonoBehaviour {
 
     public void StopPreview()
     {
+        previewingBuilding = null;
         enabled = false;
     }
 
@@ -92,9 +93,12 @@ public class BuildingPreview : MonoBehaviour {
             && Input.mousePosition.x <= Screen.width && Input.mousePosition.y <= Screen.height;
     }
 
-    void CancelPreview()
+    public void CancelPreview()
     {
-        Destroy(previewingBuilding);
+        if (previewingBuilding != null) {
+            Destroy(previewingBuilding);
+            previewingBuilding = null;
+        }
         StopPreview();
     }
 }

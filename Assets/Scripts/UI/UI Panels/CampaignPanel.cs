@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CampaignPanel : MonoBehaviour
+public class CampaignPanel : MonoBehaviour, IMoneyChangedListener
 {
 
     // ----------------------------------------------------------
@@ -19,13 +18,13 @@ public class CampaignPanel : MonoBehaviour
 
     private Button buyButton;
 
-
     // ----------------------------------------------------------
     // Methods
     // ----------------------------------------------------------
 
     private void Start()
     {
+        CityController.Current.RegisterMoneyChangedListener(this);
         buyButton = GetComponentInChildren<Button>();
         campaignTitle.text = campaign.campaignName;
         campaignImage.sprite = campaign.logo;
@@ -35,9 +34,17 @@ public class CampaignPanel : MonoBehaviour
     public void BuyCampaign()
     {
         CityController.Current.ApplyCampaign(campaign);
+        CityController.Current.RemoveMoneyChangedListener(this);
         buyButton.enabled = false;
         campaignImage.sprite = soldOutImage;
-        
     }
 
+    public void onMoneyChanged() {
+        Debug.Log("CampaignPanel.onMoneyChanged()");
+        if (CityController.Current.CurrentMoney >= campaign.cost) {
+            buyButton.interactable = true;
+        } else {
+            buyButton.interactable = false;
+        }
+    }
 }

@@ -183,6 +183,8 @@ public class CityController : MonoBehaviour
 
     private List<IMoneyChangedListener> moneyChangedListeners;
 
+    private List<IDayAdvancedListener> dayAdvancedListeners;
+
     private static CityController currentController;
 
     /// <summary>
@@ -204,6 +206,10 @@ public class CityController : MonoBehaviour
                 listener.onMoneyChanged();
             }
         }
+    }
+
+    public int CurrentDay {
+        get { return currentDay; }
     }
 
     private NoticePanel noticePanel;
@@ -235,11 +241,25 @@ public class CityController : MonoBehaviour
         moneyChangedListeners.Add(listener);
     }
 
+    public void RemoveMoneyChangedListener(IMoneyChangedListener listener) {
+        if (moneyChangedListeners == null) {
+            return;
+        }
+        moneyChangedListeners.Remove(listener);
+    }
+
     public void RegisterTrashInStreetsChangedListener(ITrashInStreetsChangedListener listener) {
         if (trashInStreetsChangedListeners == null) {
             trashInStreetsChangedListeners = new List<ITrashInStreetsChangedListener>();
         }
         trashInStreetsChangedListeners.Add(listener);
+    }
+
+    public void RegisterDayAdvancedListener(IDayAdvancedListener listener) {
+        if (dayAdvancedListeners == null) {
+            dayAdvancedListeners = new List<IDayAdvancedListener>();
+        }
+        dayAdvancedListeners.Add(listener);
     }
 
     /// <summary>
@@ -248,6 +268,9 @@ public class CityController : MonoBehaviour
     private void AdvanceDay()
     {
         currentDay++;
+        foreach (IDayAdvancedListener listener in dayAdvancedListeners) {
+            listener.onDayAdvanced();
+        }
         paymentTimer++;
 
         // Generate garbage in all houses

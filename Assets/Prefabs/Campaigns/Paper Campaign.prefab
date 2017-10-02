@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camapaignType: 0
-  cost: 0
+  cost: 195
   campaignName: Reciclar papel
   description: "Los ciudadanos aprenden a separar el papel y el cart\xF3n de los residuos
     ordinarios y los depositan en una caneca separada."

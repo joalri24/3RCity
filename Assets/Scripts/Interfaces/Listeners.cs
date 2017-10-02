@@ -5,3 +5,11 @@
 public interface ITrashInStreetsChangedListener {
     void onTrashInStreetsChanged();
 }
+
+public interface IUIStateChangedListener {
+    void onUIStateChanged();
+}
+
+public interface IDayAdvancedListener {
+    void onDayAdvanced();
+}
