@@ -8,6 +8,7 @@ public class NoticePanel : MonoBehaviour
     /// <summary>
     /// UI Text elemts that have the message that's going to be displayed.
     /// </summary>
+    [SerializeField]
     private Text messageText;
 
     /// <summary>
@@ -16,11 +17,6 @@ public class NoticePanel : MonoBehaviour
     [Range(1,10)]
     [Tooltip("Seconds that the notice is going to be displayed.")]
     public float noticeDuration;
-
-    private void Start()
-    {
-        messageText = GetComponentInChildren<Text>();
-    }
 
     public void DisplayNotice(string noticeText = "")
     {

@@ -268,6 +268,9 @@ public class CityController : MonoBehaviour
     private void AdvanceDay()
     {
         currentDay++;
+        if (dayAdvancedListeners == null) {
+            dayAdvancedListeners = new List<IDayAdvancedListener>();
+        }
         foreach (IDayAdvancedListener listener in dayAdvancedListeners) {
             listener.onDayAdvanced();
         }

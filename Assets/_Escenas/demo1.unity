@@ -8154,6 +8154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1fe0eb9b5659964ca2adb10a05f3b8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  messageText: {fileID: 948493110}
   noticeDuration: 4
 --- !u!4 &843620751 stripped
 Transform:
