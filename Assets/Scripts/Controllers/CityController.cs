@@ -164,6 +164,12 @@ public class CityController : MonoBehaviour
     public DisplayGarbagePanel houseInfoPanel;
 
     /// <summary>
+    /// Panel that displays Treatment Centers info
+    /// </summary>
+    [Tooltip("Panel that displays Treatment Centers info")]
+    public DisplayGarbagePanel centerInfoPanel;
+
+    /// <summary>
     /// Panel that displays the landfill's info
     /// </summary>
     [Tooltip("Panel that displays the landfill's info")]

@@ -74,6 +74,8 @@ public class TrashTruckStation : Buildable {
     /// Is executed when the truck station gets actually placed in the world after previewing
     /// </summary>
     public override void Place() {
+        showInfoPanel = true;
+        infoDisplay = CityController.Current.centerInfoPanel;
         ColorOriginal();
         transform.Find("Model").gameObject.layer = Buildings.Layer;
 
