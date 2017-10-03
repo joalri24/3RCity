@@ -107,6 +107,7 @@ public class CityController : MonoBehaviour
         get { return maxTrashInStreets; }
         set { maxTrashInStreets = value;}
     }
+
     public int TrashInStreets {
         get { return trashInStreets; }
         set {

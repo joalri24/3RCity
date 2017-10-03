@@ -5,7 +5,8 @@ using UnityEngine.EventSystems;
 public class DisplayTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
 
     public GameObject tooltip;
-    public bool followMouse;
+
+    private bool followMouse;
 
     void Start() {
         followMouse = tooltip.GetComponent<FollowMouse>() != null;

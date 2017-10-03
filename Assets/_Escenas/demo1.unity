@@ -1004,7 +1004,6 @@ GameObject:
   - component: {fileID: 105682924}
   - component: {fileID: 105682927}
   - component: {fileID: 105682926}
-  - component: {fileID: 105682925}
   m_Layer: 5
   m_Name: PanelCalendar
   m_TagString: Untagged
@@ -1033,20 +1032,6 @@ RectTransform:
   m_AnchoredPosition: {x: -20, y: -110.1}
   m_SizeDelta: {x: 58.900024, y: 23.600006}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &105682925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114737451603480406, guid: 22b6774e80b45754bb47a677c6ee9909,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 105682923}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cca8c15df86b0644966ce94e5cacbe0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tooltipText: Este recuadro te muestra cuanto dinero tienes en el momento
-  recuadroPorPivot: {fileID: 0}
 --- !u!114 &105682926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5578,13 +5563,14 @@ GameObject:
   m_Component:
   - component: {fileID: 634092803}
   - component: {fileID: 634092805}
+  - component: {fileID: 634092804}
   m_Layer: 5
   m_Name: TooltipHolder
   m_TagString: Tooltip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &634092803
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5605,6 +5591,17 @@ RectTransform:
   m_AnchoredPosition: {x: 14, y: 2}
   m_SizeDelta: {x: 190, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &634092804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 634092802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 237169ddcb5be834a9a0e9fb9631b2cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &634092805
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6988,7 +6985,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tooltip: {fileID: 2021429425}
-  followMouse: 0
 --- !u!82 &769435940
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12484,6 +12480,7 @@ GameObject:
   - component: {fileID: 1167865849}
   - component: {fileID: 1167865848}
   - component: {fileID: 1167865847}
+  - component: {fileID: 1167865846}
   m_Layer: 5
   m_Name: TooltipSubtitle
   m_TagString: Untagged
@@ -12510,6 +12507,17 @@ RectTransform:
   m_AnchoredPosition: {x: -72.000046, y: -9.000015}
   m_SizeDelta: {x: 30, y: 23.6}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1167865846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1167865844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e054c39a12b6a0f489ce433d47888d57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1167865847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14736,6 +14744,7 @@ GameObject:
   - component: {fileID: 1440116762}
   - component: {fileID: 1440116761}
   - component: {fileID: 1440116760}
+  - component: {fileID: 1440116763}
   m_Layer: 5
   m_Name: EnvImpactPanel
   m_TagString: Untagged
@@ -14814,6 +14823,18 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1440116758}
+--- !u!114 &1440116763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1440116758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef02d9b1d93db5e4094f5436f7ffff35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltip: {fileID: 2017789764}
 --- !u!1 &1444575138
 GameObject:
   m_ObjectHideFlags: 0
@@ -16851,7 +16872,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Environmental impact
+  m_Text: Basura en la calle
 --- !u!222 &1658245896
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18198,7 +18219,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tooltip: {fileID: 1438029706}
-  followMouse: 0
 --- !u!82 &1861100929
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20671,7 +20691,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2017789765
 RectTransform:
   m_ObjectHideFlags: 0
