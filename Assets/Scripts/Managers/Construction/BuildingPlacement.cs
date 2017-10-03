@@ -6,13 +6,34 @@ public class BuildingPlacement : MonoBehaviour {
 
     BuildingPreview buildingPreview;
 
+    List<IBuildingPlacedListener> buildingPlacedListeners;
+
     void Start()
     {
         buildingPreview = GetComponent<BuildingPreview>();
     }
 
+    public void RegisterBuildingPlacedListener(IBuildingPlacedListener listener) {
+        if (buildingPlacedListeners == null) {
+            buildingPlacedListeners = new List<IBuildingPlacedListener>();
+        }
+        buildingPlacedListeners.Add(listener);
+    }
+
+    public void RemoveBuildingPlacedListener(IBuildingPlacedListener listener) {
+        if (buildingPlacedListeners == null) {
+            return;
+        }
+        buildingPlacedListeners.Remove(listener);
+    }
+
     public void Place(Buildable buildable) {
         buildable.Place();
+        if (buildingPlacedListeners != null) {
+            foreach (IBuildingPlacedListener listener in buildingPlacedListeners) {
+                listener.onBuildingPlaced();
+            }
+        }
         CityController.Current.CurrentMoney -= buildable.Cost;
     }
 

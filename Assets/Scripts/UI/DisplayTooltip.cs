@@ -13,7 +13,6 @@ public class DisplayTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
-        Debug.Log("DisplayTooltip.OnPointerEnter");
         if (followMouse) {
             tooltip.transform.position = Input.mousePosition;
         }

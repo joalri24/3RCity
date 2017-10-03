@@ -7,14 +7,16 @@ public class Managers : MonoBehaviour {
     static Managers instance;
     private static readonly object padlock = new object();
 
-    BuildingPlacement buildingPlacement;
-    PrefabManager prefabManager;
+    private BuildingPlacement buildingPlacement;
+    private PrefabManager prefabManager;
+    private EventManager eventManager;
 
     Managers()
     {
         GameObject buildManager = GameObject.FindGameObjectWithTag("BuildManager");
         buildingPlacement = buildManager.GetComponent<BuildingPlacement>();
         prefabManager = GameObject.FindGameObjectWithTag("PrefabManager").GetComponent<PrefabManager>();
+        eventManager = GameObject.FindGameObjectWithTag("EventManager").GetComponent<EventManager>();
     }
 
     private static Managers Instance
@@ -38,5 +40,8 @@ public class Managers : MonoBehaviour {
     }
     public static BuildingPlacement BuildingPlacementManager {
         get { return Instance.buildingPlacement; }
+    }
+    public static EventManager EventManager {
+        get { return Instance.eventManager; }
     }
 }

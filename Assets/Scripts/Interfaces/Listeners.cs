@@ -13,3 +13,7 @@ public interface IUIStateChangedListener {
 public interface IDayAdvancedListener {
     void onDayAdvanced();
 }
+
+public interface IBuildingPlacedListener {
+    void onBuildingPlaced();
+}

@@ -78,6 +78,9 @@ public class CityController : MonoBehaviour
     [Tooltip("List with all the metal reclycling Centers of the city")]
     public List<TrashTruckStation> metalCenters;
 
+    [Tooltip("Game Object that is displayed over others when the game is paused")]
+    public GameObject pauseBackground;
+
     private int nextHouseToVisitIndex = -1;
     private int nextHouseToVisitOrdinaryIndex = -1;
     private int nextHouseToVisitGlassIndex = -1;
@@ -137,16 +140,20 @@ public class CityController : MonoBehaviour
             TrashTruckAI[] trucks = (TrashTruckAI[]) FindObjectsOfType(typeof(TrashTruckAI));
             if (paused)
             {
-                Debug.Log("Paused");
-                foreach (var truck in trucks)
+                //Debug.Log("Paused");
+                foreach (var truck in trucks) {
                     truck.Pause();               
+                }
+                pauseBackground.SetActive(true);
             }
             else
             {
-                Debug.Log("Unpaused");
-                foreach (var truck in trucks)
+                //Debug.Log("Unpaused");
+                foreach (var truck in trucks) {
                     truck.Resume();
-            }           
+                }
+                pauseBackground.SetActive(false);
+            }
         }
     }
 
@@ -426,5 +433,4 @@ public class CityController : MonoBehaviour
         CurrentMoney += basePayment;
         noticePanel.DisplayNotice("Has recibido $" + basePayment + " de la alcaldía");
     }
-
 }

@@ -8,6 +8,7 @@ public class TrashTruckAI : MonoBehaviour {
 
     enum State
     {
+        Standby,
         GoingToCollect,
         GoingToDeposit
     }
@@ -22,9 +23,12 @@ public class TrashTruckAI : MonoBehaviour {
 
     void Start()
     {
+        currentState = State.Standby;
         navMeshAgent = GetComponent<NavMeshAgent>();
         trashTruck = GetComponent<TrashTruck>();
-        TransitionToCollectState();
+        if (!CityController.Current.Paused) {
+            TransitionToCollectState();
+        }
         lastVelocity = Vector3.zero;
         lastPath = null;
     }
@@ -135,15 +139,19 @@ public class TrashTruckAI : MonoBehaviour {
 
     public void Pause()
     {
-        lastVelocity = navMeshAgent.velocity;
-        lastPath = navMeshAgent.path;
-        navMeshAgent.velocity = Vector3.zero;
-        navMeshAgent.ResetPath();
-
+        if (navMeshAgent != null) {
+            lastVelocity = navMeshAgent.velocity;
+            lastPath = navMeshAgent.path;
+            navMeshAgent.velocity = Vector3.zero;
+            navMeshAgent.ResetPath();
+        }
     }
 
     public void Resume()
     {
+        if (currentState == State.Standby) {
+            TransitionToCollectState(); //solves bug of moving at spawn even if game is paused
+        }
         if(lastVelocity != Vector3.zero)
         {
             navMeshAgent.velocity = lastVelocity;

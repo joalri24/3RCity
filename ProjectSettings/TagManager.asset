@@ -26,6 +26,7 @@ TagManager:
   - LevelState
   - Notice
   - UIController
+  - EventManager
   layers:
   - Default
   - TransparentFX

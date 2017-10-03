@@ -40,7 +40,6 @@ public class CampaignPanel : MonoBehaviour, IMoneyChangedListener
     }
 
     public void onMoneyChanged() {
-        Debug.Log("CampaignPanel.onMoneyChanged()");
         if (CityController.Current.CurrentMoney >= campaign.cost) {
             buyButton.interactable = true;
         } else {

@@ -5,31 +5,49 @@ using UnityEngine.UI;
 
 public class BuildButton : MonoBehaviour, IMoneyChangedListener {
 
-    public Buildings.Type building;
+    [SerializeField]
+    private Buildings.Type building;
 
     Buildable buildingAttributes;
     Button buttonComponent;
     
-    void Start()
+    void Awake()
     {
         buttonComponent = GetComponent<Button>();
         GameObject buildingPrefab = Managers.PrefabManager.MapBuildingToPrefab(building);
         buildingAttributes = buildingPrefab.GetComponent<Buildable>();
-        CityController.Current.RegisterMoneyChangedListener(this);
-        ((IMoneyChangedListener) this).onMoneyChanged(); //initialize interactable
+        Activate();
     }
 
     public void OnClick()
     {
-        //UIStateController.Instance.CurrentState = UI.State.Construction;
         Managers.BuildingPlacementManager.PreviewBuilding(building);
+    }
+
+    private bool Interactable {
+        set {
+            buttonComponent.interactable = value;
+        }
+    }
+
+    public void Deactivate() {
+        CityController.Current.RemoveMoneyChangedListener(this);
+        if (buttonComponent == null) {
+            buttonComponent = GetComponent<Button>();
+        }
+        Interactable = false;
+    }
+
+    public void Activate() {
+        CityController.Current.RegisterMoneyChangedListener(this);
+        ((IMoneyChangedListener)this).onMoneyChanged(); //initialize interactable
     }
 
     void IMoneyChangedListener.onMoneyChanged() {
         if (CityController.Current.CurrentMoney >= buildingAttributes.Cost) {
-            buttonComponent.interactable = true;
+            Interactable = true;
         } else {
-            buttonComponent.interactable = false;
+            Interactable = false;
         }
     }
 }
