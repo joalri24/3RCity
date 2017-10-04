@@ -310,6 +310,8 @@ public class CityController : MonoBehaviour
             PaymentToPlayer();
         }
 
+        OrderTrashTreatment();
+
         Analytics.CustomEvent("builtCampaing", new Dictionary<string, object>
         {
             { "paperCamp", PaperCampaignBought },
@@ -438,5 +440,30 @@ public class CityController : MonoBehaviour
     {
         CurrentMoney += basePayment;
         noticePanel.DisplayNotice("Has recibido $" + basePayment + " de la alcaldía");
+    }
+
+    /// <summary>
+    /// Order to all trash treatment centers to treat the trash they have.
+    /// </summary>
+    private void OrderTrashTreatment()
+    {
+       foreach (var paperCenter in paperCenters)
+        {
+            // Get the neccesary component and call the Treat garbage method
+            paperCenter.gameObject.GetComponent<TrashTreatmentCenter>().TreatGarbage();
+        }
+
+        foreach (var paperCenter in metalCenters)
+        {
+            // Get the neccesary component and call the Treat garbage method
+            paperCenter.gameObject.GetComponent<TrashTreatmentCenter>().TreatGarbage();
+        }
+
+        foreach (var paperCenter in glassCenters)
+        {
+            // Get the neccesary component and call the Treat garbage method
+            paperCenter.gameObject.GetComponent<TrashTreatmentCenter>().TreatGarbage();
+        }
+
     }
 }
