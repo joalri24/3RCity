@@ -27,6 +27,10 @@ public class DisplayGarbagePanel : MonoBehaviour
     public Text glassText;
     public Text metalText;
 
+    public Color normalColor = Color.white;
+    public Color warningColor;
+    public Color dangerColor;
+
     /// <summary>
     /// Reference to this object's RectTransform
     /// </summary>
@@ -157,10 +161,44 @@ public class DisplayGarbagePanel : MonoBehaviour
     /// <param name="metalAmount"></param>
     public void UpdateValues (int ordinaryAmount, int paperAmount, int glassAmount, int metalAmount)
     {
+        float percentage;
+
+        percentage = (float)ordinaryAmount / (float)ordinaryCapacity;
         ordinaryText.text= ordinaryAmount.ToString() + "/" + ordinaryCapacity;
+        if (percentage < 0.5f)
+            ordinaryText.color = normalColor;
+        else if (percentage >= 0.5f && percentage < 1)
+            ordinaryText.color = warningColor;
+        else
+            ordinaryText.color = dangerColor;
+
         paperText.text = paperAmount.ToString() + "/" + paperCapacity;
+        percentage = (float)paperAmount / (float)paperCapacity;
+        if (percentage < 0.5f)
+            paperText.color = normalColor;
+        else if (percentage >= 0.5f && percentage < 1)
+            paperText.color = warningColor;
+        else
+            paperText.color = dangerColor;
+
         glassText.text = glassAmount.ToString() + "/" + glassCapacity;
+        percentage = (float)glassAmount / (float)glassCapacity;
+        if (percentage < 0.5f)
+            glassText.color = normalColor;
+        else if (percentage >= 0.5f && percentage < 1)
+            glassText.color = warningColor;
+        else
+            glassText.color = dangerColor;
+
         metalText.text = metalAmount.ToString() + "/" + metalCapacity;
+        percentage = (float)metalAmount / (float)metalCapacity;
+        if (percentage < 0.5f)
+            metalText.color = normalColor;
+        else if (percentage >= 0.5f && percentage < 1)
+            metalText.color = warningColor;
+        else
+            metalText.color = dangerColor;
+
     }
 
 
